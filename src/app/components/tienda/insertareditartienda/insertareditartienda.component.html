@@ -1,0 +1,73 @@
+<div>
+  <div>
+    <h1>Registro de Tiendas</h1></div>
+  <div>
+    <form [formGroup]="form" (submit)="aceptar()">
+
+      <mat-form-field class="example-full-width" *ngIf="actualizacion">
+        <mat-label> ID </mat-label>
+        <br>
+        <input matInput  formControlName="codigo">
+        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+          El codigo es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+
+
+
+      <mat-form-field class="example-full-width">
+        <mat-label> Tienda </mat-label>
+        <br>
+        <input matInput placeholder="Ingresa nombre" formControlName="cajita">
+        <mat-error *ngIf="form.get('cajita')?.hasError('required')">
+          El nombre es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+
+      <mat-form-field class="example-full-width">
+        <mat-label> Ubicacion </mat-label>
+        <br>
+        <input matInput placeholder="Ingresa ubicacion" formControlName="ubicaciontienda">
+        <mat-error *ngIf="form.get('ubicaciontienda')?.hasError('required')">
+          La ubicacion es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+
+      <mat-form-field class="example-full-width">
+        <mat-label> Descripcion de la tienda </mat-label>
+        <br>
+        <input matInput placeholder="Ingresa descripcion" formControlName="descripciontienda">
+        <mat-error *ngIf="form.get('descripciontienda')?.hasError('required')">
+          La descripcion de la tienda es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field class="example-full-width">
+        <mat-label> Telefono </mat-label>
+        <br>
+        <input matInput placeholder="Ingresa numero de telefono" formControlName="telefonotienda">
+        <mat-error *ngIf="form.get('telefonotienda')?.hasError('required')">
+          El numero de telefono obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field class="example-full-width">
+        <mat-label> Correo de tienda </mat-label>
+        <br>
+        <input matInput placeholder="Ingresa correo" formControlName="correotienda">
+        <mat-error *ngIf="form.get('correotienda')?.hasError('required')">
+          El correo de la tienda es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <button matButton="filled">Registrar</button>
+
+    </form>
+  </div>
+</div>
