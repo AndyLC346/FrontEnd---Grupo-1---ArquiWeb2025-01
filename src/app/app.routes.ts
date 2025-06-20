@@ -5,6 +5,9 @@ import { InsertareditartiendaComponent } from './components/tienda/insertaredita
 
 export const routes: Routes = [
   {
+    path:'', redirectTo:'tiendas', pathMatch:'full'
+  },
+  {
     path:'tiendas', component:TiendaComponent,
     children:[{
       path:'insertareditartienda',component:InsertareditartiendaComponent

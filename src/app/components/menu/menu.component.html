@@ -1,0 +1,33 @@
+<mat-toolbar class="custom">
+  <h2 class="titulo-principal">Bienvenidos a Ahorra Comprando</h2>
+</mat-toolbar>
+
+<div class="espaciador-visual"></div>
+
+<mat-toolbar class="custom-toolbar">
+
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuUsuarios" class="btn-rojo">
+      <mat-icon>people</mat-icon>
+      Usuarios
+    </button>
+  </div>
+
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuTienda" class="btn-rojo">
+      <mat-icon>store</mat-icon>
+      Tiendas
+    </button>
+  </div>
+
+</mat-toolbar>
+
+<mat-menu #menuUsuarios="matMenu">
+  <button mat-menu-item routerLink="/usuarios">Listar</button>
+  <button mat-menu-item routerLink="/usuarios/insertareditarusuarios">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuTienda="matMenu">
+  <button mat-menu-item routerLink="/tiendas">Listar</button>
+  <button mat-menu-item routerLink="/tiendas/insertareditartienda">Registrar</button>
+</mat-menu>
