@@ -2,10 +2,12 @@ import { Routes } from '@angular/router';
 import { TiendaComponent } from './components/tienda/tienda.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { InsertareditartiendaComponent } from './components/tienda/insertareditartienda/insertareditartienda.component';
+import { HomeComponent } from './components/home/home.component';
+import { ProductoComponent } from './components/producto/producto.component';
 
 export const routes: Routes = [
   {
-    path:'', redirectTo:'tiendas', pathMatch:'full'
+    path:'', component:HomeComponent, pathMatch:'full'
   },
   {
     path:'tiendas', component:TiendaComponent,
@@ -21,5 +23,10 @@ export const routes: Routes = [
 
   {
     path:'usuarios',component:UsuarioComponent,
+  },
+
+  {
+    path:'productos',component:ProductoComponent,
   }
+
 ];

@@ -5,6 +5,6 @@ export class Tienda{
   descripcionTienda: string=""
   telefonoTienda: string=""
   correoElectronico: string=""
-  latitud: number = 0;
-  longitud: number = 0;
+  latitudTienda: number = 0;
+  longitudTienda: number = 0;
 }

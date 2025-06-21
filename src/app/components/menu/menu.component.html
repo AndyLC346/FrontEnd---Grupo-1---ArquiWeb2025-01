@@ -1,10 +1,19 @@
 <mat-toolbar class="custom">
-  <h2 class="titulo-principal">Bienvenidos a Ahorra Comprando</h2>
+  <h2 class="titulo-principal">
+    <a routerLink="/" style="text-decoration: none; color: inherit;">Bienvenidos a Ahorra Comprando</a>
+  </h2>
 </mat-toolbar>
 
 <div class="espaciador-visual"></div>
 
 <mat-toolbar class="custom-toolbar">
+
+  <div>
+    <button mat-button routerLink="/" class="btn-rojo">
+      <mat-icon>home</mat-icon>
+      Inicio
+    </button>
+  </div>
 
   <div>
     <button mat-button [matMenuTriggerFor]="menuUsuarios" class="btn-rojo">
@@ -20,6 +29,13 @@
     </button>
   </div>
 
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuProducto" class="btn-rojo">
+      <mat-icon>local_mall</mat-icon>
+      Productos
+    </button>
+  </div>
+
 </mat-toolbar>
 
 <mat-menu #menuUsuarios="matMenu">
@@ -30,4 +46,9 @@
 <mat-menu #menuTienda="matMenu">
   <button mat-menu-item routerLink="/tiendas">Listar</button>
   <button mat-menu-item routerLink="/tiendas/insertareditartienda">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuProducto="matMenu">
+  <button mat-menu-item routerLink="/productos">Listar</button>
+  <button mat-menu-item routerLink="/productos/insertareditarproductos">Registrar</button>
 </mat-menu>
