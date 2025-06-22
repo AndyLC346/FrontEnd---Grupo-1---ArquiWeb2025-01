@@ -1,5 +1,5 @@
 export class Tienda{
-  idTienda?: number;
+  idTienda: number=0
   ubicacion: string=""
   nombreTienda: string=""
   descripcionTienda: string=""

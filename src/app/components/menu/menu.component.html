@@ -16,7 +16,7 @@
   </div>
 
   <div>
-    <button mat-button [matMenuTriggerFor]="menuUsuarios" class="btn-rojo">
+    <button mat-button [matMenuTriggerFor]="menuUsuario" class="btn-rojo">
       <mat-icon>people</mat-icon>
       Usuarios
     </button>
@@ -32,13 +32,13 @@
   <div>
     <button mat-button [matMenuTriggerFor]="menuProducto" class="btn-rojo">
       <mat-icon>local_mall</mat-icon>
-      Productos
+      Producto
     </button>
   </div>
 
 </mat-toolbar>
 
-<mat-menu #menuUsuarios="matMenu">
+<mat-menu #menuUsuario="matMenu">
   <button mat-menu-item routerLink="/usuarios">Listar</button>
   <button mat-menu-item routerLink="/usuarios/insertareditarusuarios">Registrar</button>
 </mat-menu>
@@ -50,5 +50,4 @@
 
 <mat-menu #menuProducto="matMenu">
   <button mat-menu-item routerLink="/productos">Listar</button>
-  <button mat-menu-item routerLink="/productos/insertareditarproductos">Registrar</button>
 </mat-menu>
