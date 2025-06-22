@@ -62,6 +62,26 @@
       </mat-form-field>
       <br>
 
+      <mat-form-field class="example-full-width">
+        <mat-label> Latitud de la tienda </mat-label>
+        <br>
+        <input matInput placeholder="Ingresa latitud" formControlName="latitudtienda">
+        <mat-error *ngIf="form.get('latitudtienda')?.hasError('required')">
+          La latitud de la tienda es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field class="example-full-width">
+        <mat-label> Longitud de la tienda </mat-label>
+        <br>
+        <input matInput placeholder="Ingresa longitud" formControlName="longitudtienda">
+        <mat-error *ngIf="form.get('longitudtienda')?.hasError('required')">
+          La longitud de la tienda es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+      <br>
+
       <button matButton="filled">Registrar</button>
 
     </form>

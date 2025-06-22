@@ -22,10 +22,10 @@ export class ListartiendaComponent implements OnInit{
 
   constructor(private tS:TiendaService){}
   ngOnInit(): void {
-    this.tS.list().subscribe(data=>{
+    this.tS.list().subscribe((data)=>{
       this.dataSource= new MatTableDataSource(data);
     })
-    this.tS.getList().subscribe(data=>{
+    this.tS.getList().subscribe((data)=>{
       this.dataSource= new MatTableDataSource(data);
     })
   }

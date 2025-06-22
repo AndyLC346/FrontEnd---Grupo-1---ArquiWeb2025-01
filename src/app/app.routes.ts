@@ -7,26 +7,26 @@ import { ProductoComponent } from './components/producto/producto.component';
 
 export const routes: Routes = [
   {
-    path:'', component:HomeComponent, pathMatch:'full'
+    path: '', component: HomeComponent, pathMatch: 'full'
   },
   {
-    path:'tiendas', component:TiendaComponent,
-    children:[{
-      path:'insertareditartienda',component:InsertareditartiendaComponent
+    path: 'tiendas', component: TiendaComponent,
+    children: [{
+      path: 'insertareditartienda', component: InsertareditartiendaComponent
     },
 
     {
-      path:'actualizaciones/:id',component:InsertareditartiendaComponent
+      path: 'actualizaciones/:id', component: InsertareditartiendaComponent
     }
-  ]
+    ]
   },
 
   {
-    path:'usuarios',component:UsuarioComponent,
+    path: 'usuarios', component: UsuarioComponent,
   },
 
   {
-    path:'productos',component:ProductoComponent,
+    path:'productos',component:ProductoComponent
   }
 
 ];
