@@ -1,0 +1,86 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%;">
+    <h1> Registro de Descuentos </h1>
+  </div>
+
+  <div style="text-align: center; margin: 5%;">
+   <form [formGroup]="form" (submit)="aceptar()">
+      <mat-form-field class="example-full-width" *ngIf="desCuento">
+        <mat-label>IdDescuento</mat-label>
+        <input matInput formControlName="codigo" />
+        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+          El código es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Porcentaje de Descuento</mat-label>
+        <input
+          matInput
+          type="number"
+          placeholder="20"
+          formControlName="porcentajedescuento"
+        />
+        <mat-error *ngIf="form.get('porcentajedescuento')?.hasError('required')">
+          El porcentaje es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Código del Descuento</mat-label>
+        <input
+          matInput
+          placeholder="DESC20XYZ"
+          formControlName="codigodescuento"
+        />
+        <mat-error *ngIf="form.get('codigodescuento')?.hasError('required')">
+          El código es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Fecha de Inicio</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="fechainicio" />
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+        <mat-error *ngIf="form.get('fechainicio')?.hasError('required')">
+          La fecha de inicio es obligatoria
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Fecha de Fin</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="fechafin" />
+        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+        <mat-error *ngIf="form.get('fechafin')?.hasError('required')">
+          La fecha de fin es obligatoria
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="example-full-width">
+        <mat-label>ID del Producto</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="idproducto"
+          placeholder="123"
+        />
+        <mat-error *ngIf="form.get('idproducto')?.hasError('required')">
+          El producto es obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <br /><br />
+      <button mat-raised-button color="primary" type="submit">
+        Aceptar
+      </button>
+    </form>
+  </div>
+</div>
+
