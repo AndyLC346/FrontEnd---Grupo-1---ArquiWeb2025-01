@@ -38,9 +38,9 @@ export class ListaresenaComponent implements OnInit{
   }
 
   eliminar(id:number){
-    this.pS.deleteA(id).subscribe((data)=>{
-      this.pS.list().subscribe((data)=>{
-        this.pS.setList(data);
+    this.rS.deleteA(id).subscribe((data)=>{
+      this.rS.list().subscribe((data)=>{
+        this.rS.setList(data);
       })
     })
   }
