@@ -4,6 +4,7 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { InsertareditartiendaComponent } from './components/tienda/insertareditartienda/insertareditartienda.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductoComponent } from './components/producto/producto.component';
+import { InsertareditarproductoComponent } from './components/producto/insertareditarproducto/insertareditarproducto.component';
 
 export const routes: Routes = [
   {
@@ -14,11 +15,9 @@ export const routes: Routes = [
     children: [{
       path: 'insertareditartienda', component: InsertareditartiendaComponent
     },
-
     {
       path: 'actualizaciones/:id', component: InsertareditartiendaComponent
-    }
-    ]
+    }]
   },
 
   {
@@ -26,7 +25,14 @@ export const routes: Routes = [
   },
 
   {
-    path:'productos',component:ProductoComponent
+    path: 'productos', component: ProductoComponent,
+    children: [{
+      path: 'insertareditarprod', component: InsertareditarproductoComponent
+    },
+    {
+      path: 'actualizaproducto/:id', component: InsertareditarproductoComponent
+    }]
+
   }
 
 ];

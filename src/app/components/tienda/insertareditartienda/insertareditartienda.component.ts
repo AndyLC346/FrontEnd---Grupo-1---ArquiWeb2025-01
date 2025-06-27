@@ -64,7 +64,7 @@ export class InsertareditartiendaComponent implements OnInit {
       this.tienda.latitudTienda = this.form.value.latitudtienda
       this.tienda.longitudTienda = this.form.value.longitudtienda
 
-      
+
       if (this.actualizacion) {
         //actualizar
         this.tS.update(this.tienda).subscribe(() => {
@@ -97,7 +97,7 @@ export class InsertareditartiendaComponent implements OnInit {
           telefonotienda: new FormControl(data.telefonoTienda),
           correotienda: new FormControl(data.correoElectronico),
           latitudtienda: new FormControl(data.latitudTienda),
-          longitudtienda: new FormControl(data.latitudTienda),
+          longitudtienda: new FormControl(data.longitudTienda),
         })
       })
     }

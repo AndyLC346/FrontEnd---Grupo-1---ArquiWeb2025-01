@@ -5,24 +5,42 @@ import { ProductoService } from '../../../services/producto.service';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-listarproducto',
-  imports: [MatTableModule, CommonModule, MatButtonModule, MatIconModule],
+  imports: [
+    MatTableModule,
+    CommonModule,
+    MatButtonModule,
+    MatIconModule,
+    RouterLink
+  ],
   templateUrl: './listarproducto.component.html',
   styleUrl: './listarproducto.component.css'
 })
-export class ListarproductoComponent implements OnInit{
+export class ListarproductoComponent implements OnInit {
   dataSource: MatTableDataSource<Producto> = new MatTableDataSource();
 
-  displayedColumns: string[] = ['c1','c2','c3','c4','c5','c6','c7','c8',]
+  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5','c6','c7']
 
-  constructor(private pS:ProductoService){}
+  constructor(private pS: ProductoService) { }
 
   ngOnInit(): void {
-      this.pS.list().subscribe((data) =>{
-        this.dataSource = new MatTableDataSource(data);
-      })
+    this.pS.list().subscribe((data) => {
+      this.dataSource = new MatTableDataSource(data);
+    })
+
+    this.pS.getList().subscribe((data) => {
+      this.dataSource = new MatTableDataSource(data);
+    })
   }
 
+  eliminar(id:number){
+    this.pS.deleteA(id).subscribe((data)=>{
+      this.pS.list().subscribe((data)=>{
+        this.pS.setList(data);
+      })
+    })
+  }
 }
