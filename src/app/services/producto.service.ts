@@ -42,8 +42,4 @@ export class ProductoService {
     return this.h.delete(`${this.url}/${id}`);
   }
 
-
-  findById(id: number) {
-    return this.h.get<Producto>(`${base_url}/producto/${id}`);
-  }
 }

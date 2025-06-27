@@ -5,6 +5,7 @@ import { InsertareditartiendaComponent } from './components/tienda/insertaredita
 import { HomeComponent } from './components/home/home.component';
 import { ProductoComponent } from './components/producto/producto.component';
 import { InsertareditarproductoComponent } from './components/producto/insertareditarproducto/insertareditarproducto.component';
+import { DetalleProductoComponent } from './components/producto/detalle-producto/detalle-producto.component';
 
 export const routes: Routes = [
   {
@@ -31,8 +32,10 @@ export const routes: Routes = [
     },
     {
       path: 'actualizaproducto/:id', component: InsertareditarproductoComponent
-    }]
-
+    },
+    {
+      path: 'detalle/:id', component: DetalleProductoComponent
+    }
+    ]
   }
-
 ];
