@@ -1,1 +1,75 @@
-<p>insertareditaresena works!</p>
+<div class="container">
+  <div style="text-align: center; margin:5%;"><h1>Registro de reseñas</h1></div>
+  <div style="text-align: center; margin:5%;">
+    <form [formGroup]="form" (submit)="aceptar()">
+      <mat-form-field class="example-full-width" *ngIf="actualizacion">
+        <mat-label> ID </mat-label>
+        <br>
+        <input matInput  formControlName="codigorese">
+        <mat-error *ngIf="form.get('codigorese')?.hasError('required')">
+          El codigo es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+
+      <mat-form-field>
+        <mat-label>Calificacion</mat-label>
+        <mat-select formControlName="califresena">
+          @for (food of tipos; track food) {
+          <mat-option [value]="food.value">{{ food.viewValue }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="example-full-width">
+        <mat-label> Comentario </mat-label>
+        <br>
+        <input matInput placeholder="Ingresa comentario" formControlName="comentarioresena">
+        <mat-error *ngIf="form.get('comentarioresena')?.hasError('required')">
+          Su comentario es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field>
+        <mat-label>Fecha de la resena</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="fecharesena"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <br/>
+
+      <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="usersito">
+          @for (food of listaUsuario; track food) {
+          <mat-option [value]="food.idUser">{{ food.username }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field>
+        <mat-label>Producto</mat-label>
+        <mat-select formControlName="productito">
+          @for (food of listaProducto; track food) {
+          <mat-option [value]="food.idProducto">{{ food.nombreProducto }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+
+      <button matButton="filled">Registrar</button>
+
+    </form>
+  </div>
+</div>

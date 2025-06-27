@@ -130,4 +130,5 @@ export class InsertareditarproductoComponent implements OnInit {
       })
     }
   }
+  
 }
