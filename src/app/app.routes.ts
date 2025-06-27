@@ -6,6 +6,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductoComponent } from './components/producto/producto.component';
 import { InsertareditarproductoComponent } from './components/producto/insertareditarproducto/insertareditarproducto.component';
 import { DetalleProductoComponent } from './components/producto/detalle-producto/detalle-producto.component';
+import { ResenaComponent } from './components/resena/resena.component';
+import { InsertareditaresenaComponent } from './components/resena/insertareditaresena/insertareditaresena.component';
 
 export const routes: Routes = [
   {
@@ -37,5 +39,21 @@ export const routes: Routes = [
       path: 'detalle/:id', component: DetalleProductoComponent
     }
     ]
+  },
+
+  {
+    path: 'resenas', component: ResenaComponent,
+    children: [{
+      path: 'insertareditarese', component: InsertareditaresenaComponent
+    },
+    {
+      path: 'actualizaresena/:id', component: InsertareditaresenaComponent
+    },
+
+    ]
   }
+
+
+
+
 ];

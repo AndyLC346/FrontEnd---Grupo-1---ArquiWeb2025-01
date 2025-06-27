@@ -11,3 +11,4 @@ import { ListarproductoComponent } from './listarproducto/listarproducto.compone
 export class ProductoComponent {
   constructor(public route: ActivatedRoute) { }
 }
+

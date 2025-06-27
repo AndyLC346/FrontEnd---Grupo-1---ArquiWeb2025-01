@@ -37,6 +37,13 @@
   </div>
 
   <div>
+    <button mat-button [matMenuTriggerFor]="menuResena" class="btn-rojo">
+      <mat-icon>rate_review</mat-icon>
+      Reseña
+    </button>
+  </div>
+
+  <div>
     <button mat-button [matMenuTriggerFor]="menuCarritoCompra" class="btn-rojo">
       <mat-icon>shopping_cart</mat-icon>
       CarritoCompra
@@ -58,6 +65,11 @@
 <mat-menu #menuProducto="matMenu">
   <button mat-menu-item routerLink="/productos">Listar</button>
   <button mat-menu-item routerLink="/productos/insertareditarprod">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuResena="matMenu">
+  <button mat-menu-item routerLink="/resenas">Listar</button>
+  <button mat-menu-item routerLink="/resenas/insertareditarese">Registrar</button>
 </mat-menu>
 
 <mat-menu #menuCarritoCompra="matMenu">
