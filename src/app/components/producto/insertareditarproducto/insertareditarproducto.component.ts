@@ -130,5 +130,9 @@ export class InsertareditarproductoComponent implements OnInit {
       })
     }
   }
-  
+
+  cancelar() {
+    this.router.navigate(['productos'])
+  }
+
 }

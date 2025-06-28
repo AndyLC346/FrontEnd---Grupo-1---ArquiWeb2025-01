@@ -130,4 +130,8 @@ export class InsertareditaresenaComponent implements OnInit{
       })
     }
   }
+
+  cancelar() {
+    this.router.navigate(['resenas'])
+  }
 }

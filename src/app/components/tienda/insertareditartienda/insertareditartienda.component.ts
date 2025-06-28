@@ -37,7 +37,7 @@ export class InsertareditartiendaComponent implements OnInit {
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
       this.actualizacion = data['id'] != null;
-      this.init(); 
+      this.init();
       // Actualizar
     })
 
@@ -101,5 +101,9 @@ export class InsertareditartiendaComponent implements OnInit {
         })
       })
     }
+  }
+
+  cancelar() {
+    this.router.navigate(['tiendas'])
   }
 }
