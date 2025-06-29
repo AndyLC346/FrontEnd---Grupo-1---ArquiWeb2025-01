@@ -18,4 +18,19 @@ export class DescuentoService {
   insert(D: Descuentos) {
     return this.http.post(`${this.url}`, D);
   }
+   getList() {
+    return this.listaDescuento.asObservable();
+  }
+  setList(listaNueva: Descuentos[]) {
+    this.listaDescuento.next(listaNueva);
+  }
+  listId(id: number) {
+    return this.http.get<Descuentos>(`${this.url}/${id}`);
+  }
+  deleteA(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
+   update(d: Descuentos) {
+    return this.http.put(this.url, d);
+  }
 }
