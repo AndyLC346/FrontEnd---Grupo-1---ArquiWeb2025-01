@@ -49,6 +49,12 @@
       CarritoCompra
     </button>
   </div>
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuDescuento" class="btn-rojo">
+      <mat-icon>local_offer</mat-icon>
+      Descuento
+    </button>
+  </div>
 
 </mat-toolbar>
 
@@ -75,4 +81,9 @@
 <mat-menu #menuCarritoCompra="matMenu">
   <button mat-menu-item routerLink="/carritocompra">Listar</button>
   <button mat-menu-item routerLink="/carritocompra/insertareditarcarritocompra">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuDescuento="matMenu">
+  <button mat-menu-item routerLink="/descuento">Listar</button>
+  <button mat-menu-item routerLink="/descuento/insertareditardescuento">Registrar</button>
 </mat-menu>
