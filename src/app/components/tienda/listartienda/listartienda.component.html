@@ -72,4 +72,10 @@
     </table>
   </div>
 
+  <mat-paginator #paginator [length]="dataSource.data.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons aria-label="Selecciona página">
+  </mat-paginator>
+
+  <h2>Cantidad de tiendas ({{ dataSource.filteredData.length }})</h2>
+
 </div>
