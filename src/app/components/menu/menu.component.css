@@ -1,0 +1,35 @@
+.titulo-principal {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-size: 25px;
+  font-weight: bold;
+  margin: 0 auto;
+  justify-content: center;
+  padding: 10px 0;
+  color: rgb(179, 15, 15);
+}
+
+.custom{
+  background-color: #f0f0f0;
+}
+
+.espaciador-visual {
+  height: 1.5px;
+  background-color: #000000;
+}
+
+.custom-toolbar {
+  background-color: rgb(179, 15, 15);
+}
+
+.btn-rojo {
+  background-color: rgb(179, 15, 15);
+  border-radius: 4px;
+  margin: 4px;
+  border: none;
+}
+
+.custom-toolbar button,
+.custom-toolbar mat-icon {
+  color: white;
+}

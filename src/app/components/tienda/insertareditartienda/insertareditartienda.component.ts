@@ -47,7 +47,9 @@ export class InsertareditartiendaComponent implements OnInit {
       ubicaciontienda: ['', Validators.required],
       descripciontienda: ['', Validators.required],
       telefonotienda: ['', Validators.required],
-      correotienda: ['', Validators.required]
+      correotienda: ['', Validators.required],
+      latitudtienda: ['', Validators.required],
+      longitudtienda: ['', Validators.required]
     })
   }
 
@@ -59,6 +61,10 @@ export class InsertareditartiendaComponent implements OnInit {
       this.tienda.descripcionTienda = this.form.value.descripciontienda
       this.tienda.telefonoTienda = this.form.value.telefonotienda
       this.tienda.correoElectronico = this.form.value.correotienda
+      this.tienda.latitudTienda = this.form.value.latitudtienda
+      this.tienda.longitudTienda = this.form.value.longitudtienda
+
+
       if (this.actualizacion) {
         //actualizar
         this.tS.update(this.tienda).subscribe(() => {
@@ -89,9 +95,15 @@ export class InsertareditartiendaComponent implements OnInit {
           ubicaciontienda: new FormControl(data.ubicacion),
           descripciontienda: new FormControl(data.descripcionTienda),
           telefonotienda: new FormControl(data.telefonoTienda),
-          correotienda: new FormControl(data.correoElectronico)
+          correotienda: new FormControl(data.correoElectronico),
+          latitudtienda: new FormControl(data.latitudTienda),
+          longitudtienda: new FormControl(data.longitudTienda),
         })
       })
     }
+  }
+
+  cancelar() {
+    this.router.navigate(['tiendas'])
   }
 }

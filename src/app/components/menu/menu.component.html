@@ -1,0 +1,89 @@
+<mat-toolbar class="custom">
+  <h2 class="titulo-principal">
+    <a routerLink="/" style="text-decoration: none; color: inherit;">Bienvenidos a Ahorra Comprando</a>
+  </h2>
+</mat-toolbar>
+
+<div class="espaciador-visual"></div>
+
+<mat-toolbar class="custom-toolbar">
+
+  <div>
+    <button mat-button routerLink="/" class="btn-rojo">
+      <mat-icon>home</mat-icon>
+      Inicio
+    </button>
+  </div>
+
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuUsuario" class="btn-rojo">
+      <mat-icon>people</mat-icon>
+      Usuarios
+    </button>
+  </div>
+
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuTienda" class="btn-rojo">
+      <mat-icon>store</mat-icon>
+      Tiendas
+    </button>
+  </div>
+
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuProducto" class="btn-rojo">
+      <mat-icon>local_mall</mat-icon>
+      Producto
+    </button>
+  </div>
+
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuResena" class="btn-rojo">
+      <mat-icon>rate_review</mat-icon>
+      Reseña
+    </button>
+  </div>
+
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuCarritoCompra" class="btn-rojo">
+      <mat-icon>shopping_cart</mat-icon>
+      CarritoCompra
+    </button>
+  </div>
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuDescuento" class="btn-rojo">
+      <mat-icon>local_offer</mat-icon>
+      Descuento
+    </button>
+  </div>
+
+</mat-toolbar>
+
+<mat-menu #menuUsuario="matMenu">
+  <button mat-menu-item routerLink="/usuarios">Listar</button>
+  <button mat-menu-item routerLink="/usuarios/insertareditarusuarios">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuTienda="matMenu">
+  <button mat-menu-item routerLink="/tiendas">Listar</button>
+  <button mat-menu-item routerLink="/tiendas/insertareditartienda">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuProducto="matMenu">
+  <button mat-menu-item routerLink="/productos">Listar</button>
+  <button mat-menu-item routerLink="/productos/insertareditarprod">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuResena="matMenu">
+  <button mat-menu-item routerLink="/resenas">Listar</button>
+  <button mat-menu-item routerLink="/resenas/insertareditarese">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuCarritoCompra="matMenu">
+  <button mat-menu-item routerLink="/carritocompra">Listar</button>
+  <button mat-menu-item routerLink="/carritocompra/insertareditarcarritocompra">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuDescuento="matMenu">
+  <button mat-menu-item routerLink="/descuento">Listar</button>
+  <button mat-menu-item routerLink="/descuento/insertareditardescuento">Registrar</button>
+</mat-menu>

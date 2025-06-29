@@ -1,0 +1,27 @@
+<div *ngIf="resena" class="detalle-contenedor">
+  <mat-card class="resena-card">
+    <div class="cabecera">
+      <span class="usuario">{{ resena.user.username }}</span>
+      <span class="fecha">{{ resena.fecha | date:'mediumDate' }}</span>
+    </div>
+
+    <div class="estrellas">
+      <mat-icon *ngFor="let _ of estrellasLlenas">star</mat-icon>
+      <mat-icon *ngFor="let _ of estrellasVacias">star_outline</mat-icon>
+    </div>
+
+    <p class="comentario">
+      {{ resena.comentario }}
+    </p>
+
+    <p class="producto">
+      Producto reseñado: <strong>{{ resena.producto.nombreProducto }}</strong>
+    </p>
+  </mat-card>
+
+  <div class="volver-contenedor">
+    <button mat-raised-button color="primary" class="btn-volver" (click)="volver()">
+      Volver
+    </button>
+  </div>
+</div>

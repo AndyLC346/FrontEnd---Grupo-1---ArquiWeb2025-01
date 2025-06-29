@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { TiendaComponent } from "./components/tienda/tienda.component";
-import { UsuarioComponent } from "./components/usuario/usuario.component";
+import { MenuComponent } from './components/menu/menu.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [TiendaComponent, UsuarioComponent],
+  imports: [MenuComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'FrontendGrupo1';
 }
-

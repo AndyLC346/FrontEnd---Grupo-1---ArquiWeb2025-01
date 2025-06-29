@@ -2,21 +2,57 @@ import { Routes } from '@angular/router';
 import { TiendaComponent } from './components/tienda/tienda.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { InsertareditartiendaComponent } from './components/tienda/insertareditartienda/insertareditartienda.component';
+import { HomeComponent } from './components/home/home.component';
+import { ProductoComponent } from './components/producto/producto.component';
+import { InsertareditarproductoComponent } from './components/producto/insertareditarproducto/insertareditarproducto.component';
+import { DetalleProductoComponent } from './components/producto/detalle-producto/detalle-producto.component';
+import { ResenaComponent } from './components/resena/resena.component';
+import { InsertareditaresenaComponent } from './components/resena/insertareditaresena/insertareditaresena.component';
+import { DetalleResenaComponent } from './components/resena/detalle-resena/detalle-resena.component';
 
 export const routes: Routes = [
   {
-    path:'tiendas', component:TiendaComponent,
-    children:[{
-      path:'insertareditartienda',component:InsertareditartiendaComponent
+    path: '', component: HomeComponent, pathMatch: 'full'
+  },
+  {
+    path: 'tiendas', component: TiendaComponent,
+    children: [{
+      path: 'insertareditartienda', component: InsertareditartiendaComponent
     },
-
     {
-      path:'actualizaciones/:id',component:InsertareditartiendaComponent
-    }
-  ]
+      path: 'actualizaciones/:id', component: InsertareditartiendaComponent
+    }]
   },
 
   {
-    path:'usuarios',component:UsuarioComponent,
+    path: 'usuarios', component: UsuarioComponent,
+  },
+
+  {
+    path: 'productos', component: ProductoComponent,
+    children: [{
+      path: 'insertareditarprod', component: InsertareditarproductoComponent
+    },
+    {
+      path: 'actualizaproducto/:id', component: InsertareditarproductoComponent
+    },
+    {
+      path: 'detalle/:id', component: DetalleProductoComponent
+    }
+    ]
+  },
+
+  {
+    path: 'resenas', component: ResenaComponent,
+    children: [{
+      path: 'insertareditarese', component: InsertareditaresenaComponent
+    },
+    {
+      path: 'actualizaresena/:id', component: InsertareditaresenaComponent
+    },
+    {
+      path: 'detallerese/:id', component: DetalleResenaComponent
+    }
+    ]
   }
 ];

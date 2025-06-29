@@ -1,0 +1,97 @@
+<div class="container">
+  <div style="text-align: center; margin:5%;"><h1>Registro de Productos</h1></div>
+  <div style="text-align: center; margin:5%;">
+    <form [formGroup]="form" (submit)="aceptar()">
+      <mat-form-field class="example-full-width" *ngIf="actualizacion">
+        <mat-label> ID </mat-label>
+        <br>
+        <input matInput  formControlName="codigopro">
+        <mat-error *ngIf="form.get('codigopro')?.hasError('required')">
+          El codigo es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+
+      <mat-form-field class="example-full-width">
+        <mat-label> Producto </mat-label>
+        <br>
+        <input matInput placeholder="Ingresa nombre" formControlName="nombrepro">
+        <mat-error *ngIf="form.get('nombrepro')?.hasError('required')">
+          El nombre es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+
+
+      <mat-form-field class="example-full-width">
+        <mat-label> Descripcion del producto </mat-label>
+        <br>
+        <input matInput placeholder="Ingresa descripcion" formControlName="descripcionPro">
+        <mat-error *ngIf="form.get('descripcionPro')?.hasError('required')">
+          La descripcion del producto es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field class="example-full-width">
+        <mat-label> Precio </mat-label>
+        <br>
+        <input matInput placeholder="Ingresa precio" formControlName="precioPro">
+        <mat-error *ngIf="form.get('precioPro')?.hasError('required')">
+          El Precio del producto es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field>
+        <mat-label>Categorias</mat-label>
+        <mat-select formControlName="categoriaPro">
+          @for (food of tipos; track food) {
+          <mat-option [value]="food.value">{{ food.viewValue }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="example-full-width">
+        <mat-label> Stock </mat-label>
+        <br>
+        <input matInput placeholder="Ingresa stock" formControlName="stockPro">
+        <mat-error *ngIf="form.get('stockPro')?.hasError('required')">
+          El stock de la tienda es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field>
+        <mat-label>Fecha de creacion</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="fechaPro"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <br/>
+
+      <mat-form-field>
+        <mat-label>Tiendas</mat-label>
+        <mat-select formControlName="tiendita">
+          @for (food of listaTienda; track food) {
+          <mat-option [value]="food.idTienda">{{ food.nombreTienda }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+
+      <button matButton="filled">Registrar</button>
+      <button matButton="filled" type="button" (click)="cancelar()">Cancelar</button>
+
+    </form>
+  </div>
+</div>
