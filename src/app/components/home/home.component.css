@@ -1,0 +1,25 @@
+/*:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #99D9F2;
+  margin: 0;
+  padding: 0;
+}*/
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background-image: url('/assets/img/presentacion.jpg'); 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 0 auto;
+  padding-top: 5vh; 
+  text-align: center;
+  color: rgb(0, 0, 0);
+}

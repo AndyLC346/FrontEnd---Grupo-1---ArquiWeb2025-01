@@ -1,16 +1,20 @@
-.titulo-principal {
-  text-align: center;
-  color: rgb(0, 0, 0);
-  font-size: 25px;
-  font-weight: bold;
-  margin: 0 auto;
-  justify-content: center;
-  padding: 10px 0;
-  color: rgb(179, 15, 15);
+.boton-flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999; /* Para que quede arriba de todo */
+  background-color: #1976d2; /* Color azul Material */
+  color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
+
+.boton-flotante:hover {
+  background-color: #1565c0;
+}
 .custom{
-  background-color: #f0f0f0;
+  background-color: #F1F9FF;
 }
 
 .espaciador-visual {
@@ -19,12 +23,14 @@
 }
 
 .custom-toolbar {
-  background-color: rgb(179, 15, 15);
+  background-color: #F1F9FF;
+   padding-left: 6px;
 }
 
-.btn-rojo {
-  background-color: rgb(179, 15, 15);
-  border-radius: 4px;
+.btn-color {
+  
+  background-color: #000000;
+  border-radius: 5px;
   margin: 4px;
   border: none;
 }
