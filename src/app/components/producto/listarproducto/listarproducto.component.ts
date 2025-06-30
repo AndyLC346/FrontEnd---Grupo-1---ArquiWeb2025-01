@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-listarproducto',
@@ -15,7 +15,8 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
     CommonModule,
     MatButtonModule,
     MatIconModule,
-    RouterLink,MatPaginatorModule
+    RouterLink,
+    MatPaginatorModule
   ],
   templateUrl: './listarproducto.component.html',
   styleUrl: './listarproducto.component.css'
@@ -24,7 +25,9 @@ export class ListarproductoComponent implements OnInit {
   dataSource: MatTableDataSource<Producto> = new MatTableDataSource();
 
   displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5','c6','c7', 'c8']
-@ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
   constructor(private pS: ProductoService) { }
 
   ngOnInit(): void {
@@ -36,9 +39,11 @@ export class ListarproductoComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data);
     })
   }
-    ngAfterViewInit(): void {
+
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
+
   eliminar(id:number){
     this.pS.deleteA(id).subscribe((data)=>{
       this.pS.list().subscribe((data)=>{
