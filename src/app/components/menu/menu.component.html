@@ -3,11 +3,8 @@
     <a routerLink="/" style="text-decoration: none; color: inherit;">Bienvenidos a Ahorra Comprando</a>
   </h2>
 </mat-toolbar>
-<audio controls autoplay loop>
-  <source src="" type>
-</audio>
 
-<div class="espaciador-visual"></div>
+
 
 <mat-toolbar class="custom-toolbar">
 
@@ -59,7 +56,15 @@
     </button>
   </div>
 
+<!--Para poner canción de fondo-->
 </mat-toolbar>
+<audio #audioPlayer id="musica" autoplay muted>
+  <source src="assets/songs/cancionmenu1.mp3" type="audio/mpeg" /> 
+</audio>
+
+<button mat-icon-button class="boton-flotante" (click)="toggleMute(audioPlayer)">
+  <mat-icon>{{ isMuted ? 'volume_off' : 'volume_up' }}</mat-icon>
+</button>
 
 <mat-menu #menuUsuario="matMenu">
   <button mat-menu-item routerLink="/usuarios">Listar</button>
