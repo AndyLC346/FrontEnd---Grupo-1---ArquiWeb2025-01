@@ -63,7 +63,10 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
-   <mat-paginator #paginator [length]="dataSource.data.length" [pageSize]="4" [pageSizeOptions]="[4, 8, 10]"
+  <mat-paginator #paginator [length]="dataSource.data.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"
     showFirstLastButtons aria-label="Selecciona página">
   </mat-paginator>
+
+  <h2>Cantidad de reseñas ({{ dataSource.filteredData.length }})</h2>
+
 </div>
