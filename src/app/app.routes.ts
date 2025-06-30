@@ -9,11 +9,18 @@ import { DetalleProductoComponent } from './components/producto/detalle-producto
 import { ResenaComponent } from './components/resena/resena.component';
 import { InsertareditaresenaComponent } from './components/resena/insertareditaresena/insertareditaresena.component';
 import { DetalleResenaComponent } from './components/resena/detalle-resena/detalle-resena.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 export const routes: Routes = [
   {
     path: '', component: HomeComponent, pathMatch: 'full'
+
   },
+  
+  {
+    path: 'menu', component: MenuComponent
+  },
+
   {
     path: 'tiendas', component: TiendaComponent,
     children: [{
