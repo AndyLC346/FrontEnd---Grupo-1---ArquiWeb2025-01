@@ -62,5 +62,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
-
+   <mat-paginator #paginator [length]="dataSource.data.length" [pageSize]="4" [pageSizeOptions]="[4, 8, 10]"
+    showFirstLastButtons aria-label="Selecciona página">
+  </mat-paginator>
 </div>
