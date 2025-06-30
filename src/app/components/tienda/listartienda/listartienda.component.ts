@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild} from '@angular/core';
 import { Tienda } from '../../../models/tienda';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table'
 import { TiendaService } from '../../../services/tienda.service';
@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   imports: [
     MatTableModule,
     MatButtonModule,
-    RouterLink
+    RouterLink,MatPaginatorModule
   ],
   templateUrl: './listartienda.component.html',
   styleUrl: './listartienda.component.css'
@@ -19,6 +19,7 @@ export class ListartiendaComponent implements OnInit{
   dataSource:MatTableDataSource<Tienda>=new MatTableDataSource()
 
   displayedColumns:string[]=['c1','c2','c3','c4','c5','c6','c7','c8','c9']
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private tS:TiendaService){}
   ngOnInit(): void {
@@ -29,7 +30,9 @@ export class ListartiendaComponent implements OnInit{
       this.dataSource= new MatTableDataSource(data);
     })
   }
-
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+  }
   eliminar(id:number){
     this.tS.deleteA(id).subscribe((data)=>{
       this.tS.list().subscribe((data)=>{
