@@ -1,13 +1,3 @@
-.titulo-principal {
-  text-align: center;
-  color: rgb(0, 0, 0);
-  font-size: 25px;
-  font-weight: bold;
-  margin: 0 auto;
-  justify-content: center;
-  padding: 10px 0;
-  color: rgb(179, 15, 15);
-}
 .boton-flotante {
   position: fixed;
   bottom: 20px;
@@ -23,7 +13,7 @@
   background-color: #1565c0;
 }
 .custom{
-  background-color: #f0f0f0;
+  background-color: #F1F9FF;
 }
 
 .espaciador-visual {
@@ -32,12 +22,14 @@
 }
 
 .custom-toolbar {
-  background-color: rgb(179, 15, 15);
+  background-color: #F1F9FF;
+   padding-left: 6px;
 }
 
-.btn-rojo {
-  background-color: rgb(179, 15, 15);
-  border-radius: 4px;
+.btn-color {
+  
+  background-color: #000000;
+  border-radius: 5px;
   margin: 4px;
   border: none;
 }

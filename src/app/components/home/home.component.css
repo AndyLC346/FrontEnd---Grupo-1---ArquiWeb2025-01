@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #99D9F2; /* o el color o imagen que quieras */
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 0 auto;
+  padding-top: 5vh; /* para separar un poco el contenido del top */
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
