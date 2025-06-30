@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CarritoCompra } from '../../../models/carritocompra';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { CarritocompraService } from '../../../services/carritocompra.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -12,52 +17,55 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
+import { Usuario } from '../../../models/usuario';
+import { UsuarioService } from '../../../services/usuario.service';
 
 @Component({
   selector: 'app-insertareditarcarritocompra',
-  imports: [ReactiveFormsModule,
+  imports: [
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     CommonModule,
     MatRadioModule,
-  MatDatepickerModule,
+    MatDatepickerModule,
     MatSelectModule,
-    MatButtonModule,MatNativeDateModule],
+    MatButtonModule,
+    MatNativeDateModule,
+  ],
   templateUrl: './insertareditarcarritocompra.component.html',
-  styleUrl: './insertareditarcarritocompra.component.css'
+  styleUrl: './insertareditarcarritocompra.component.css',
 })
 export class InsertareditarcarritocompraComponent implements OnInit {
-    form: FormGroup = new FormGroup({});
+  form: FormGroup = new FormGroup({});
   carritocompra: CarritoCompra = new CarritoCompra();
   estado: boolean = true;
 
-    id: number = 0;
+  id: number = 0;
   edicion: boolean = false;
+  listauser:Usuario[]=[]
   //falta metodopago
-constructor(
+  constructor(
     private Cs: CarritocompraService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private uS: UsuarioService
   ) {}
-ngOnInit(): void {
-
-
+  ngOnInit(): void {
     this.form = this.formBuilder.group({
       user: ['', Validators.required],
       fecha: ['', Validators.required],
       product: ['', Validators.required],
-      cantidad:['', Validators.required]
-    
+      cantidad: ['', Validators.required],
     });
   }
- aceptar() {
+  aceptar() {
     if (this.form.valid) {
-      
       this.carritocompra.usuario.username = this.form.value.user;
       this.carritocompra.fechaCreaCarritoCompra = this.form.value.fecha;
       this.carritocompra.producto.nombreProducto = this.form.value.product;
-this.carritocompra.cantidad=this.form.value.cantidad
+      this.carritocompra.cantidad = this.form.value.cantidad;
 
       this.Cs.insert(this.carritocompra).subscribe(() => {
         this.Cs.list().subscribe((data) => {
@@ -69,15 +77,14 @@ this.carritocompra.cantidad=this.form.value.cantidad
     }
   }
   aumentarCantidad() {
-  let cantidadActual = this.form.get('cantidad')?.value || 0;
-  this.form.get('cantidad')?.setValue(cantidadActual + 1);
-}
-
-disminuirCantidad() {
-  let cantidadActual = this.form.get('cantidad')?.value || 1;
-  if (cantidadActual > 1) {
-    this.form.get('cantidad')?.setValue(cantidadActual - 1);
+    let cantidadActual = this.form.get('cantidad')?.value || 0;
+    this.form.get('cantidad')?.setValue(cantidadActual + 1);
   }
 
-}
+  disminuirCantidad() {
+    let cantidadActual = this.form.get('cantidad')?.value || 1;
+    if (cantidadActual > 1) {
+      this.form.get('cantidad')?.setValue(cantidadActual - 1);
+    }
+  }
 }
