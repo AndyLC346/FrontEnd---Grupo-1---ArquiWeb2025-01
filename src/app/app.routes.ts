@@ -9,6 +9,7 @@ import { DetalleProductoComponent } from './components/producto/detalle-producto
 import { ResenaComponent } from './components/resena/resena.component';
 import { InsertareditaresenaComponent } from './components/resena/insertareditaresena/insertareditaresena.component';
 import { DetalleResenaComponent } from './components/resena/detalle-resena/detalle-resena.component';
+import { MenuComponent } from './components/menu/menu.component';
 import { CarritocompraComponent } from './components/carritocompra/carritocompra.component';
 import { InsertareditarcarritocompraComponent } from './components/carritocompra/insertareditarcarritocompra/insertareditarcarritocompra.component';
 import { DescuentosComponent } from './components/descuentos/descuentos.component';
@@ -16,66 +17,54 @@ import { InsertareditardescuentosComponent } from './components/descuentos/inser
 
 export const routes: Routes = [
   {
-    path: '',
-    component: HomeComponent,
-    pathMatch: 'full',
-  },
-  {
-    path: 'tiendas',
-    component: TiendaComponent,
-    children: [
-      {
-        path: 'insertareditartienda',
-        component: InsertareditartiendaComponent,
-      },
-      {
-        path: 'actualizaciones/:id',
-        component: InsertareditartiendaComponent,
-      },
-    ],
+    path: '', component: HomeComponent, pathMatch: 'full'
+
   },
 
   {
-    path: 'usuarios',
-    component: UsuarioComponent,
+    path: 'menu', component: MenuComponent
   },
 
   {
-    path: 'productos',
-    component: ProductoComponent,
-    children: [
-      {
-        path: 'insertareditarprod',
-        component: InsertareditarproductoComponent,
-      },
-      {
-        path: 'actualizaproducto/:id',
-        component: InsertareditarproductoComponent,
-      },
-      {
-        path: 'detalle/:id',
-        component: DetalleProductoComponent,
-      },
-    ],
+    path: 'tiendas', component: TiendaComponent,
+    children: [{
+      path: 'insertareditartienda', component: InsertareditartiendaComponent
+    },
+    {
+      path: 'actualizaciones/:id', component: InsertareditartiendaComponent
+    }]
   },
 
   {
-    path: 'resenas',
-    component: ResenaComponent,
-    children: [
-      {
-        path: 'insertareditarese',
-        component: InsertareditaresenaComponent,
-      },
-      {
-        path: 'actualizaresena/:id',
-        component: InsertareditaresenaComponent,
-      },
-      {
-        path: 'detallerese/:id',
-        component: DetalleResenaComponent,
-      },
-    ],
+    path: 'usuarios', component: UsuarioComponent,
+  },
+
+  {
+    path: 'productos', component: ProductoComponent,
+    children: [{
+      path: 'insertareditarprod', component: InsertareditarproductoComponent
+    },
+    {
+      path: 'actualizaproducto/:id', component: InsertareditarproductoComponent
+    },
+    {
+      path: 'detalle/:id', component: DetalleProductoComponent
+    }
+    ]
+  },
+
+  {
+    path: 'resenas', component: ResenaComponent,
+    children: [{
+      path: 'insertareditarese', component: InsertareditaresenaComponent
+    },
+    {
+      path: 'actualizaresena/:id', component: InsertareditaresenaComponent
+    },
+    {
+      path: 'detallerese/:id', component: DetalleResenaComponent
+    }
+    ]
   },
   {
     path: 'carritocompra',
@@ -97,4 +86,5 @@ export const routes: Routes = [
       },
     ],
   },
+
 ];

@@ -16,9 +16,10 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
   styleUrl: './listardescuentos.component.css'
 })
 export class ListardescuentosComponent {
+  
     dataSource: MatTableDataSource<Descuentos> = new MatTableDataSource();
-displayedColumns: string[] = ['c1','c2','c3','c4','c5','c6','c7','c8']
- @ViewChild(MatPaginator) paginator!: MatPaginator;
+    displayedColumns: string[] = ['c1','c2','c3','c4','c5','c6','c7','c8']
+    @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private dS:DescuentoService){}
   ngOnInit(): void {
