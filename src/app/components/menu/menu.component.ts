@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatMenuModule } from '@angular/material/menu'
@@ -21,6 +21,25 @@ import { MatGridListModule } from '@angular/material/grid-list';
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
+
+ isMuted = true; // comienza silenciado
+ volumenPersonalizado = 0.1; // para poner la cantidad de volumen
+
+  toggleMute(audio: HTMLAudioElement) {
+    if (this.isMuted) {
+      // Desmutea y fija volumen personalizado
+      this.isMuted = false;
+      audio.muted = false;
+      audio.volume = this.volumenPersonalizado;
+      if (audio.paused) {
+        audio.play();
+      }
+    } else {
+      // Mutea
+      this.isMuted = true;
+      audio.muted = true;
+    }
+  }
 
   tiles = [
     { label: 'PRODUCTO', icon: 'inventory_2', link: '/productos' },

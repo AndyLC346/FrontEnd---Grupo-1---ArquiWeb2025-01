@@ -14,57 +14,74 @@
 <div class="dashboard">
   <div class="grid">
 
-  <div class="card" [matMenuTriggerFor]="menuUsuarios">
-    <mat-icon>people</mat-icon>
-    <span>USUARIOS</span>
-  </div>
-  <mat-menu #menuUsuarios="matMenu">
-    <button mat-menu-item routerLink="/usuarios">Listar</button>
-    <button mat-menu-item routerLink="/usuarios/insertareditarusuario">Registrar</button>
-  </mat-menu>
+    <div class="card" [matMenuTriggerFor]="menuUsuarios">
+      <mat-icon>people</mat-icon>
+      <span>Usuarios</span>
+    </div>
+    <mat-menu #menuUsuarios="matMenu">
+      <button mat-menu-item routerLink="/usuarios">Listar</button>
+      <button mat-menu-item routerLink="/usuarios/insertareditarusuario">Registrar</button>
+    </mat-menu>
 
-  <!-- ‑‑‑‑ TIENDAS ‑‑‑‑ -->
-  <div class="card" [matMenuTriggerFor]="menuTiendas">
-    <mat-icon>store</mat-icon>
-    <span>TIENDA</span>
-  </div>
-  <mat-menu #menuTiendas="matMenu">
-    <button mat-menu-item routerLink="/tiendas">Listar</button>
-    <button mat-menu-item routerLink="/tiendas/insertareditartienda">Registrar</button>
-  </mat-menu>
+    <!-- ‑‑‑‑ TIENDAS ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuTiendas">
+      <mat-icon>store</mat-icon>
+      <span>Tiendas</span>
+    </div>
+    <mat-menu #menuTiendas="matMenu">
+      <button mat-menu-item routerLink="/tiendas">Listar</button>
+      <button mat-menu-item routerLink="/tiendas/insertareditartienda">Registrar</button>
+    </mat-menu>
 
-  <!-- ‑‑‑‑ PRODUCTOS ‑‑‑‑ -->
-  <div class="card" [matMenuTriggerFor]="menuProductos">
-    <mat-icon>local_mall</mat-icon>
-    <span>PRODUCTO</span>
-  </div>
-  <mat-menu #menuProductos="matMenu">
-    <button mat-menu-item routerLink="/productos">Listar</button>
-    <button mat-menu-item routerLink="/productos/insertareditarprod">Registrar</button>
-  </mat-menu>
+    <!-- ‑‑‑‑ PRODUCTOS ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuProductos">
+      <mat-icon>local_mall</mat-icon>
+      <span>Productos</span>
+    </div>
+    <mat-menu #menuProductos="matMenu">
+      <button mat-menu-item routerLink="/productos">Listar</button>
+      <button mat-menu-item routerLink="/productos/insertareditarprod">Registrar</button>
+    </mat-menu>
 
-  <!-- ‑‑‑‑ RESEÑAS ‑‑‑‑ -->
-  <div class="card" [matMenuTriggerFor]="menuResenas">
-    <mat-icon>rate_review</mat-icon>
-    <span>RESEÑAS</span>
-  </div>
-  <mat-menu #menuResenas="matMenu">
-    <button mat-menu-item routerLink="/resenas">Listar</button>
-    <button mat-menu-item routerLink="/resenas/insertareditarese">Registrar</button>
-  </mat-menu>
+    <!-- ‑‑‑‑ RESEÑAS ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuResenas">
+      <mat-icon>rate_review</mat-icon>
+      <span>Reseñas</span>
+    </div>
+    <mat-menu #menuResenas="matMenu">
+      <button mat-menu-item routerLink="/resenas">Listar</button>
+      <button mat-menu-item routerLink="/resenas/insertareditarese">Registrar</button>
+    </mat-menu>
 
-  <!-- ‑‑‑‑ CARRITO COMPRA ‑‑‑‑ -->
-  <div class="card" [matMenuTriggerFor]="menuCarrito">
-    <mat-icon>shopping_cart</mat-icon>
-    <span>CARRITO COMPRA</span>
-  </div>
-  <mat-menu #menuCarrito="matMenu">
-    <button mat-menu-item routerLink="/carritocompra">Listar</button>
-    <button mat-menu-item routerLink="/carritocompra/insertareditarcarritocompra">
-      Registrar
-    </button>
-  </mat-menu>
+    <!-- ‑‑‑‑ CARRITO COMPRA ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuCarrito">
+      <mat-icon>shopping_cart</mat-icon>
+      <span>Carrito Compra</span>
+    </div>
+    <mat-menu #menuCarrito="matMenu">
+      <button mat-menu-item routerLink="/carritocompra">Listar</button>
+      <button mat-menu-item routerLink="/carritocompra/insertareditarcarritocompra">Registrar</button>
+    </mat-menu>
+
+
+    <!-- ‑‑‑‑ DESCUENTOS ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuDescuento">
+      <mat-icon>local_offer</mat-icon>
+      <span>Descuentos</span>
+    </div>
+    <mat-menu #menuDescuento="matMenu">
+      <button mat-menu-item routerLink="/descuento">Listar</button>
+      <button mat-menu-item routerLink="/descuento/insertareditardescuento">Registrar</button>
+    </mat-menu>
 
   </div>
 </div>
+
+<audio #audioPlayer id="musica" autoplay muted>
+  <source src="assets/songs/cancionmenu2.mp3" type="audio/mpeg" />
+</audio>
+
+<button mat-icon-button class="boton-flotante" (click)="toggleMute(audioPlayer)">
+  <mat-icon>{{ isMuted ? 'volume_off' : 'volume_up' }}</mat-icon>
+</button>
 
