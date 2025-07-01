@@ -14,7 +14,7 @@ export class CarritocompraService {
   constructor(private http:HttpClient) { }
 
   list(){
-    return this.http.get<CarritoCompra[]>(`${this.url}/listarcarritocompra`);
+    return this.http.get<CarritoCompra[]>(`${this.url}`);
   }
     insert(Cc:CarritoCompra){
       return this.http.post(this.url,Cc)

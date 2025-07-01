@@ -1,1 +1,11 @@
 <router-outlet></router-outlet>
+
+
+<!-- ‑‑‑‑ MUSICA DE FONDO ‑‑‑‑ -->
+<audio #audioPlayer id="musica" muted loop>
+  <source src="assets/songs/cancionmenu2.mp3" type="audio/mpeg" />
+</audio>
+
+<button mat-icon-button class="boton-flotante" (click)="toggleMute(audioPlayer)">
+  <mat-icon>{{ isMuted ? 'volume_off' : 'volume_up' }}</mat-icon>
+</button>

@@ -1,4 +1,6 @@
+/*Encabezado*/
 .encabezado {
+<<<<<<< HEAD
   position: relative;
   height: 130px; /* Puedes ajustar según tu diseño */
   background-color: white;
@@ -24,16 +26,46 @@
 
 /* Centra el logo y el texto debajo */
 .logo-titulo {
+=======
+  background-color: white;
+  width: 100%;
+  padding: 5px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  position: relative;
+  z-index: 1000;
+}
+
+/*Iconos*/
+.iconos span{
+  font-size: 19px;  
+  font-weight: 590;
+  margin-left: -10px;
+  line-height: 1.2; 
+}
+.iconos {
+>>>>>>> Andy
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-top: 18px;
+  margin-left: 20px;
+  left: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+<<<<<<< HEAD
   text-align: center;
+=======
+  gap: 20px;
+}
+.iconos mat-icon {
+>>>>>>> Andy
   cursor: pointer;
+  font-size: 40px;     
+  width: 40px;           
+  height: 40px;          
+  line-height: 40px; 
 }
 
+<<<<<<< HEAD
 .logo {
   width: 80px;
   height: 80px;
@@ -42,10 +74,43 @@
 
 .titulo-texto {
   font-size: 30px;
+=======
+/*Png's*/
+.logopng {
+  height: 80px;
+  margin-top: -5px;
+  margin-left: 357px;
+  width: auto;
+  object-fit: contain;
 }
 
+.titulopng {
+  height: 40px;
+  margin-left: -5px;
+  margin-top: 8px;
+  width: auto;
+  object-fit: contain;
+>>>>>>> Andy
+}
+
+/*Contenedores*/
+.contenedor-encabezado {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  
+}
+
+.contenedor-logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px;
+}
+
+/* SEPARACIÓN DEL CONTENIDO */
 .dashboard {
-  background-color: #9ddbf9;
+  background-color: #99d9f2;
   padding: 30px 15px;
   min-height: 100vh;
 }
@@ -58,6 +123,8 @@
   margin: 0 auto;
 }
 
+
+/*Card*/
 .card {
   background: white;
   border-radius: 12px;
@@ -72,11 +139,6 @@
   transform: scale(1.05);
 }
 
-.card img {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 12px;
-}
 
 .card span {
   display: block;
@@ -85,22 +147,4 @@
   font-size: 14px;
 }
 
-.card.activo {
-  border: 2px solid #007bff;
-}
 
-.boton-flotante {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 999; /* Para que quede arriba de todo */
-  background-color: #1976d2; /* Color azul Material */
-  color: white;
-  border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-
-.boton-flotante:hover {
-  background-color: #1565c0;
-}

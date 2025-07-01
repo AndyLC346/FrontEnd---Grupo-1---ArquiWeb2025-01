@@ -1,83 +1,128 @@
 import { Component, OnInit } from '@angular/core';
-import { CarritoCompra } from '../../../models/carritocompra';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CarritocompraService } from '../../../services/carritocompra.service';
-import { Router } from '@angular/router';
-import { ActivatedRoute, Params } from '@angular/router';
-import { MatButtonModule } from '@angular/material/button';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+
+import { CarritocompraService } from '../../../services/carritocompra.service';
+import { ProductoService } from '../../../services/producto.service';
+import { UsuarioService } from '../../../services/usuario.service';
+
+import { CarritoCompra } from '../../../models/carritocompra';
+import { Producto } from '../../../models/producto';
+import { Usuario } from '../../../models/usuario';
 
 @Component({
   selector: 'app-insertareditarcarritocompra',
-  imports: [ReactiveFormsModule,
+  templateUrl: './insertareditarcarritocompra.component.html',
+  styleUrls: ['./insertareditarcarritocompra.component.css'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    CommonModule,
-    MatRadioModule,
-  MatDatepickerModule,
+    MatButtonModule,
     MatSelectModule,
-    MatButtonModule,MatNativeDateModule],
-  templateUrl: './insertareditarcarritocompra.component.html',
-  styleUrl: './insertareditarcarritocompra.component.css'
+    MatDatepickerModule,
+    MatNativeDateModule,
+  ],
 })
 export class InsertareditarcarritocompraComponent implements OnInit {
-    form: FormGroup = new FormGroup({});
+  form: FormGroup = new FormGroup({});
   carritocompra: CarritoCompra = new CarritoCompra();
-  estado: boolean = true;
 
-    id: number = 0;
+  listaUsuarios: Usuario[] = [];
+  listaProductos: Producto[] = [];
+
+  id: number = 0;
   edicion: boolean = false;
-  //falta metodopago
-constructor(
-    private Cs: CarritocompraService,
+
+  constructor(
+    private ccS: CarritocompraService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private usuarioService: UsuarioService,
+    private productoService: ProductoService
   ) {}
-ngOnInit(): void {
 
+  ngOnInit(): void {
+    this.route.params.subscribe((params: Params) => {
+      this.id = params['id'];
+      this.edicion = this.id != null;
+      this.initForm();
+    });
 
     this.form = this.formBuilder.group({
-      user: ['', Validators.required],
+      codigo: [''],
+      idUsuario: ['', Validators.required],
+      idProducto: ['', Validators.required],
       fecha: ['', Validators.required],
-      product: ['', Validators.required],
-      cantidad:['', Validators.required]
-    
+      cantidad: ['', [Validators.required, Validators.min(1)]],
+    });
+
+    this.usuarioService.list().subscribe((data) => {
+      this.listaUsuarios = data;
+    });
+
+    this.productoService.list().subscribe((data) => {
+      this.listaProductos = data;
     });
   }
- aceptar() {
-    if (this.form.valid) {
-      
-      this.carritocompra.usuario.username = this.form.value.user;
-      this.carritocompra.fechaCreaCarritoCompra = this.form.value.fecha;
-      this.carritocompra.producto.nombreProducto = this.form.value.product;
-this.carritocompra.cantidad=this.form.value.cantidad
 
-      this.Cs.insert(this.carritocompra).subscribe(() => {
-        this.Cs.list().subscribe((data) => {
-          this.Cs.setList(data);
+  aceptar() {
+    if (this.form.valid) {
+      this.carritocompra.idCarritoCompra = this.form.value.codigo;
+      this.carritocompra.fechaCreaCarritoCompra = this.form.value.fecha;
+      this.carritocompra.cantidad = this.form.value.cantidad;
+
+      this.carritocompra.user = new Usuario();
+      this.carritocompra.user.idUser = this.form.value.idUsuario;
+
+      this.carritocompra.producto = new Producto();
+      this.carritocompra.producto.idProducto = this.form.value.idProducto;
+
+      if (this.edicion) {
+        this.ccS.update(this.carritocompra).subscribe(() => {
+          this.ccS.list().subscribe((data) => this.ccS.setList(data));
         });
-      });
+      } else {
+        this.ccS.insert(this.carritocompra).subscribe(() => {
+          this.ccS.list().subscribe((data) => this.ccS.setList(data));
+        });
+      }
 
       this.router.navigate(['carritocompra']);
     }
   }
-  aumentarCantidad() {
-  let cantidadActual = this.form.get('cantidad')?.value || 0;
-  this.form.get('cantidad')?.setValue(cantidadActual + 1);
-}
 
-disminuirCantidad() {
-  let cantidadActual = this.form.get('cantidad')?.value || 1;
-  if (cantidadActual > 1) {
-    this.form.get('cantidad')?.setValue(cantidadActual - 1);
+  cancelar() {
+    this.router.navigate(['carritocompra']);
   }
 
-}
+  initForm() {
+    if (this.edicion) {
+      this.ccS.listID(this.id).subscribe((data) => {
+        this.form = this.formBuilder.group({
+          codigo: new FormControl(data.idCarritoCompra),
+          idUsuario: new FormControl(data.user.idUser),
+          idProducto: new FormControl(data.producto.idProducto),
+          fecha: new FormControl(data.fechaCreaCarritoCompra),
+          cantidad: new FormControl(data.cantidad),
+        });
+      });
+    }
+  }
 }
