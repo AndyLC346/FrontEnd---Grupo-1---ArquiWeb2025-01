@@ -4,15 +4,40 @@
     <mat-icon>account_circle</mat-icon>
     <span>Bienvenido Admin</span>
   </div>
-  <div class="logo-titulo" style="cursor: pointer;" routerLink="/">
+
+  <div class="logo-titulo" routerLink="/">
     <img src="assets/img/logoahorra.jpg" class="logo" alt="Logo" />
-    <span><strong>AHORRA</strong><span style="color: #007bff;">Comprando</span></span>
+    <div class="titulo-texto">
+      <strong>AHORRA</strong><span style="color: #007bff;">Comprando</span>
+    </div>
   </div>
 </div>
 
 <!-- PANEL DE ICONOS -->
 <div class="dashboard">
   <div class="grid">
+
+    <!-- ‑‑‑‑ PRODUCTOS ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuProductos">
+      <mat-icon>local_mall</mat-icon>
+      <span>Productos</span>
+    </div>
+    <mat-menu #menuProductos="matMenu">
+      <button mat-menu-item routerLink="/productos">Listar</button>
+      <button mat-menu-item routerLink="/productos/insertareditarprod">Registrar</button>
+    </mat-menu>
+
+    <!-- ‑‑‑‑ DESCUENTOS ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuDescuento">
+      <mat-icon>local_offer</mat-icon>
+      <span>Descuentos</span>
+    </div>
+    <mat-menu #menuDescuento="matMenu">
+      <button mat-menu-item routerLink="/descuento">Listar</button>
+      <button mat-menu-item routerLink="/descuento/insertareditardescuento">Registrar</button>
+    </mat-menu>
+
+        <!-- ‑‑‑‑ USUARIOS ‑‑‑‑ -->
 
     <div class="card" [matMenuTriggerFor]="menuUsuarios">
       <mat-icon>people</mat-icon>
@@ -33,15 +58,6 @@
       <button mat-menu-item routerLink="/tiendas/insertareditartienda">Registrar</button>
     </mat-menu>
 
-    <!-- ‑‑‑‑ PRODUCTOS ‑‑‑‑ -->
-    <div class="card" [matMenuTriggerFor]="menuProductos">
-      <mat-icon>local_mall</mat-icon>
-      <span>Productos</span>
-    </div>
-    <mat-menu #menuProductos="matMenu">
-      <button mat-menu-item routerLink="/productos">Listar</button>
-      <button mat-menu-item routerLink="/productos/insertareditarprod">Registrar</button>
-    </mat-menu>
 
     <!-- ‑‑‑‑ RESEÑAS ‑‑‑‑ -->
     <div class="card" [matMenuTriggerFor]="menuResenas">
@@ -63,16 +79,6 @@
       <button mat-menu-item routerLink="/carritocompra/insertareditarcarritocompra">Registrar</button>
     </mat-menu>
 
-
-    <!-- ‑‑‑‑ DESCUENTOS ‑‑‑‑ -->
-    <div class="card" [matMenuTriggerFor]="menuDescuento">
-      <mat-icon>local_offer</mat-icon>
-      <span>Descuentos</span>
-    </div>
-    <mat-menu #menuDescuento="matMenu">
-      <button mat-menu-item routerLink="/descuento">Listar</button>
-      <button mat-menu-item routerLink="/descuento/insertareditardescuento">Registrar</button>
-    </mat-menu>
 
   </div>
 </div>
