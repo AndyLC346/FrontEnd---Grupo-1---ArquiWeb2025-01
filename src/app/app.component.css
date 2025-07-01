@@ -1,0 +1,22 @@
+/*Boton silenciado*/
+.boton-flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999; 
+  background-color: #1976d2; /* Color azul Material */
+  color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.iconos mat-icon {
+  cursor: pointer;
+  font-size: 40px;     
+  width: 40px;           
+  height: 40px;          
+  line-height: 40px; 
+}
+.boton-flotante:hover {
+  background-color: #1565c0;
+}

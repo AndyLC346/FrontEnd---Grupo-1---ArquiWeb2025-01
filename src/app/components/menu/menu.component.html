@@ -1,14 +1,18 @@
 <!-- ENCABEZADO -->
 <div class="encabezado">
-  <div class="saludo">
+  <div class="contenedor-encabezado">
+   <div class="iconos">
     <mat-icon>account_circle</mat-icon>
-    <span>Bienvenido Admin</span>
+    <span>Bienvenido Admin</span> <!--Cambiar la palabra "admin" por el nombre del usuario-->
+   </div>
+
+  <div class="contenedor-logo" routerLink="/">
+      <img src="assets/img/logo.png" alt="Logo" class="logopng">
+      <img src="assets/img/nombrepagina.png" alt="Titulo" class="titulopng">
   </div>
-  <div class="logo-titulo" style="cursor: pointer;" routerLink="/">
-    <img src="assets/img/logo.png" class="logo" alt="Logo" />
-    <img src="assets/img/nombrepagina.png" class="logo" alt="Logo" />
   </div>
 </div>
+
 
 <!-- PANEL DE ICONOS -->
 <div class="dashboard">
@@ -76,13 +80,4 @@
 
   </div>
 </div>
-
-<!-- ‑‑‑‑ MUSICA DE FONDO ‑‑‑‑ -->
-<audio #audioPlayer id="musica" muted loop>
-  <source src="assets/songs/cancionmenu2.mp3" type="audio/mpeg" />
-</audio>
-
-<button mat-icon-button class="boton-flotante" (click)="toggleMute(audioPlayer)">
-  <mat-icon>{{ isMuted ? 'volume_off' : 'volume_up' }}</mat-icon>
-</button>
 
