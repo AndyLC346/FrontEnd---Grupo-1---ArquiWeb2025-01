@@ -26,6 +26,7 @@ import { Descuentos } from '../../../models/descuento';
   templateUrl: './listardescuentos.component.html',
   styleUrls: ['./listardescuentos.component.css']
 })
+
 export class ListardescuentosComponent implements OnInit {
   dataSource: MatTableDataSource<Descuentos> = new MatTableDataSource();
   displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6','c7','c8'];
@@ -33,6 +34,7 @@ export class ListardescuentosComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private dS: DescuentoService) {}
+
 
   ngOnInit(): void {
     this.dS.list().subscribe((data) => {

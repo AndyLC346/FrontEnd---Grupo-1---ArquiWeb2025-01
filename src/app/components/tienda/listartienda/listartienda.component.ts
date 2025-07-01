@@ -5,6 +5,7 @@ import { TiendaService } from '../../../services/tienda.service';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-listartienda',
@@ -12,7 +13,9 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
     MatTableModule,
     MatButtonModule,
     RouterLink,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatIconModule
+
   ],
   templateUrl: './listartienda.component.html',
   styleUrl: './listartienda.component.css'

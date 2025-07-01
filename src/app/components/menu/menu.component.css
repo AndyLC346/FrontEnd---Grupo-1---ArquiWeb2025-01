@@ -1,3 +1,94 @@
+.encabezado {
+  position: relative;
+  height: 130px; /* Puedes ajustar según tu diseño */
+  background-color: white;
+  padding: 5px 60px;
+  border-bottom: 2px solid #ccc;
+}
+
+/* Saludo fijo abajo a la izquierda */
+.saludo {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.saludo mat-icon {
+  margin-right: 8px;
+  font-size: 24px;
+}
+
+/* Centra el logo y el texto debajo */
+.logo-titulo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 5px;
+}
+
+.titulo-texto {
+  font-size: 30px;
+}
+
+.dashboard {
+  background-color: #9ddbf9;
+  padding: 30px 15px;
+  min-height: 100vh;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 25px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 40px 30px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 12px;
+}
+
+.card span {
+  display: block;
+  font-weight: bold;
+  color: black;
+  font-size: 14px;
+}
+
+.card.activo {
+  border: 2px solid #007bff;
+}
+
 .boton-flotante {
   position: fixed;
   bottom: 20px;
@@ -12,30 +103,4 @@
 
 .boton-flotante:hover {
   background-color: #1565c0;
-}
-.custom{
-  background-color: #F1F9FF;
-}
-
-.espaciador-visual {
-  height: 1.5px;
-  background-color: #000000;
-}
-
-.custom-toolbar {
-  background-color: #F1F9FF;
-   padding-left: 6px;
-}
-
-.btn-color {
-  
-  background-color: #000000;
-  border-radius: 5px;
-  margin: 4px;
-  border: none;
-}
-
-.custom-toolbar button,
-.custom-toolbar mat-icon {
-  color: white;
 }
