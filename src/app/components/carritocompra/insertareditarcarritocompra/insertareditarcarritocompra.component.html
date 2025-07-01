@@ -10,13 +10,15 @@
       <br />
 
       <!-- Usuario -->
-      <mat-form-field class="example-full-width">
-        <mat-label>Usuario</mat-label>
-        <input matInput placeholder="usuario123" formControlName="user" />
-        <mat-error *ngIf="form.get('user')?.hasError('required')">
-          El nombre de usuario es obligatorio!!
-        </mat-error>
-      </mat-form-field>
+      
+   <mat-form-field>
+  <mat-label>Usuarios</mat-label>
+  <mat-select formControlName="user">
+    <mat-option *ngFor="let food of listauser" [value]="food.idUser">
+      {{ food.username }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 
       <br />
 

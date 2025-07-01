@@ -9,7 +9,7 @@
 :host {
   display: block;
   min-height: 100vh;
-  background-image: url('/assets/img/presentacion.jpg'); 
+  background-image: url('/assets/img/presentacion.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -19,7 +19,35 @@
 
 .container {
   margin: 0 auto;
-  padding-top: 5vh; 
+  padding-top: 5vh;
   text-align: center;
   color: rgb(0, 0, 0);
+}
+
+
+.logo-titulo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 10px 20px;
+  border-bottom: 2px solid #ccc;
 }

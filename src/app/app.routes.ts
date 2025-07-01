@@ -9,11 +9,22 @@ import { DetalleProductoComponent } from './components/producto/detalle-producto
 import { ResenaComponent } from './components/resena/resena.component';
 import { InsertareditaresenaComponent } from './components/resena/insertareditaresena/insertareditaresena.component';
 import { DetalleResenaComponent } from './components/resena/detalle-resena/detalle-resena.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { CarritocompraComponent } from './components/carritocompra/carritocompra.component';
+import { InsertareditarcarritocompraComponent } from './components/carritocompra/insertareditarcarritocompra/insertareditarcarritocompra.component';
+import { DescuentosComponent } from './components/descuentos/descuentos.component';
+import { InsertareditardescuentosComponent } from './components/descuentos/insertareditardescuentos/insertareditardescuentos.component';
 
 export const routes: Routes = [
   {
     path: '', component: HomeComponent, pathMatch: 'full'
+
   },
+
+  {
+    path: 'menu', component: MenuComponent
+  },
+
   {
     path: 'tiendas', component: TiendaComponent,
     children: [{
@@ -54,5 +65,26 @@ export const routes: Routes = [
       path: 'detallerese/:id', component: DetalleResenaComponent
     }
     ]
-  }
+  },
+  {
+    path: 'carritocompra',
+    component: CarritocompraComponent,
+    children: [
+      {
+        path: 'insertareditarcarritocompra',
+        component: InsertareditarcarritocompraComponent,
+      },
+    ],
+  },
+  {
+    path: 'descuento',
+    component: DescuentosComponent,
+    children: [
+      {
+        path: 'insertareditardescuento',
+        component: InsertareditardescuentosComponent,
+      },
+    ],
+  },
+
 ];
