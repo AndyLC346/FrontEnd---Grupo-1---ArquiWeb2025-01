@@ -9,7 +9,7 @@ const base_url = environment.base
 })
 export class ProductoService {
   private url = `${base_url}/productos`
-    private listaCambio=new Subject<Producto[]>()
+  private listaCambio=new Subject<Producto[]>()
 
 
   constructor(private h: HttpClient) { }

@@ -1,96 +1,94 @@
-<mat-toolbar class="custom" style="justify-content: center; align-items: center; height: 80px;">
-    <a routerLink="/" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
-      <img src="assets/img/logo.png" alt="Icono" style="height: 85px; margin-right: 3px;">
-      <img src="assets/img/nombrepagina.png" alt="Logo Nombre Pagina" style="height: 35px; margin-top: 15px;">
-    </a>
-</mat-toolbar>
-
-<mat-toolbar class="custom-toolbar">
-
-  <div>
-    <button mat-button routerLink="/" class="btn-color">
-      <mat-icon>home</mat-icon>
-      Inicio
-    </button>
+<!-- ENCABEZADO -->
+<div class="encabezado">
+  <div class="saludo">
+    <mat-icon>account_circle</mat-icon>
+    <span>Bienvenido Admin</span>
   </div>
 
-  <div>
-    <button mat-button [matMenuTriggerFor]="menuUsuario" class="btn-color">
-      <mat-icon>people</mat-icon>
-      Usuarios
-    </button>
+  <div class="logo-titulo" routerLink="/">
+    <img src="assets/img/logoahorra.jpg" class="logo" alt="Logo" />
+    <div class="titulo-texto">
+      <strong>AHORRA</strong><span style="color: #007bff;">Comprando</span>
+    </div>
   </div>
+</div>
 
-  <div>
-    <button mat-button [matMenuTriggerFor]="menuTienda" class="btn-color">
-      <mat-icon>store</mat-icon>
-      Tiendas
-    </button>
-  </div>
+<!-- PANEL DE ICONOS -->
+<div class="dashboard">
+  <div class="grid">
 
-  <div>
-    <button mat-button [matMenuTriggerFor]="menuProducto" class="btn-color">
+    <!-- ‑‑‑‑ PRODUCTOS ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuProductos">
       <mat-icon>local_mall</mat-icon>
-      Producto
-    </button>
-  </div>
+      <span>Productos</span>
+    </div>
+    <mat-menu #menuProductos="matMenu">
+      <button mat-menu-item routerLink="/productos">Listar</button>
+      <button mat-menu-item routerLink="/productos/insertareditarprod">Registrar</button>
+    </mat-menu>
 
-  <div>
-    <button mat-button [matMenuTriggerFor]="menuResena" class="btn-color">
-      <mat-icon>rate_review</mat-icon>
-      Reseña
-    </button>
-  </div>
-
-  <div>
-    <button mat-button [matMenuTriggerFor]="menuCarritoCompra" class="btn-color">
-      <mat-icon>shopping_cart</mat-icon>
-      CarritoCompra
-    </button>
-  </div>
-  <div>
-    <button mat-button [matMenuTriggerFor]="menuDescuento" class="btn-color">
+    <!-- ‑‑‑‑ DESCUENTOS ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuDescuento">
       <mat-icon>local_offer</mat-icon>
-      Descuento
-    </button>
-  </div>
+      <span>Descuentos</span>
+    </div>
+    <mat-menu #menuDescuento="matMenu">
+      <button mat-menu-item routerLink="/descuento">Listar</button>
+      <button mat-menu-item routerLink="/descuento/insertareditardescuento">Registrar</button>
+    </mat-menu>
 
-<!--Para poner canción de fondo-->
-</mat-toolbar>
-<audio #audioPlayer id="musica" autoplay muted>
-  <source src="assets/songs/cancionmenu2.mp3" type="audio/mpeg" /> 
+        <!-- ‑‑‑‑ USUARIOS ‑‑‑‑ -->
+
+    <div class="card" [matMenuTriggerFor]="menuUsuarios">
+      <mat-icon>people</mat-icon>
+      <span>Usuarios</span>
+    </div>
+    <mat-menu #menuUsuarios="matMenu">
+      <button mat-menu-item routerLink="/usuarios">Listar</button>
+      <button mat-menu-item routerLink="/usuarios/insertareditarusuario">Registrar</button>
+    </mat-menu>
+
+    <!-- ‑‑‑‑ TIENDAS ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuTiendas">
+      <mat-icon>store</mat-icon>
+      <span>Tiendas</span>
+    </div>
+    <mat-menu #menuTiendas="matMenu">
+      <button mat-menu-item routerLink="/tiendas">Listar</button>
+      <button mat-menu-item routerLink="/tiendas/insertareditartienda">Registrar</button>
+    </mat-menu>
+
+
+    <!-- ‑‑‑‑ RESEÑAS ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuResenas">
+      <mat-icon>rate_review</mat-icon>
+      <span>Reseñas</span>
+    </div>
+    <mat-menu #menuResenas="matMenu">
+      <button mat-menu-item routerLink="/resenas">Listar</button>
+      <button mat-menu-item routerLink="/resenas/insertareditarese">Registrar</button>
+    </mat-menu>
+
+    <!-- ‑‑‑‑ CARRITO COMPRA ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuCarrito">
+      <mat-icon>shopping_cart</mat-icon>
+      <span>Carrito Compra</span>
+    </div>
+    <mat-menu #menuCarrito="matMenu">
+      <button mat-menu-item routerLink="/carritocompra">Listar</button>
+      <button mat-menu-item routerLink="/carritocompra/insertareditarcarritocompra">Registrar</button>
+    </mat-menu>
+
+
+  </div>
+</div>
+
+<!-- ‑‑‑‑ MUSICA DE FONDO ‑‑‑‑ -->
+<audio #audioPlayer id="musica" autoplay muted loop>
+  <source src="assets/songs/cancionmenu2.mp3" type="audio/mpeg" />
 </audio>
 
 <button mat-icon-button class="boton-flotante" (click)="toggleMute(audioPlayer)">
   <mat-icon>{{ isMuted ? 'volume_off' : 'volume_up' }}</mat-icon>
 </button>
 
-<mat-menu #menuUsuario="matMenu">
-  <button mat-menu-item routerLink="/usuarios">Listar</button>
-  <button mat-menu-item routerLink="/usuarios/insertareditarusuarios">Registrar</button>
-</mat-menu>
-
-<mat-menu #menuTienda="matMenu">
-  <button mat-menu-item routerLink="/tiendas">Listar</button>
-  <button mat-menu-item routerLink="/tiendas/insertareditartienda">Registrar</button>
-</mat-menu>
-
-<mat-menu #menuProducto="matMenu">
-  <button mat-menu-item routerLink="/productos">Listar</button>
-  <button mat-menu-item routerLink="/productos/insertareditarprod">Registrar</button>
-</mat-menu>
-
-<mat-menu #menuResena="matMenu">
-  <button mat-menu-item routerLink="/resenas">Listar</button>
-  <button mat-menu-item routerLink="/resenas/insertareditarese">Registrar</button>
-</mat-menu>
-
-<mat-menu #menuCarritoCompra="matMenu">
-  <button mat-menu-item routerLink="/carritocompra">Listar</button>
-  <button mat-menu-item routerLink="/carritocompra/insertareditarcarritocompra">Registrar</button>
-</mat-menu>
-
-<mat-menu #menuDescuento="matMenu">
-  <button mat-menu-item routerLink="/descuento">Listar</button>
-  <button mat-menu-item routerLink="/descuento/insertareditardescuento">Registrar</button>
-</mat-menu>

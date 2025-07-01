@@ -6,6 +6,7 @@ import { CarritocompraService } from '../../../services/carritocompra.service';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -17,10 +18,12 @@ import { RouterLink } from '@angular/router';
     CommonModule,
     MatPaginatorModule,RouterLink
   ],
+
   templateUrl: './listarcarritocompra.component.html',
   styleUrl: './listarcarritocompra.component.css',
 })
 export class ListarcarritocompraComponent implements OnInit {
+
   dataSource: MatTableDataSource<CarritoCompra> = new MatTableDataSource();
 
 displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6','c7'];
@@ -28,10 +31,12 @@ displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6','c7'];
 @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private Cs: CarritocompraService) {}
+
   ngOnInit(): void {
     this.Cs.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
     })
+
 
     this.Cs.getList().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
@@ -41,6 +46,7 @@ displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6','c7'];
   eliminar(id: number) {
     this.Cs.deleteA(id).subscribe(() => {
       this.Cs.list().subscribe((data) => {
+
         this.dataSource = new MatTableDataSource(data);
       
       });

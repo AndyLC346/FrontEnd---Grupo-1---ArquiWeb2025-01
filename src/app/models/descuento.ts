@@ -6,5 +6,5 @@ export class Descuentos{
     codigoDescuento:string =""
     fechaInicioDescuento:Date =new Date()
     fechaFinDescuento:Date =new Date()
-    producto:Producto= new Producto()
+    producto:Producto= new Producto
 }
