@@ -1,8 +1,8 @@
 <mat-toolbar class="custom" style="justify-content: center; align-items: center; height: 80px;">
-    <a routerLink="/" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
-      <img src="assets/img/logo.png" alt="Icono" style="height: 85px; margin-right: 3px;">
-      <img src="assets/img/nombrepagina.png" alt="Logo Nombre Pagina" style="height: 35px; margin-top: 15px;">
-    </a>
+  <a routerLink="/" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+    <img src="assets/img/logo.png" alt="Icono" style="height: 85px; margin-right: 3px;">
+    <img src="assets/img/nombrepagina.png" alt="Logo Nombre Pagina" style="height: 35px; margin-top: 15px;">
+  </a>
 </mat-toolbar>
 
 <mat-toolbar class="custom-toolbar">
@@ -55,15 +55,18 @@
     </button>
   </div>
 
-<!--Para poner canción de fondo-->
+
+  <!--Para poner canción de fondo-->
 </mat-toolbar>
-<audio #audioPlayer id="musica" autoplay muted>
-  <source src="assets/songs/cancionmenu2.mp3" type="audio/mpeg" /> 
+<audio #audioPlayer id="musica" autoplay muted loop>
+  <source src="assets/songs/cancionmenu2.mp3" type="audio/mpeg" />
 </audio>
 
 <button mat-icon-button class="boton-flotante" (click)="toggleMute(audioPlayer)">
   <mat-icon>{{ isMuted ? 'volume_off' : 'volume_up' }}</mat-icon>
 </button>
+
+
 
 <mat-menu #menuUsuario="matMenu">
   <button mat-menu-item routerLink="/usuarios">Listar</button>
