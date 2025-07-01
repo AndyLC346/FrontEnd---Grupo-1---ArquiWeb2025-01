@@ -16,6 +16,7 @@ import { DescuentosComponent } from './components/descuentos/descuentos.componen
 import { InsertareditardescuentosComponent } from './components/descuentos/insertareditardescuentos/insertareditardescuentos.component';
 import { ListarcarritocompraComponent } from './components/carritocompra/listarcarritocompra/listarcarritocompra.component';
 import { ListardescuentosComponent } from './components/descuentos/listardescuentos/listardescuentos.component';
+import { DetalleUsuarioComponent } from './components/usuario/detalle-usuario/detalle-usuario.component';
 
 
 export const routes: Routes = [
