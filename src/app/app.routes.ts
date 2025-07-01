@@ -14,6 +14,7 @@ import { CarritocompraComponent } from './components/carritocompra/carritocompra
 import { InsertareditarcarritocompraComponent } from './components/carritocompra/insertareditarcarritocompra/insertareditarcarritocompra.component';
 import { DescuentosComponent } from './components/descuentos/descuentos.component';
 import { InsertareditardescuentosComponent } from './components/descuentos/insertareditardescuentos/insertareditardescuentos.component';
+import { DetalleUsuarioComponent } from './components/usuario/detalle-usuario/detalle-usuario.component';
 
 export const routes: Routes = [
   {
@@ -37,6 +38,9 @@ export const routes: Routes = [
 
   {
     path: 'usuarios', component: UsuarioComponent,
+    children:[{
+      path:'detalleusua/:id', component: DetalleUsuarioComponent
+    }]
   },
 
   {
