@@ -1,0 +1,53 @@
+.usuario-detalle-container {
+  max-width: 900px;
+  margin: 100px auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+}
+
+.usuario-card {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.usuario-foto img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
+}
+
+.usuario-info {
+  flex: 1;
+}
+
+.usuario-info p {
+  font-size: 16px;
+  margin: 0.5rem 0;
+}
+
+.activo {
+  color: green;
+  font-weight: bold;
+}
+
+.inactivo {
+  color: red;
+  font-weight: bold;
+}
+
+.volver-btn {
+  margin-top: 2rem;
+  text-align: center;
+}
