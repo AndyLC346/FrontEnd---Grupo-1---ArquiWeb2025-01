@@ -79,7 +79,7 @@
       <button mat-menu-item routerLink="/carritocompra">Listar</button>
       <button mat-menu-item routerLink="/carritocompra/insertareditarcarritocompra">Registrar</button>
     </mat-menu>
- <!-- ‑‑‑‑ metodopago ‑‑‑‑ -->
+    <!-- ‑‑‑‑ metodopago ‑‑‑‑ -->
     <div class="card" [matMenuTriggerFor]="menuMetodoPago">
       <mat-icon>yape</mat-icon>
       <span>MetodoPago</span>
@@ -89,7 +89,7 @@
       <button mat-menu-item routerLink="/metodos-de-pago/insertareditarmetodopago">Registrar</button>
     </mat-menu>
 
-   <!-- ‑‑‑‑ Notificaciones ‑‑‑‑ -->
+    <!-- ‑‑‑‑ Notificaciones ‑‑‑‑ -->
     <div class="card" [matMenuTriggerFor]="menuNotificaciones">
       <mat-icon>MESSAGE1</mat-icon>
       <span>Notificaciones</span>
@@ -98,7 +98,17 @@
       <button mat-menu-item routerLink="/notificaciones">Listar</button>
       <button mat-menu-item routerLink="/notificaciones/nuevo">Registrar</button>
     </mat-menu>
-    
+
+    <!-- ‑‑‑‑ CHATS ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuChat">
+      <mat-icon>rate_review</mat-icon>
+      <span>Chats</span>
+    </div>
+    <mat-menu #menuChat="matMenu">
+      <button mat-menu-item routerLink="/chat">Listar</button>
+      <button mat-menu-item routerLink="/chat/insertareditarchat">Registrar</button>
+    </mat-menu>
+
 
   </div>
 </div>
