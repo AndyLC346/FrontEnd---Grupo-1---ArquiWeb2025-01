@@ -99,6 +99,15 @@
       <button mat-menu-item routerLink="/notificaciones/nuevo">Registrar</button>
     </mat-menu>
     
+      <!-- ‑‑‑‑ CHATS ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuChat">
+      <mat-icon>rate_review</mat-icon>
+      <span>Chats</span>
+    </div>
+    <mat-menu #menuChat="matMenu">
+      <button mat-menu-item routerLink="/chat">Listar</button>
+      <button mat-menu-item routerLink="/chat/insertareditarchat">Registrar</button>
+    </mat-menu>
 
   </div>
 </div>

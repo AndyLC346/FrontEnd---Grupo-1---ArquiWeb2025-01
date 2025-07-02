@@ -24,6 +24,8 @@ import { InsertarEditarNotificacionesComponent } from './components/notificacion
 import { MetodoPagoComponent } from './components/metodo-pago/metodo-pago.component';
 import { ListarMetodoPagoComponent } from './components/metodo-pago/listar-metodo-pago/listar-metodo-pago.component';
 import { InsertarEditarMetodoPagoComponent } from './components/metodo-pago/insertar-editar-metodo-pago/insertar-editar-metodo-pago.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { InsertareditarchatComponent } from './components/chat/insertareditarchat/insertareditarchat.component';
 
 
 export const routes: Routes = [
@@ -148,7 +150,20 @@ export const routes: Routes = [
         component: InsertarEditarMetodoPagoComponent,
       },
      ],
-  }
+  },
+ {
+    path: 'chat',
+    component: ChatComponent,
+    children: [
+      {
+        path: 'insertareditarchat',
+        component: InsertareditarchatComponent,
+      },
+      {
+      path: 'ediciones/:id', component: InsertareditarproductoComponent
+    },
+    ],
+  },
  ];
 
 
