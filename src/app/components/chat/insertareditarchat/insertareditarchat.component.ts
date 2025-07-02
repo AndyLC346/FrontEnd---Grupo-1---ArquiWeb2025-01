@@ -10,7 +10,7 @@ import { Chats } from '../../../models/chat';
 import { Usuario } from '../../../models/usuario';
 import { Tienda } from '../../../models/tienda';
 import { ChatService } from '../../../services/chat.service';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { TiendaService } from '../../../services/tienda.service';
 import { UsuarioService } from '../../../services/usuario.service';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -23,7 +23,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     CommonModule,
     MatDatepickerModule,
     MatSelectModule,
-    MatButtonModule,MatNativeDateModule],
+    MatButtonModule,MatNativeDateModule,RouterLink],
   templateUrl: './insertareditarchat.component.html',
   styleUrl: './insertareditarchat.component.css'
 })

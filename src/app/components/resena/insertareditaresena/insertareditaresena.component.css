@@ -1,5 +1,36 @@
+.encabezado {
+  text-align: left;
+  margin-top: 20px; 
+  margin-bottom: 20px; 
+}
+
+.contenedor-logo {
+  display: flex; 
+  justify-content: flex-start; 
+  align-items: center; 
+  margin-bottom: 0px; 
+}
+
+.logopng {
+  width: 70px; 
+  height: auto;
+}
+
+.titulopng {
+  width: 140px; 
+  height: auto;
+  margin-left: 10px; 
+}
+
+.titulo-chats {
+  text-align: center;
+  margin-top: 20px; 
+  margin-bottom: 20px; 
+  font-size: 28px; 
+  color: #333; 
+}
 .custom-button{
-  background-color: #260591;
+  background-color: #1c8a9d;
   color: white;
 }
 
@@ -9,7 +40,7 @@ mat-form-field {
 
 button[matButton="filled"] {
 
-  background-color: rgb(253, 41, 13);
+  background-color: #1c8a9d;
   color: white;
   border: none;
   padding: 0.5rem 1.25rem;

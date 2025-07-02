@@ -11,7 +11,7 @@ import { Resena } from '../../../models/resena';
 import { Usuario } from '../../../models/usuario';
 import { Producto } from '../../../models/producto';
 import { ResenaService } from '../../../services/resena.service';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { UsuarioService } from '../../../services/usuario.service';
 import { ProductoService } from '../../../services/producto.service';
 
@@ -23,7 +23,7 @@ import { ProductoService } from '../../../services/producto.service';
     MatFormFieldModule,
     MatInputModule,
     CommonModule,
-    MatButtonModule,
+    MatButtonModule,RouterLink,
     MatSelectModule,
     MatDatepickerModule
   ],

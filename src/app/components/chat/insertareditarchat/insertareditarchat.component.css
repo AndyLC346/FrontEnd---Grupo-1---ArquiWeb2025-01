@@ -1,43 +1,42 @@
 .encabezado {
   text-align: left;
-  margin-top: 20px; /* Margen superior ajustado */
-  margin-bottom: 20px; /* Margen inferior ajustado */
+  margin-top: 20px; 
+  margin-bottom: 20px; 
 }
 
 .contenedor-logo {
-  display: flex; /* Para alinear el logo y el texto horizontalmente */
-  justify-content: flex-start; /* Centra horizontalmente el logo y el texto */
-  align-items: center; /* Centra verticalmente el logo y el texto */
-  margin-bottom: 0px; /* Asegura que no haya margen extra debajo del logo/titulo */
+  display: flex; 
+  justify-content: flex-start; 
+  align-items: center; 
+  margin-bottom: 0px; 
 }
 
 .logopng {
-  width: 70px; /* Tamaño del logo un poco más pequeño */
+  width: 70px; 
   height: auto;
 }
 
 .titulopng {
-  width: 140px; /* Tamaño del título un poco más pequeño */
+  width: 140px; 
   height: auto;
-  margin-left: 10px; /* Espacio entre el logo y el título */
+  margin-left: 10px; 
 }
 
-/* Estilos para el título "Lista de Chats" */
 .titulo-chats {
   text-align: center;
-  margin-top: 20px; /* Margen superior para separar del encabezado */
-  margin-bottom: 20px; /* Margen inferior para separar de la tabla */
-  font-size: 28px; /* Tamaño de fuente para el título */
-  color: #333; /* Color de fuente */
+  margin-top: 20px; 
+  margin-bottom: 20px; 
+  font-size: 28px; 
+  color: #333; 
 }
 
 mat-form-field {
-  width: 60%;
+  width: 70%;
   }
 
   button[matButton="filled"] {
 
- background-color:rgb(253, 41, 13);
+ background-color:rgb(24, 49, 189);
  color: white;
  border: none;
  padding: 0.5rem 1.25rem;
@@ -46,7 +45,6 @@ mat-form-field {
  transition: background-color 0.3s ease;
  width: 60%;
 }
-
 
 
 button[matButton="filled"]:hover {
