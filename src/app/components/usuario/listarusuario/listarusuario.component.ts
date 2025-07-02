@@ -4,6 +4,9 @@ import { Usuario } from '../../../models/usuario';
 import { UsuarioService } from '../../../services/usuario.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { RouterLink } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -11,7 +14,10 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
   selector: 'app-listarusuario',
   imports: [
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    RouterLink,
+    MatIconModule,
+    MatButtonModule,
   ],
   templateUrl: './listarusuario.component.html',
   styleUrl: './listarusuario.component.css'
@@ -19,7 +25,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 export class ListarusuarioComponent implements OnInit {
   dataSource: MatTableDataSource<Usuario> = new MatTableDataSource()
 
-  displayedColumns: string[] = ["c1", "c2", "c3"]
+  displayedColumns: string[] = ["c1", "c2", "c3", "c4","c5", "c6"]
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -35,4 +41,14 @@ export class ListarusuarioComponent implements OnInit {
     })
 
   }
+
+  eliminar(id:number){
+    this.uS.deleteA(id).subscribe((data)=>{
+      this.uS.list().subscribe((data)=>{
+        this.uS.setList(data);
+      })
+    })
+  }
+
+
 }
