@@ -6,7 +6,7 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -37,6 +37,7 @@ import { Usuario } from '../../../models/usuario';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    RouterLink
   ],
 })
 export class InsertareditarcarritocompraComponent implements OnInit {
