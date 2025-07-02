@@ -1,0 +1,76 @@
+/* Estilos para el encabezado y el logo/titulo */
+.encabezado {
+  text-align: left;
+  margin-top: 20px; /* Margen superior ajustado */
+  margin-bottom: 20px; /* Margen inferior ajustado */
+}
+
+.contenedor-logo {
+  display: flex; /* Para alinear el logo y el texto horizontalmente */
+  justify-content: flex-start; /* Centra horizontalmente el logo y el texto */
+  align-items: center; /* Centra verticalmente el logo y el texto */
+  margin-bottom: 0px; /* Asegura que no haya margen extra debajo del logo/titulo */
+}
+
+.logopng {
+  width: 70px; /* Tamaño del logo un poco más pequeño */
+  height: auto;
+}
+
+.titulopng {
+  width: 140px; /* Tamaño del título un poco más pequeño */
+  height: auto;
+  margin-left: 10px; /* Espacio entre el logo y el título */
+}
+
+/* Estilos para el título "Lista de Chats" */
+.titulo-chats {
+  text-align: center;
+  margin-top: 20px; /* Margen superior para separar del encabezado */
+  margin-bottom: 20px; /* Margen inferior para separar de la tabla */
+  font-size: 28px; /* Tamaño de fuente para el título */
+  color: #333; /* Color de fuente */
+}
+
+
+/* Estilos para la tabla */
+.tabla-contenedor {
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.tabla-estilizada {
+  width: 100%;
+  max-width: 1000px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tabla-estilizada th {
+  background-color: #3743aa;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.tabla-estilizada td {
+  text-align: center;
+  font-size: 14px;
+  padding: 10px;
+}
+
+/* Estilos para los íconos de los botones (edit y delete) */
+.mat-icon {
+  vertical-align: middle; /* Para alinear los íconos con el texto si hubiera */
+}
+
+/* Estilos para el paginador */
+mat-paginator {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Espacio superior para separar del final de la tabla */
+  margin-bottom: 20px; /* Espacio inferior si hay más contenido abajo */
+}
