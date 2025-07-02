@@ -68,6 +68,7 @@ h2 {
 }
 
 
+
 .contenedor-encabezado {
   max-width: 1200px;
   margin: 0 auto;
@@ -94,19 +95,7 @@ h2 {
   margin-bottom: 0px;
 }
 
-.logopng {
-  width: 90px;
-  height: auto;
-  margin-left: -130px;
-  margin-top: -70px;
-}
 
-.titulopng {
-  width: 140px;
-  height: auto;
-  margin-left: 10px;
-  margin-top: -50px;
-}
 
 .dashboard {
   background-color: #99d9f2;
@@ -115,10 +104,24 @@ h2 {
   margin-top: -20px; /* 👈 crea separación visible para que aparezca el borde */
 }
 
+.logopng {
+  width: 90px;
+  height: auto;
+  margin-top: -70px;
+  margin-left: -325px;
+}
+
+.titulopng {
+  width: 140px;
+  height: auto;
+  margin-left: 10px;
+  margin-top: -70px;
+}
+
 .logo-centro {
   display: block;
   margin: 20px auto 10px auto; /* top, right, bottom, left */
-  margin-left: 430px;
+  margin-left: 625px;
   width: 100px;
   height: auto;
 }
