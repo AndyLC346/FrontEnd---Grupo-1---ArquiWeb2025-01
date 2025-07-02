@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-import { CarritocompraService } from '../../../services/carritocompra.service';
 import { DescuentoVigentesDTO } from '../../../models/descuentovigenteDTO';
 import { DescuentoService } from '../../../services/descuento.service';
 

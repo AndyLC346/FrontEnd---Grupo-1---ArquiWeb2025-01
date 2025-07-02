@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ListarcarritocompraComponent } from './listarcarritocompra/listarcarritocompra.component';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { OrdencarritocompraComponent } from './ordencarritocompra/ordencarritocompra.component';
 
 @Component({
   selector: 'app-carritocompra',
-  imports: [ListarcarritocompraComponent, RouterOutlet],
+  imports: [ListarcarritocompraComponent, RouterOutlet,OrdencarritocompraComponent],
   templateUrl: './carritocompra.component.html',
   styleUrl: './carritocompra.component.css'
 })
