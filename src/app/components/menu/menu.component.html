@@ -79,7 +79,26 @@
       <button mat-menu-item routerLink="/carritocompra">Listar</button>
       <button mat-menu-item routerLink="/carritocompra/insertareditarcarritocompra">Registrar</button>
     </mat-menu>
+ <!-- ‑‑‑‑ metodopago ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuMetodoPago">
+      <mat-icon>yape</mat-icon>
+      <span>MetodoPago</span>
+    </div>
+    <mat-menu #menuMetodoPago="matMenu">
+      <button mat-menu-item routerLink="/metodos-de-pago">Listar</button>
+      <button mat-menu-item routerLink="/metodos-de-pago/insertareditarmetodopago">Registrar</button>
+    </mat-menu>
 
+   <!-- ‑‑‑‑ Notificaciones ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuNotificaciones">
+      <mat-icon>MESSAGE1</mat-icon>
+      <span>Notificaciones</span>
+    </div>
+    <mat-menu #menuNotificaciones="matMenu">
+      <button mat-menu-item routerLink="/notificaciones">Listar</button>
+      <button mat-menu-item routerLink="/notificaciones/nuevo">Registrar</button>
+    </mat-menu>
+    
 
   </div>
 </div>
