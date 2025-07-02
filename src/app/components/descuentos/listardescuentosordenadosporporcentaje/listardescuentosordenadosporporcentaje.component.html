@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="title-container">
+    <h2 style="text-align: center;">Descuentos Ordenados por Porcentaje</h2>
+  </div>
+
+  <div class="chart-container" style="display: flex; justify-content: center; align-items: center; margin-top: 30px;">
+    <canvas
+      baseChart
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [legend]="barChartLegend"
+      [type]="barChartType"
+    ></canvas>
+  </div>
+</div>
