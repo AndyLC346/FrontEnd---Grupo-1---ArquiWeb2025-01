@@ -113,6 +113,14 @@
       <button mat-menu-item routerLink="/chat/insertareditarchat">Registrar</button>
     </mat-menu>
 
+<div class="card" [matMenuTriggerFor]="menuReportes">
+      <mat-icon>insights</mat-icon>
+      <span>Reportes</span>
+    </div>
+     <mat-menu #menuReportes="matMenu">
+
+  <button mat-menu-item routerLink="/reportes/carrito-ordenado-porPrecio">Reporte CarritoOrdenado Precio </button>
+ </mat-menu>
 
   </div>
 </div>
