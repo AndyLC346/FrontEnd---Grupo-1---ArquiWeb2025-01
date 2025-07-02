@@ -28,61 +28,82 @@ import { ChatComponent } from './components/chat/chat.component';
 import { InsertareditarchatComponent } from './components/chat/insertareditarchat/insertareditarchat.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { OrdencarritocompraComponent } from './components/reportes/ordencarritocompra/ordencarritocompra.component';
-
+import { ListarDescuentoVigentesComponent } from './components/reportes/listar-descuento-vigentes/listar-descuento-vigentes.component';
 
 export const routes: Routes = [
   {
-    path: '', component: HomeComponent, pathMatch: 'full'
-
+    path: '',
+    component: HomeComponent,
+    pathMatch: 'full',
   },
 
   {
-    path: 'menu', component: MenuComponent
+    path: 'menu',
+    component: MenuComponent,
   },
 
   {
-    path: 'tiendas', component: TiendaComponent,
-    children: [{
-      path: 'insertareditartienda', component: InsertareditartiendaComponent
-    },
-    {
-      path: 'actualizaciones/:id', component: InsertareditartiendaComponent
-    }]
+    path: 'tiendas',
+    component: TiendaComponent,
+    children: [
+      {
+        path: 'insertareditartienda',
+        component: InsertareditartiendaComponent,
+      },
+      {
+        path: 'actualizaciones/:id',
+        component: InsertareditartiendaComponent,
+      },
+    ],
   },
 
   {
-    path: 'usuarios', component: UsuarioComponent,
-    children: [{
-      path: 'detalleusua/:id', component: DetalleUsuarioComponent
-    }]
+    path: 'usuarios',
+    component: UsuarioComponent,
+    children: [
+      {
+        path: 'detalleusua/:id',
+        component: DetalleUsuarioComponent,
+      },
+    ],
   },
 
   {
-    path: 'productos', component: ProductoComponent,
-    children: [{
-      path: 'insertareditarprod', component: InsertareditarproductoComponent
-    },
-    {
-      path: 'actualizaproducto/:id', component: InsertareditarproductoComponent
-    },
-    {
-      path: 'detalle/:id', component: DetalleProductoComponent
-    }
-    ]
+    path: 'productos',
+    component: ProductoComponent,
+    children: [
+      {
+        path: 'insertareditarprod',
+        component: InsertareditarproductoComponent,
+      },
+      {
+        path: 'actualizaproducto/:id',
+        component: InsertareditarproductoComponent,
+      },
+      {
+        path: 'detalle/:id',
+        component: DetalleProductoComponent,
+      },
+    ],
   },
 
   {
-    path: 'resenas', component: ResenaComponent,
-    children: [{
-      path: 'insertareditarese', component: InsertareditaresenaComponent
-    },
-    {
-      path: 'actualizaresena/:id', component: InsertareditaresenaComponent
-    },
-    {
-      path: 'detallerese/:id', component: DetalleResenaComponent
-    }
-    ]
+    path: 'resenas',
+    component: ResenaComponent,
+    children: [
+      {
+        path: 'insertareditarese',
+        component: InsertareditaresenaComponent,
+      },
+      {
+        path: 'actualizaresena/:id',
+        component: InsertareditaresenaComponent,
+      },
+      {
+        path: 'detallerese/:id',
+        component: DetalleResenaComponent,
+      },
+    ],
   },
   {
     path: 'carritocompra',
@@ -94,10 +115,8 @@ export const routes: Routes = [
       },
       {
         path: 'editarcarrito/:id',
-        component: InsertareditarcarritocompraComponent
+        component: InsertareditarcarritocompraComponent,
       },
-
-     
     ],
   },
   {
@@ -116,7 +135,6 @@ export const routes: Routes = [
         path: 'editardescuento/:id',
         component: InsertareditardescuentosComponent,
       },
-
     ],
   },
   {
@@ -152,9 +170,8 @@ export const routes: Routes = [
       {
         path: 'ediciones/:id',
         component: InsertarEditarMetodoPagoComponent,
-      }
-
-    ]
+      },
+    ],
   },
   {
     path: 'chat',
@@ -165,20 +182,23 @@ export const routes: Routes = [
         component: InsertareditarchatComponent,
       },
       {
-        path: 'ediciones/:id', component: InsertareditarchatComponent
+        path: 'ediciones/:id',
+        component: InsertareditarchatComponent,
       },
     ],
   },
   {
-path: 'reportes' ,component: ReportesComponent,
-children:[
-  {
-        path:'carrito-ordenado-porPrecio',component:OrdencarritocompraComponent,
+    path: 'reportes',
+    component: ReportesComponent,
+    children: [
+      {
+        path: 'carrito-ordenado-porPrecio',
+        component: OrdencarritocompraComponent,
+      },
+      {
+        path: 'listarDescVigente',
+        component: ListarDescuentoVigentesComponent,
       }
-]
-  }
-]
-
-
-
-
+    ],
+  },
+];
