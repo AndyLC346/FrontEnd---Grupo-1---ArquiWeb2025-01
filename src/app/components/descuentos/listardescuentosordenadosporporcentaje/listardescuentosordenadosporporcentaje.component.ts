@@ -3,11 +3,12 @@ import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { DescuentoService } from '../../../services/descuento.service';
 import { ListarDescuentosOrdenadosPorPorcentajeDTO } from '../../../models/ListarDescuentosOrdenadosXPorcentaje';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-listardescuentosordenadosporporcentaje',
   standalone: true,
-  imports: [BaseChartDirective],
+  imports: [BaseChartDirective,RouterLink],
   templateUrl: './listardescuentosordenadosporporcentaje.component.html',
   styleUrl: './listardescuentosordenadosporporcentaje.component.css'
 })
