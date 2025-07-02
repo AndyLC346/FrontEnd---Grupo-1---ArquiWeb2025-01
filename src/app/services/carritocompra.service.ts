@@ -38,4 +38,8 @@ export class CarritocompraService {
     deleteA(id:number){
       return this.http.delete(`${this.url}/${id}`);
     }
+    search(idUsuario: string) {
+  const params = { idUsuario }; // backend espera "idUsuario"
+  return this.http.get<CarritoCompra[]>(`${this.url}/BuscarCarritoPorID`, { params });
+}
 }

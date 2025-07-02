@@ -1,6 +1,15 @@
 <div class="container">
   <div style="text-align: center; margin: 6%">
     <h1>Lista de Carritos de Compra</h1>
+     <mat-form-field appearance="fill">
+      <mat-label>Filtrar por tipo de ID</mat-label>
+      <input
+        matInput
+        [(ngModel)]="filtro"
+        (input)="aplicarfiltro()"
+        placeholder="Ej: Público, Oculto..."
+      />
+    </mat-form-field>
   </div>
 
   <div class="tabla-contenedor">

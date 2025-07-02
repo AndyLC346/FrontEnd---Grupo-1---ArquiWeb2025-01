@@ -8,6 +8,9 @@ import { CommonModule } from '@angular/common';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 import { RouterLink } from '@angular/router';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-listarcarritocompra',
@@ -16,7 +19,7 @@ import { RouterLink } from '@angular/router';
     MatButtonModule,
     MatIconModule,
     CommonModule,
-    MatPaginatorModule,RouterLink
+    MatPaginatorModule,RouterLink,MatFormFieldModule,FormsModule,MatInputModule
   ],
 
   templateUrl: './listarcarritocompra.component.html',
@@ -29,17 +32,26 @@ export class ListarcarritocompraComponent implements OnInit {
 displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6','c7'];
 
 @ViewChild(MatPaginator) paginator!: MatPaginator;
+filtro: string = '';
 
   constructor(private Cs: CarritocompraService) {}
 
   ngOnInit(): void {
     this.Cs.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
+    this.dataSource.filterPredicate = (post: CarritoCompra, filter: string) => {
+        return post.idCarritoCompra
+  .toString()
+  .includes(filter.trim().toLowerCase());
+
+     this.dataSource.paginator = this.paginator;
+     this.Cs.setList(data);
+    }
     })
 
 
     this.Cs.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.data = data;
     })
   }
 
@@ -56,4 +68,7 @@ displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6','c7'];
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
+  aplicarfiltro() {
+    this.dataSource.filter = this.filtro.trim().toLowerCase();
+  }
 }
