@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Tienda } from '../../../models/tienda';
 import { TiendaService } from '../../../services/tienda.service';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
@@ -14,7 +14,7 @@ import { MatButtonModule } from '@angular/material/button'
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    CommonModule,
+    CommonModule,RouterLink,
     MatButtonModule],
   templateUrl: './insertareditartienda.component.html',
   styleUrl: './insertareditartienda.component.css'

@@ -1,9 +1,23 @@
+<div
+  style="text-align: center; margin-top: 20px; margin-bottom: 20px"
+  class="encabezado"
+>
+  <div class="contenedor-encabezado">
+    <div class="iconos"></div>
+
+    <div class="contenedor-logo" routerLink="/menu">
+      <img src="assets/img/logo.png" alt="Logo" class="logopng" />
+      <img src="assets/img/nombrepagina.png" alt="Titulo" class="titulopng" />
+    </div>
+  </div>
+</div>
+
 <div class="container">
-  <div style="text-align: center; margin:5%;">
+  <div style="text-align: center">
     <h1>Registro de Descuentos</h1>
   </div>
 
-  <div style="text-align: center; margin:5%;">
+  <div style="text-align: center;">
     <form [formGroup]="form" (submit)="aceptar()">
 
       <mat-form-field class="example-full-width" *ngIf="edicion">

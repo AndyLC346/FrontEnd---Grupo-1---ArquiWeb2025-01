@@ -1,0 +1,45 @@
+<div>
+  <div><h1>{{ edicion ? 'Editar' : 'Registrar' }} Método de Pago</h1></div>
+  <div>
+    <form [formGroup]="form" (ngSubmit)="aceptar()">
+      <mat-form-field>
+        <mat-label>Tipo de Método de Pago</mat-label>
+        <mat-select formControlName="tipo">
+          @for (tipo of tipos; track tipo) {
+            <mat-option [value]="tipo.value">{{ tipo.viewValue }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field>
+        <mat-label>Fecha de Vencimiento</mat-label>
+        <input
+          matInput
+          [matDatepicker]="pickerVencimiento"
+          formControlName="vencimiento"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="pickerVencimiento"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #pickerVencimiento></mat-datepicker>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="user">
+          @for (user of listaUsuarios; track user) {
+            <mat-option [value]="user.idUser">{{ user.username }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+
+      <button mat-raised-button color="primary" type="submit">Aceptar</button>
+      <button mat-raised-button color="warn" routerLink="metodos-de-pago">Cancelar</button>
+    </form>
+  </div>
+</div>
