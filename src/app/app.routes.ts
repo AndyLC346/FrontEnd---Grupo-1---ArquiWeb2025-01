@@ -16,8 +16,6 @@ import { DescuentosComponent } from './components/descuentos/descuentos.componen
 import { InsertareditardescuentosComponent } from './components/descuentos/insertareditardescuentos/insertareditardescuentos.component';
 import { ListardescuentosComponent } from './components/descuentos/listardescuentos/listardescuentos.component';
 import { DetalleUsuarioComponent } from './components/usuario/detalle-usuario/detalle-usuario.component';
-import path from 'path';
-import { Component } from '@angular/core';
 import { NotificacionesComponent } from './components/notificaciones/notificaciones.component';
 import { ListarNotificacionesComponent } from './components/notificaciones/listar-notificaciones/listar-notificaciones.component';
 import { InsertarEditarNotificacionesComponent } from './components/notificaciones/insertar-editar-notificacioes/insertar-editar-notificacioes.component';
@@ -28,8 +26,18 @@ import { ChatComponent } from './components/chat/chat.component';
 import { InsertareditarchatComponent } from './components/chat/insertareditarchat/insertareditarchat.component';
 import { OrdencarritocompraComponent } from './components/carritocompra/ordencarritocompra/ordencarritocompra.component';
 import { ListarDescuentoVigentesComponent } from './components/descuentos/listar-descuento-vigentes/listar-descuento-vigentes.component';
+import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
   {
     path: '',
     component: HomeComponent,
