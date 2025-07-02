@@ -1,4 +1,4 @@
-export class ListarDescuentoVigentesDTO {
+export class DescuentoVigentesDTO {
   idDescuento: number = 0;
   codigoDescuento: string = '';
   porcentajeDescuento: number = 0;
