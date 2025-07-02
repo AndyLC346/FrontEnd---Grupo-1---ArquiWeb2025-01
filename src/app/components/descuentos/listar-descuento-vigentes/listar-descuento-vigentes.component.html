@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="header">
+    <h2 style="text-align: center;">Descuentos Vigentes</h2>
+    <p style="text-align: center;">Visualiza los descuentos activos actualmente según su porcentaje.</p>
+  </div>
+
+  <div class="chart-wrapper" style="display: flex; justify-content: center;">
+    <canvas
+      baseChart
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [legend]="barChartLegend"
+      [type]="barChartType"
+    ></canvas>
+  </div>
+</div>

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Descuentos } from '../models/descuento';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { DescuentoVigentesDTO, } from '../models/descuentovigenteDTO';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root',
@@ -33,4 +34,9 @@ export class DescuentoService {
    update(d: Descuentos) {
     return this.http.put(this.url, d);
   }
+
+  DescVigente():Observable<DescuentoVigentesDTO[]>{
+  return this.http.get<DescuentoVigentesDTO[]>(`${this.url}/listarDescVigente`)
+  }
+
 }
