@@ -33,7 +33,7 @@ export class ChatService {
   deleteA(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
-   update(d: Chats) {
-    return this.http.put(this.url, d);
+   update(c: Chats) {
+    return this.http.put(this.url, c);
   }
 }

@@ -1,24 +1,26 @@
 <div class="container">
-  <div style="text-align: center; margin:5%;"><h1>Registro de Chats</h1></div>
-  <div style="text-align: center; margin:5%;">
+  <div style="text-align: center; margin: 5%"><h1>Registro de Chats</h1></div>
+  <div style="text-align: center; margin: 5%">
     <form [formGroup]="form" (submit)="aceptar()">
       <mat-form-field class="example-full-width" *ngIf="edicion">
         <mat-label> ID </mat-label>
-        <br>
-        <input matInput  formControlName="codigo">
+        <br />
+        <input matInput formControlName="codigo" />
         <mat-error *ngIf="form.get('codigo')?.hasError('required')">
           El codigo es obligatorio!!
         </mat-error>
       </mat-form-field>
-      <br/>
+      <br />
 
+      <mat-form-field class="example-full-width">
+        <mat-label>Mensaje</mat-label>
+        <textarea matInput formControlName="content" placeholder="mensaje..."></textarea>
+      </mat-form-field>
+
+      <br />
       <mat-form-field>
         <mat-label>Fecha de creacion</mat-label>
-        <input
-          matInput
-          [matDatepicker]="picker"
-          formControlName="fechita"
-        />
+        <input matInput [matDatepicker]="picker" formControlName="fechita" />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle
           matIconSuffix
@@ -26,7 +28,7 @@
         ></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <br/>
+      <br />
       <mat-form-field>
         <mat-label>Usuario</mat-label>
         <mat-select formControlName="usuarii">
@@ -35,24 +37,27 @@
           }
         </mat-select>
       </mat-form-field>
- <br/>
- <br/>
+      <br />
+      <br />
       <mat-form-field>
         <mat-label>Tiendas</mat-label>
         <mat-select formControlName="tiendita">
           @for (food of listaTiendas; track food) {
-          <mat-option [value]="food.idTienda">{{ food.nombreTienda }}</mat-option>
+          <mat-option [value]="food.idTienda">{{
+            food.nombreTienda
+          }}</mat-option>
           }
         </mat-select>
       </mat-form-field>
       <br />
-        <br/>
-
+      <br />
 
       <button matButton="filled">Registrar</button>
-       <br/> <br/>
-      <button matButton="filled" type="button" (click)="cancelar()">Cancelar</button>
-
+      <br />
+      <br />
+      <button matButton="filled" type="button" (click)="cancelar()">
+        Cancelar
+      </button>
     </form>
   </div>
 </div>

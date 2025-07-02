@@ -34,8 +34,6 @@ export class InsertareditarchatComponent implements OnInit {
   listaUsuarios:Usuario[]=[]
   listaTiendas:Tienda[]=[]
 
-
-
   id: number = 0;
   edicion: boolean = false;
 
@@ -59,6 +57,7 @@ export class InsertareditarchatComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       codigo: [''],
+      content: ['', Validators.required],
       fechita: ['', Validators.required],
       usuarii: ['', Validators.required],
       tiendita: ['', Validators.required],
@@ -76,6 +75,7 @@ export class InsertareditarchatComponent implements OnInit {
   aceptar() {
     if (this.form.valid) {
       this.chat.idChat = this.form.value.codigo;
+      this.chat.contenido = this.form.value.content;
       this.chat.fechaInicioChat = this.form.value.fechita;
       this.chat.user.idUser = this.form.value.usuarii;
       this.chat.tienda.idTienda = this.form.value.tiendita;
@@ -103,6 +103,7 @@ export class InsertareditarchatComponent implements OnInit {
       this.cS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
           codigo: new FormControl(data.idChat),
+          content: new FormControl(data.contenido),
           fechita: new FormControl(data.fechaInicioChat),
           usuarii: new FormControl(data.user.idUser),
           tiendita: new FormControl(data.tienda.idTienda),

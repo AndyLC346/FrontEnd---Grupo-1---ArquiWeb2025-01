@@ -116,6 +116,9 @@ export const routes: Routes = [
         path: 'insertareditarchat',
         component: InsertareditarchatComponent,
       },
+      {
+      path: 'ediciones/:id', component: InsertareditarchatComponent
+      },
     ],
   },
 
