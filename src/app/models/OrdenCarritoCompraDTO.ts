@@ -1,10 +1,9 @@
 export class OrdenCarritoCompraDTO {
-  idCarritoCompra: number = 0; // de la entidad CarritoCompra
-  fechaCreaCarritoCompra: Date = new Date(); // de CarritoCompra
+  idCarritoCompra: number = 0; 
+  fechaCreaCarritoCompra: Date = new Date(); 
+  username: string = ''; 
+  nombreProducto: string = ''; 
+  precioProducto: number = 0;
 
-  username: string = ''; // de Usuario
-  nombreProducto: string = ''; // de Producto
-  precioProducto: number = 0; // de Producto
-
-  cantidad: number = 0; // de CarritoCompra
+  cantidad: number = 0; 
 }
