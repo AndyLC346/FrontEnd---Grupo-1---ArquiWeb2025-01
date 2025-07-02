@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CarritoCompra } from '../models/carritocompra';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { OrdenCarritoCompraDTO } from '../models/OrdenCarritoCompraDTO';
 const base_url=environment.base
 @Injectable({
   providedIn: 'root'
@@ -41,5 +42,8 @@ export class CarritocompraService {
     search(idUsuario: string) {
   const params = { idUsuario }; // backend espera "idUsuario"
   return this.http.get<CarritoCompra[]>(`${this.url}/BuscarCarritoPorID`, { params });
+}
+OrderCarritoCompra():Observable<OrdenCarritoCompraDTO[]>{
+return this.http.get<OrdenCarritoCompraDTO[]>(`${this.url}/carrito-ordenado-porPrecio`)
 }
 }

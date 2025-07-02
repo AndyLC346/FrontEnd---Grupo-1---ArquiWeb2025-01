@@ -26,6 +26,8 @@ import { ListarMetodoPagoComponent } from './components/metodo-pago/listar-metod
 import { InsertarEditarMetodoPagoComponent } from './components/metodo-pago/insertar-editar-metodo-pago/insertar-editar-metodo-pago.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { InsertareditarchatComponent } from './components/chat/insertareditarchat/insertareditarchat.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
+import { OrdencarritocompraComponent } from './components/reportes/ordencarritocompra/ordencarritocompra.component';
 
 
 export const routes: Routes = [
@@ -94,6 +96,7 @@ export const routes: Routes = [
         path: 'editarcarrito/:id',
         component: InsertareditarcarritocompraComponent
       },
+      
      
     ],
   },
@@ -165,6 +168,14 @@ export const routes: Routes = [
         path: 'ediciones/:id', component: InsertareditarchatComponent
       },
     ],
+  },
+  {
+path: 'reportes' ,component: ReportesComponent,
+children:[
+  {
+        path:'carrito-ordenado-porPrecio',component:OrdencarritocompraComponent,
+      }
+]
   }
 ]
 
