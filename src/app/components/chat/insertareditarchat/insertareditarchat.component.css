@@ -1,4 +1,37 @@
- mat-form-field {
+.encabezado {
+  text-align: left;
+  margin-top: 20px; /* Margen superior ajustado */
+  margin-bottom: 20px; /* Margen inferior ajustado */
+}
+
+.contenedor-logo {
+  display: flex; /* Para alinear el logo y el texto horizontalmente */
+  justify-content: flex-start; /* Centra horizontalmente el logo y el texto */
+  align-items: center; /* Centra verticalmente el logo y el texto */
+  margin-bottom: 0px; /* Asegura que no haya margen extra debajo del logo/titulo */
+}
+
+.logopng {
+  width: 70px; /* Tamaño del logo un poco más pequeño */
+  height: auto;
+}
+
+.titulopng {
+  width: 140px; /* Tamaño del título un poco más pequeño */
+  height: auto;
+  margin-left: 10px; /* Espacio entre el logo y el título */
+}
+
+/* Estilos para el título "Lista de Chats" */
+.titulo-chats {
+  text-align: center;
+  margin-top: 20px; /* Margen superior para separar del encabezado */
+  margin-bottom: 20px; /* Margen inferior para separar de la tabla */
+  font-size: 28px; /* Tamaño de fuente para el título */
+  color: #333; /* Color de fuente */
+}
+
+mat-form-field {
   width: 60%;
   }
 
