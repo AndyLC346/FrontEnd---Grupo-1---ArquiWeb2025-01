@@ -96,7 +96,7 @@ export const routes: Routes = [
         path: 'editarcarrito/:id',
         component: InsertareditarcarritocompraComponent
       },
-      
+
      
     ],
   },

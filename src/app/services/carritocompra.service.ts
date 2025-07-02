@@ -43,7 +43,9 @@ export class CarritocompraService {
   const params = { idUsuario }; // backend espera "idUsuario"
   return this.http.get<CarritoCompra[]>(`${this.url}/BuscarCarritoPorID`, { params });
 }
+
 OrderCarritoCompra():Observable<OrdenCarritoCompraDTO[]>{
 return this.http.get<OrdenCarritoCompraDTO[]>(`${this.url}/carrito-ordenado-porPrecio`)
 }
+
 }
