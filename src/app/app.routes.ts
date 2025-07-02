@@ -16,6 +16,8 @@ import { DescuentosComponent } from './components/descuentos/descuentos.componen
 import { InsertareditardescuentosComponent } from './components/descuentos/insertareditardescuentos/insertareditardescuentos.component';
 import { ListardescuentosComponent } from './components/descuentos/listardescuentos/listardescuentos.component';
 import { DetalleUsuarioComponent } from './components/usuario/detalle-usuario/detalle-usuario.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { InsertareditarchatComponent } from './components/chat/insertareditarchat/insertareditarchat.component';
 
 
 export const routes: Routes = [
@@ -101,6 +103,20 @@ export const routes: Routes = [
       {
         path: 'editardescuento/:id',
         component: InsertareditardescuentosComponent,
+      },
+    ],
+  },
+
+  {
+    path: 'chat',
+    component: ChatComponent,
+    children: [
+      {
+        path: 'insertareditarchat',
+        component: InsertareditarchatComponent,
+      },
+      {
+      path: 'ediciones/:id', component: InsertareditarchatComponent
       },
     ],
   },

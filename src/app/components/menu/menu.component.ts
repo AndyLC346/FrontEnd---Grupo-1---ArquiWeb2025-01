@@ -52,6 +52,8 @@ export class MenuComponent {
     { label: 'USUARIOS', icon: 'people', link: '/usuarios' },
     { label: 'NOTIFICACIONES', icon: 'notifications', link: '/notificaciones' },
     { label: 'RESEÑAS', icon: 'rate_review', link: '/resenas' },
-    { label: 'CARRITO COMPRA', icon: 'shopping_cart', link: '/carritocompra' }
+    { label: 'CARRITO COMPRA', icon: 'shopping_cart', link: '/carritocompra' },
+    { label: 'CHATS', icon: 'shopping_cart', link: '/chat' }
+
   ];
 }
