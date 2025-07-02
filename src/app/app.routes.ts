@@ -14,9 +14,10 @@ import { CarritocompraComponent } from './components/carritocompra/carritocompra
 import { InsertareditarcarritocompraComponent } from './components/carritocompra/insertareditarcarritocompra/insertareditarcarritocompra.component';
 import { DescuentosComponent } from './components/descuentos/descuentos.component';
 import { InsertareditardescuentosComponent } from './components/descuentos/insertareditardescuentos/insertareditardescuentos.component';
-import { ListarcarritocompraComponent } from './components/carritocompra/listarcarritocompra/listarcarritocompra.component';
 import { ListardescuentosComponent } from './components/descuentos/listardescuentos/listardescuentos.component';
 import { DetalleUsuarioComponent } from './components/usuario/detalle-usuario/detalle-usuario.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { InsertareditarchatComponent } from './components/chat/insertareditarchat/insertareditarchat.component';
 
 
 export const routes: Routes = [
@@ -102,6 +103,20 @@ export const routes: Routes = [
       {
         path: 'editardescuento/:id',
         component: InsertareditardescuentosComponent,
+      },
+    ],
+  },
+
+  {
+    path: 'chat',
+    component: ChatComponent,
+    children: [
+      {
+        path: 'insertareditarchat',
+        component: InsertareditarchatComponent,
+      },
+      {
+      path: 'ediciones/:id', component: InsertareditarchatComponent
       },
     ],
   },

@@ -38,11 +38,9 @@
       </ng-container>
 
       <ng-container matColumnDef="c7">
-        <th mat-header-cell *matHeaderCellDef> Ubicación Mapa </th>
+        <th mat-header-cell *matHeaderCellDef> Mapa </th>
         <td mat-cell *matCellDef="let element">
-          <a [href]="'https://www.google.com/maps?q=' + element.latitudTienda + ',' + element.longitudTienda" target="_blank">
-            Ver mapa
-          </a>
+          <button mat-button (click)="mostrarMapa(element)">Ver mapa</button>
         </td>
       </ng-container>
 
