@@ -105,3 +105,25 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Opcional: sombra ligera */
   width: auto; /* Evita que se expanda */
 }
+
+.logopng {
+  width: 90px;
+  height: auto;
+  margin-top: -70px;
+  margin-left: -325px;
+}
+
+.titulopng {
+  width: 140px;
+  height: auto;
+  margin-left: 10px;
+  margin-top: -70px;
+}
+
+.logo-centro {
+  display: block;
+  margin: 20px auto 10px auto; /* top, right, bottom, left */
+  margin-left: 625px;
+  width: 100px;
+  height: auto;
+}
