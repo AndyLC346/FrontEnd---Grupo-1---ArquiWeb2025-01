@@ -3,11 +3,12 @@ import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { DescuentoVigentesDTO } from '../../../models/descuentovigenteDTO';
 import { DescuentoService } from '../../../services/descuento.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-listar-descuento-vigentes',
   standalone: true,
-  imports: [BaseChartDirective],
+  imports: [BaseChartDirective,RouterLink],
   templateUrl: './listar-descuento-vigentes.component.html',
   styleUrl: './listar-descuento-vigentes.component.css',
 })

@@ -85,12 +85,12 @@
         <br /><br />
 
         <div style="text-align: center;">
-          <button mat-raised-button color="primary" type="submit"
+          <button mat-raised-button class="boton-redondeado" type="submit"
             [disabled]="form.invalid || form.get('cantidad')?.value <= 0">
             Aceptar
           </button>
 
-          <button mat-stroked-button color="warn" type="button" (click)="cancelar()">
+          <button mat-stroked-button class="boton-redondeado" type="button" (click)="cancelar()">
             Cancelar
           </button>
         </div>
