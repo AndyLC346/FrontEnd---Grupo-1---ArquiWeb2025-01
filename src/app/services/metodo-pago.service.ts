@@ -10,7 +10,7 @@ const base_url = environment.base;
   providedIn: 'root',
 })
 export class MetodoPagoService {
-  private url = `${base_url}/metodos_de_pago`;
+  private url = `${base_url}/metodosdepago`;
   private listaCambio = new Subject<MetodoPago[]>();
 
   constructor(private h: HttpClient) {}

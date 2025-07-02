@@ -155,10 +155,6 @@ export const routes: Routes = [
     component: NotificacionesComponent,
     children: [
       {
-        path: '',
-        component: ListarNotificacionesComponent,
-      },
-      {
         path: 'nuevo',
         component: InsertarEditarNotificacionesComponent,
       },
@@ -169,13 +165,9 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'metodos-de-pago',
+    path: 'metodosdepago',
     component: MetodoPagoComponent,
     children: [
-      {
-        path: '',
-        component: ListarMetodoPagoComponent,
-      },
       {
         path: 'insertareditarmetodopago',
         component: InsertarEditarMetodoPagoComponent,
