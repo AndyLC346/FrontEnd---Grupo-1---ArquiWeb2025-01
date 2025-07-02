@@ -28,6 +28,8 @@ import { ChatComponent } from './components/chat/chat.component';
 import { InsertareditarchatComponent } from './components/chat/insertareditarchat/insertareditarchat.component';
 import { OrdencarritocompraComponent } from './components/carritocompra/ordencarritocompra/ordencarritocompra.component';
 import { ListarDescuentoVigentesComponent } from './components/descuentos/listar-descuento-vigentes/listar-descuento-vigentes.component';
+import { ListarDescuentosOrdenadosPorPorcentajeDTO } from './models/ListarDescuentosOrdenadosXPorcentaje';
+import { ListardescuentosordenadosporporcentajeComponent } from './components/descuentos/listardescuentosordenadosporporcentaje/listardescuentosordenadosporporcentaje.component';
 
 export const routes: Routes = [
   {
@@ -142,6 +144,10 @@ export const routes: Routes = [
         path: 'listar-descuento-vigentes',
         component: ListarDescuentoVigentesComponent,
       },
+      {
+        path: 'listardescuentosordenadosporporcentaje',
+        component: ListardescuentosordenadosporporcentajeComponent,
+      }
     ],
   },
   {
