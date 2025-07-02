@@ -16,6 +16,15 @@
   /* 👈 línea negra delgada */
 }
 
+.boton-redondeado {
+  background-color: black !important;
+  color: white !important;
+  border-radius: 6px;
+  padding: 10px 24px;
+  font-weight: bold;
+  margin-right: 25px; 
+  text-transform: none;
+}
 
 .contenedor-logo {
   display: flex;
