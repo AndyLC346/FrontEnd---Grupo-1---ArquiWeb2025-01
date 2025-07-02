@@ -196,7 +196,7 @@ export const routes: Routes = [
         component: OrdencarritocompraComponent,
       },
       {
-        path: 'listarDescVigente',
+        path: 'listar-descuento-vigentes',
         component: ListarDescuentoVigentesComponent,
       }
     ],
