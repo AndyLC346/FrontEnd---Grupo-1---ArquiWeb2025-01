@@ -1,25 +1,56 @@
-.encabezado {
-  text-align: left;
-  margin-top: 20px; 
-  margin-bottom: 20px; 
+.contenedor-encabezado {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+
 }
 
+.encabezado {
+  background-color: white;
+  width: 100%;
+  padding: 0px 0px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 1000;
+  border-bottom: 3px solid black;
+  /* 👈 línea negra delgada */
+}
+
+
 .contenedor-logo {
-  display: flex; 
-  justify-content: flex-start; 
-  align-items: center; 
-  margin-bottom: 0px; 
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 0px;
 }
 
 .logopng {
-  width: 70px; 
+  width: 90px;
   height: auto;
+  margin-left: -130px;
+  margin-top: -70px;
 }
 
 .titulopng {
-  width: 140px; 
+  width: 140px;
   height: auto;
-  margin-left: 10px; 
+  margin-left: 10px;
+  margin-top: -50px;
+}
+
+.dashboard {
+  background-color: #99d9f2;
+  padding: 30px 15px;
+  min-height: 100vh;
+  margin-top: -20px; /* 👈 crea separación visible para que aparezca el borde */
+}
+
+.logo-centro {
+  display: block;
+  margin: 20px auto 10px auto; /* top, right, bottom, left */
+  margin-left: 430px;
+  width: 100px;
+  height: auto;
 }
 
 .titulo-chats {
