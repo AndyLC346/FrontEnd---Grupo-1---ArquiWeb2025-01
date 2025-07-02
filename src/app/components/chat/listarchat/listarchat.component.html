@@ -5,7 +5,7 @@
   <div class="contenedor-encabezado">
     <div class="iconos"></div>
 
-    <div class="contenedor-logo" routerLink="/">
+    <div class="contenedor-logo" routerLink="/menu">
       <img src="assets/img/logo.png" alt="Logo" class="logopng" />
       <img src="assets/img/nombrepagina.png" alt="Titulo" class="titulopng" />
     </div>
@@ -47,12 +47,12 @@
       </ng-container>
 
       <ng-container matColumnDef="c4">
-        <th mat-header-cell *matHeaderCellDef>ID Usuario</th>
+        <th mat-header-cell *matHeaderCellDef>Usuario</th>
         <td mat-cell *matCellDef="let element">{{ element.user.username }}</td>
       </ng-container>
 
       <ng-container matColumnDef="c5">
-        <th mat-header-cell *matHeaderCellDef>ID tienda</th>
+        <th mat-header-cell *matHeaderCellDef>Tienda</th>
         <td mat-cell *matCellDef="let element">
           {{ element.tienda.nombreTienda }}
         </td>

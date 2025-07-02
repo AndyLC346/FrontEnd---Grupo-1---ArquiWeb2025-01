@@ -1,0 +1,45 @@
+import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { MetodoPago } from '../models/metodo-pago';
+import { Subject } from 'rxjs';
+
+const base_url = environment.base;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class MetodoPagoService {
+  private url = `${base_url}/metodos_de_pago`;
+  private listaCambio = new Subject<MetodoPago[]>();
+
+  constructor(private h: HttpClient) {}
+
+  list() {
+    return this.h.get<MetodoPago[]>(this.url);
+  }
+
+  insert(metodoPago: MetodoPago) {
+    return this.h.post(this.url, metodoPago);
+  }
+
+  update(metodoPago: MetodoPago) {
+    return this.h.put(this.url, metodoPago);
+  }
+
+  delete(id: number) {
+    return this.h.delete(`${this.url}/${id}`);
+  }
+
+  listId(id: number) {
+    return this.h.get<MetodoPago>(`${this.url}/${id}`);
+  }
+
+  getList() {
+    return this.listaCambio.asObservable();
+  }
+
+  setList(listaNueva: MetodoPago[]) {
+    this.listaCambio.next(listaNueva);
+  }
+}

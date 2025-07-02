@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Producto } from '../../../models/producto';
 import { ProductoService } from '../../../services/producto.service';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
@@ -24,7 +24,7 @@ import { TiendaService } from '../../../services/tienda.service';
     CommonModule,
     MatButtonModule,
     MatSelectModule,
-    MatDatepickerModule
+    MatDatepickerModule,RouterLink
   ],
   templateUrl: './insertareditarproducto.component.html',
   styleUrl: './insertareditarproducto.component.css'

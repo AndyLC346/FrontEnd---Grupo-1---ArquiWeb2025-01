@@ -16,6 +16,14 @@ import { DescuentosComponent } from './components/descuentos/descuentos.componen
 import { InsertareditardescuentosComponent } from './components/descuentos/insertareditardescuentos/insertareditardescuentos.component';
 import { ListardescuentosComponent } from './components/descuentos/listardescuentos/listardescuentos.component';
 import { DetalleUsuarioComponent } from './components/usuario/detalle-usuario/detalle-usuario.component';
+import path from 'path';
+import { Component } from '@angular/core';
+import { NotificacionesComponent } from './components/notificaciones/notificaciones.component';
+import { ListarNotificacionesComponent } from './components/notificaciones/listar-notificaciones/listar-notificaciones.component';
+import { InsertarEditarNotificacionesComponent } from './components/notificaciones/insertar-editar-notificacioes/insertar-editar-notificacioes.component';
+import { MetodoPagoComponent } from './components/metodo-pago/metodo-pago.component';
+import { ListarMetodoPagoComponent } from './components/metodo-pago/listar-metodo-pago/listar-metodo-pago.component';
+import { InsertarEditarMetodoPagoComponent } from './components/metodo-pago/insertar-editar-metodo-pago/insertar-editar-metodo-pago.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { InsertareditarchatComponent } from './components/chat/insertareditarchat/insertareditarchat.component';
 
@@ -42,8 +50,8 @@ export const routes: Routes = [
 
   {
     path: 'usuarios', component: UsuarioComponent,
-    children:[{
-      path:'detalleusua/:id', component: DetalleUsuarioComponent
+    children: [{
+      path: 'detalleusua/:id', component: DetalleUsuarioComponent
     }]
   },
 
@@ -104,9 +112,46 @@ export const routes: Routes = [
         path: 'editardescuento/:id',
         component: InsertareditardescuentosComponent,
       },
+
     ],
   },
+  {
+    path: 'notificaciones',
+    component: NotificacionesComponent,
+    children: [
+      {
+        path: '',
+        component: ListarNotificacionesComponent,
+      },
+      {
+        path: 'nuevo',
+        component: InsertarEditarNotificacionesComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertarEditarNotificacionesComponent,
+      },
+    ],
+  },
+  {
+    path: 'metodos-de-pago',
+    component: MetodoPagoComponent,
+    children: [
+      {
+        path: '',
+        component: ListarMetodoPagoComponent,
+      },
+      {
+        path: 'insertareditarmetodopago',
+        component: InsertarEditarMetodoPagoComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertarEditarMetodoPagoComponent,
+      }
 
+    ]
+  },
   {
     path: 'chat',
     component: ChatComponent,
@@ -116,9 +161,12 @@ export const routes: Routes = [
         component: InsertareditarchatComponent,
       },
       {
-      path: 'ediciones/:id', component: InsertareditarchatComponent
+        path: 'ediciones/:id', component: InsertareditarchatComponent
       },
     ],
-  },
+  }
+]
 
-];
+
+
+
