@@ -24,33 +24,11 @@
   margin-bottom: 0px;
 }
 
-.logopng {
-  width: 90px;
-  height: auto;
-  margin-left: -130px;
-  margin-top: -70px;
-}
-
-.titulopng {
-  width: 140px;
-  height: auto;
-  margin-left: 10px;
-  margin-top: -50px;
-}
-
 .dashboard {
   background-color: #99d9f2;
   padding: 30px 15px;
   min-height: 100vh;
   margin-top: -20px; /* 👈 crea separación visible para que aparezca el borde */
-}
-
-.logo-centro {
-  display: block;
-  margin: 20px auto 10px auto; /* top, right, bottom, left */
-  margin-left: 430px;
-  width: 100px;
-  height: auto;
 }
 
 /* Estilos para el título "Lista de Chats" */
@@ -111,4 +89,87 @@
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Opcional: sombra ligera */
   width: auto; /* Evita que se expanda */
+}
+
+
+.grid-productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px;
+}
+
+.tarjeta-producto {
+  background-color: #fff;
+  width: 220px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.tarjeta-producto:hover {
+  transform: scale(1.02);
+}
+
+.tarjeta-producto img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.tarjeta-producto h3 {
+  font-size: 18px;
+  margin: 10px 0 5px;
+}
+
+.tarjeta-producto p {
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+.acciones {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+
+.imagen-principal {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.logopng {
+  width: 90px;
+  height: auto;
+  margin-top: -70px;
+  margin-left: -325px;
+}
+
+.titulopng {
+  width: 140px;
+  height: auto;
+  margin-left: 10px;
+  margin-top: -70px;
+}
+
+.logo-centro {
+  display: block;
+  margin: 20px auto 10px auto; /* top, right, bottom, left */
+  margin-left: 625px;
+  width: 100px;
+  height: auto;
 }
