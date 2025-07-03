@@ -39,7 +39,7 @@ export const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: '',
+    path: 'home',
     component: HomeComponent,
     pathMatch: 'full',
   },
