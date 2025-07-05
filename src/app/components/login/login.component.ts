@@ -4,18 +4,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LoginService } from '../../services/login.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { JwtRequest } from '../../models/jwtRequest';
 
 @Component({
   selector: 'app-login',
-  imports: [MatFormFieldModule,FormsModule,MatInputModule,MatButtonModule],
+  imports: [MatFormFieldModule,FormsModule,MatInputModule,MatButtonModule, RouterLink, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-
 constructor(
     private loginService: LoginService,
     private router: Router,
@@ -25,6 +24,11 @@ constructor(
   password: string = '';
   mensaje: string = '';
   ngOnInit(): void {}
+
+  Registrar() {
+    this.router.navigate(['/registrar']); 
+  }
+
   login() {
     
     let request = new JwtRequest();
