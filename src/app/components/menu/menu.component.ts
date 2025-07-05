@@ -33,12 +33,12 @@ role: string = '';
     this.role = this.loginService.showRole();
     return this.loginService.verificar();
   }
-  isDeveloper() {
-    return this.role === 'DEVELOPER';
+  isCliente() {
+    return this.role === 'C liente';        
   }
 
-  isTester() {
-    return this.role === 'TESTER';
+  isAdmin() {
+    return this.role === 'Admin';
   }
 
 

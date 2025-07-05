@@ -28,12 +28,22 @@ import { OrdencarritocompraComponent } from './components/carritocompra/ordencar
 import { ListarDescuentoVigentesComponent } from './components/descuentos/listar-descuento-vigentes/listar-descuento-vigentes.component';
 import { LoginComponent } from './components/login/login.component';
 import { seguridadGuard } from './guards/seguridad.guard';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { RegistrarComponent } from './components/registrar/registrar.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'inicio',
     pathMatch: 'full',
+  },
+   {
+    path: 'inicio',
+    component: InicioComponent,
+  },
+  {
+    path: 'registrar',
+    component: RegistrarComponent,
   },
   {
     path: 'login',
@@ -64,6 +74,7 @@ export const routes: Routes = [
         component: InsertareditartiendaComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
 
   {
