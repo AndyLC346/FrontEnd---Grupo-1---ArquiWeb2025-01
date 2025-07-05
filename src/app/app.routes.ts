@@ -30,6 +30,12 @@ import { OrdencarritocompraComponent } from './components/carritocompra/ordencar
 import { ListarDescuentoVigentesComponent } from './components/descuentos/listar-descuento-vigentes/listar-descuento-vigentes.component';
 import { ListarDescuentosOrdenadosPorPorcentajeDTO } from './models/ListarDescuentosOrdenadosXPorcentaje';
 import { ListardescuentosordenadosporporcentajeComponent } from './components/descuentos/listardescuentosordenadosporporcentaje/listardescuentosordenadosporporcentaje.component';
+import { BuscarproductoComponent } from './components/producto/buscarproducto/buscarproducto.component';
+import { BuscartiendaComponent } from './components/tienda/buscartienda/buscartienda.component';
+import { BuscaresenaComponent } from './components/resena/buscaresena/buscaresena.component';
+import { OrdenarResenasComponent } from './components/resena/ordenar-resenas/ordenar-resenas.component';
+import { BuscarmetodopagoComponent } from './components/metodo-pago/buscarmetodopago/buscarmetodopago.component';
+import { BuscarnotificacionesComponent } from './components/notificaciones/buscarnotificaciones/buscarnotificaciones.component';
 
 export const routes: Routes = [
   {
@@ -55,6 +61,9 @@ export const routes: Routes = [
         path: 'actualizaciones/:id',
         component: InsertareditartiendaComponent,
       },
+      {
+        path:'buscarnombretienda',component:BuscartiendaComponent
+      }
     ],
   },
 
@@ -85,6 +94,9 @@ export const routes: Routes = [
         path: 'detalle/:id',
         component: DetalleProductoComponent,
       },
+      {
+        path:'busquedanombre',component:BuscarproductoComponent
+      }
     ],
   },
 
@@ -104,6 +116,12 @@ export const routes: Routes = [
         path: 'detallerese/:id',
         component: DetalleResenaComponent,
       },
+      {
+        path:'buscarcalificacion', component: BuscaresenaComponent
+      },
+      {
+        path:'ordenaresena', component:OrdenarResenasComponent
+      }
     ],
   },
   {
@@ -119,7 +137,7 @@ export const routes: Routes = [
         component: InsertareditarcarritocompraComponent,
       },
       {
-               path: 'carrito-ordenado-porPrecio',
+      path: 'carrito-ordenado-porPrecio',
         component: OrdencarritocompraComponent,
       },
     ],
@@ -162,8 +180,14 @@ export const routes: Routes = [
         path: 'ediciones/:id',
         component: InsertarEditarNotificacionesComponent,
       },
+      {
+        path:'buscarleidonotifica',component:BuscarnotificacionesComponent
+      }
+
     ],
   },
+
+
   {
     path: 'metodosdepago',
     component: MetodoPagoComponent,
@@ -176,6 +200,10 @@ export const routes: Routes = [
         path: 'ediciones/:id',
         component: InsertarEditarMetodoPagoComponent,
       },
+      {
+        path:'buscarmetodotipo',component:BuscarmetodopagoComponent
+      }
+
     ],
   },
   {
