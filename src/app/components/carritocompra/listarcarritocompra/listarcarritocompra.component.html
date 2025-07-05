@@ -1,4 +1,5 @@
 <div style="text-align: center; margin-top: 20px; margin-bottom: 20px" class="encabezado">
+  
   <div class="contenedor-encabezado">
     <div class="iconos"></div>
 
@@ -11,12 +12,26 @@
 </div>
 
 
-
 <div class="dashboard">
   <div class="container">
     <div style="text-align: center">
       <h1>Lista de Carritos de Compra</h1>
     </div>
+    <div class="container">
+ <div style="display: flex; align-items: center; gap: 20px; margin: 20px 0 0 20px;">
+  <div style="display: flex; align-items: center; height: 56px;">
+    <mat-icon style="font-size: 30px; color: black;">search</mat-icon>
+  </div>
+     <mat-form-field appearance="fill">
+      <mat-label>Filtrar por tipo de ID</mat-label>
+      <input
+        matInput
+        [(ngModel)]="filtro"
+        (input)="aplicarfiltro()"
+        placeholder="Ej: Público, Oculto..."
+      />
+    </mat-form-field>
+  </div>
 
     <div class="tabla-contenedor">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 tabla-estilizada">

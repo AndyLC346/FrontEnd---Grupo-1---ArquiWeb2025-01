@@ -19,85 +19,92 @@ import { DetalleUsuarioComponent } from './components/usuario/detalle-usuario/de
 import path from 'path';
 import { Component } from '@angular/core';
 import { NotificacionesComponent } from './components/notificaciones/notificaciones.component';
+import { ListarNotificacionesComponent } from './components/notificaciones/listar-notificaciones/listar-notificaciones.component';
 import { InsertarEditarNotificacionesComponent } from './components/notificaciones/insertar-editar-notificacioes/insertar-editar-notificacioes.component';
 import { MetodoPagoComponent } from './components/metodo-pago/metodo-pago.component';
+import { ListarMetodoPagoComponent } from './components/metodo-pago/listar-metodo-pago/listar-metodo-pago.component';
 import { InsertarEditarMetodoPagoComponent } from './components/metodo-pago/insertar-editar-metodo-pago/insertar-editar-metodo-pago.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { InsertareditarchatComponent } from './components/chat/insertareditarchat/insertareditarchat.component';
-import { BuscarproductoComponent } from './components/producto/buscarproducto/buscarproducto.component';
-import { BuscartiendaComponent } from './components/tienda/buscartienda/buscartienda.component';
-import { BuscaresenaComponent } from './components/resena/buscaresena/buscaresena.component';
-import { BuscarmetodopagoComponent } from './components/metodo-pago/buscarmetodopago/buscarmetodopago.component';
-import { BuscarnotificacionesComponent } from './components/notificaciones/buscarnotificaciones/buscarnotificaciones.component';
-import { OrdenarResenasComponent } from './components/resena/ordenar-resenas/ordenar-resenas.component';
-
+import { OrdencarritocompraComponent } from './components/carritocompra/ordencarritocompra/ordencarritocompra.component';
+import { ListarDescuentoVigentesComponent } from './components/descuentos/listar-descuento-vigentes/listar-descuento-vigentes.component';
+import { ListarDescuentosOrdenadosPorPorcentajeDTO } from './models/ListarDescuentosOrdenadosXPorcentaje';
+import { ListardescuentosordenadosporporcentajeComponent } from './components/descuentos/listardescuentosordenadosporporcentaje/listardescuentosordenadosporporcentaje.component';
 
 export const routes: Routes = [
   {
-    path: '', component: HomeComponent, pathMatch: 'full'
-
+    path: '',
+    component: HomeComponent,
+    pathMatch: 'full',
   },
 
   {
-    path: 'menu', component: MenuComponent
+    path: 'menu',
+    component: MenuComponent,
   },
 
   {
-    path: 'tiendas', component: TiendaComponent,
-    children: [{
-      path: 'insertareditartienda', component: InsertareditartiendaComponent
-    },
-    {
-      path: 'actualizaciones/:id', component: InsertareditartiendaComponent
-    },
-    {
-      path:'buscarnombretienda',component:BuscartiendaComponent
-    }
-  ]
+    path: 'tiendas',
+    component: TiendaComponent,
+    children: [
+      {
+        path: 'insertareditartienda',
+        component: InsertareditartiendaComponent,
+      },
+      {
+        path: 'actualizaciones/:id',
+        component: InsertareditartiendaComponent,
+      },
+    ],
   },
 
   {
-    path: 'usuarios', component: UsuarioComponent,
-    children: [{
-      path: 'detalleusua/:id', component: DetalleUsuarioComponent
-    }]
+    path: 'usuarios',
+    component: UsuarioComponent,
+    children: [
+      {
+        path: 'detalleusua/:id',
+        component: DetalleUsuarioComponent,
+      },
+    ],
   },
 
   {
-    path: 'productos', component: ProductoComponent,
-    children: [{
-      path: 'insertareditarprod', component: InsertareditarproductoComponent
-    },
-    {
-      path: 'actualizaproducto/:id', component: InsertareditarproductoComponent
-    },
-    {
-      path: 'detalle/:id', component: DetalleProductoComponent
-    },
-    {
-      path: 'busquedanombre',component: BuscarproductoComponent
-    }
-    ]
+    path: 'productos',
+    component: ProductoComponent,
+    children: [
+      {
+        path: 'insertareditarprod',
+        component: InsertareditarproductoComponent,
+      },
+      {
+        path: 'actualizaproducto/:id',
+        component: InsertareditarproductoComponent,
+      },
+      {
+        path: 'detalle/:id',
+        component: DetalleProductoComponent,
+      },
+    ],
   },
 
   {
-    path: 'resenas', component: ResenaComponent,
-    children: [{
-      path: 'insertareditarese', component: InsertareditaresenaComponent
-    },
-    {
-      path: 'actualizaresena/:id', component: InsertareditaresenaComponent
-    },
-    {
-      path: 'detallerese/:id', component: DetalleResenaComponent
-    },
-    {
-      path:'buscarcalificacion',component: BuscaresenaComponent
-    },
-    {
-      path:'ordenaresena', component:OrdenarResenasComponent
-    }
-    ]
+    path: 'resenas',
+    component: ResenaComponent,
+    children: [
+      {
+        path: 'insertareditarese',
+        component: InsertareditaresenaComponent,
+      },
+      {
+        path: 'actualizaresena/:id',
+        component: InsertareditaresenaComponent,
+      },
+      {
+        path: 'detallerese/:id',
+        component: DetalleResenaComponent,
+      },
+    ],
   },
   {
     path: 'carritocompra',
@@ -109,12 +116,16 @@ export const routes: Routes = [
       },
       {
         path: 'editarcarrito/:id',
-        component: InsertareditarcarritocompraComponent
+        component: InsertareditarcarritocompraComponent,
+      },
+      {
+               path: 'carrito-ordenado-porPrecio',
+        component: OrdencarritocompraComponent,
       },
     ],
   },
   {
-    path: 'descuentos',
+    path: 'descuento',
     component: DescuentosComponent,
     children: [
       {
@@ -129,10 +140,16 @@ export const routes: Routes = [
         path: 'editardescuento/:id',
         component: InsertareditardescuentosComponent,
       },
-
+      {
+        path: 'listar-descuento-vigentes',
+        component: ListarDescuentoVigentesComponent,
+      },
+      {
+        path: 'listardescuentosordenadosporporcentaje',
+        component: ListardescuentosordenadosporporcentajeComponent,
+      }
     ],
   },
-
   {
     path: 'notificaciones',
     component: NotificacionesComponent,
@@ -145,9 +162,6 @@ export const routes: Routes = [
         path: 'ediciones/:id',
         component: InsertarEditarNotificacionesComponent,
       },
-      {
-        path:'buscarleidonotifica',component:BuscarnotificacionesComponent
-      }
     ],
   },
   {
@@ -162,14 +176,10 @@ export const routes: Routes = [
         path: 'ediciones/:id',
         component: InsertarEditarMetodoPagoComponent,
       },
-      {
-        path: 'buscarmetodotipo', component:BuscarmetodopagoComponent
-      }
-
-    ]
+    ],
   },
   {
-    path: 'chats',
+    path: 'chat',
     component: ChatComponent,
     children: [
       {
@@ -177,14 +187,9 @@ export const routes: Routes = [
         component: InsertareditarchatComponent,
       },
       {
-        path: 'ediciones/:id', component: InsertareditarchatComponent
+        path: 'ediciones/:id',
+        component: InsertareditarchatComponent,
       },
     ],
-
-  }
-
-]
-
-
-
-
+  },
+];

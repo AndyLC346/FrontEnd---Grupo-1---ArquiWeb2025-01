@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -14,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { Producto } from '../../../models/producto';
 import { ProductoService } from '../../../services/producto.service';
@@ -35,6 +37,7 @@ import { Descuentos } from '../../../models/descuento';
     RouterLink,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSnackBarModule
   ],
 })
 export class InsertareditardescuentosComponent implements OnInit {
@@ -51,7 +54,8 @@ export class InsertareditardescuentosComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private productoService: ProductoService
+    private productoService: ProductoService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -67,40 +71,47 @@ export class InsertareditardescuentosComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       codigo: [''],
-      porcentajeDescuento: ['', Validators.required],
+      porcentajeDescuento: ['', [Validators.required, Validators.min(1), Validators.max(100)]],
       codigoDescuento: ['', Validators.required],
       fechaInicioDescuento: ['', Validators.required],
       fechaFinDescuento: ['', Validators.required],
-      producto: ['', Validators.required], // idProducto
+      producto: ['', Validators.required],
     });
   }
 
   aceptar() {
-    if (this.form.valid) {
-      this.descuentos.idDescuento = this.form.value.codigo;
-      this.descuentos.porcentajeDescuento = this.form.value.porcentajeDescuento;
-      this.descuentos.codigoDescuento = this.form.value.codigoDescuento;
-      this.descuentos.fechaInicioDescuento = this.form.value.fechaInicioDescuento;
-      this.descuentos.fechaFinDescuento = this.form.value.fechaFinDescuento;
+    if (this.form.invalid) {
+      this.snackBar.open('Por favor, completa todos los campos correctamente.', 'Cerrar', {
+        duration: 3000,
+      });
+      return;
+    }
 
-      this.descuentos.producto = new Producto();
-      this.descuentos.producto.idProducto = this.form.value.producto;
+    this.descuentos.idDescuento = this.form.value.codigo;
+    this.descuentos.porcentajeDescuento = this.form.value.porcentajeDescuento;
+    this.descuentos.codigoDescuento = this.form.value.codigoDescuento;
+    this.descuentos.fechaInicioDescuento = this.form.value.fechaInicioDescuento;
+    this.descuentos.fechaFinDescuento = this.form.value.fechaFinDescuento;
 
-      if (this.edicion) {
-        this.dS.update(this.descuentos).subscribe(() => {
-          this.dS.list().subscribe((data) => {
-            this.dS.setList(data);
-          });
+    this.descuentos.producto = new Producto();
+    this.descuentos.producto.idProducto = this.form.value.producto;
+
+    if (this.edicion) {
+      this.dS.update(this.descuentos).subscribe(() => {
+        this.dS.list().subscribe((data) => {
+          this.snackBar.open('Descuento actualizado correctamente.', 'Cerrar', { duration: 3000 });
+          this.dS.setList(data);
         });
-      } else {
-        this.dS.insert(this.descuentos).subscribe(() => {
-          this.dS.list().subscribe((data) => {
-            this.dS.setList(data);
-          });
+        this.router.navigate(['descuento']);
+      });
+    } else {
+      this.dS.insert(this.descuentos).subscribe(() => {
+        this.dS.list().subscribe((data) => {
+          this.snackBar.open('Descuento registrado correctamente.', 'Cerrar', { duration: 3000 });
+          this.dS.setList(data);
         });
-      }
-
-      this.router.navigate(['descuento']);
+        this.router.navigate(['descuento']);
+      });
     }
   }
 
@@ -113,7 +124,7 @@ export class InsertareditardescuentosComponent implements OnInit {
       this.dS.listId(this.id).subscribe((data) => {
         this.form = this.formBuilder.group({
           codigo: new FormControl(data.idDescuento),
-          porcentajeDescuento: new FormControl(data.porcentajeDescuento, Validators.required),
+          porcentajeDescuento: new FormControl(data.porcentajeDescuento, [Validators.required, Validators.min(1), Validators.max(100)]),
           codigoDescuento: new FormControl(data.codigoDescuento, Validators.required),
           fechaInicioDescuento: new FormControl(data.fechaInicioDescuento, Validators.required),
           fechaFinDescuento: new FormControl(data.fechaFinDescuento, Validators.required),
