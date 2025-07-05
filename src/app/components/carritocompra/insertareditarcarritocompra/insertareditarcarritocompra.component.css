@@ -70,8 +70,8 @@ button[matButton="filled"]:hover {
 .logopng {
   width: 90px;
   height: auto;
+  margin-left: -140px;
   margin-top: -70px;
-  margin-left: -325px;
 }
 
 .titulopng {
@@ -80,11 +80,10 @@ button[matButton="filled"]:hover {
   margin-left: 10px;
   margin-top: -70px;
 }
-
 .logo-centro {
   display: block;
   margin: 20px auto 10px auto; /* top, right, bottom, left */
-  margin-left: 625px;
+  margin-left: 455px;
   width: 100px;
   height: auto;
 }

@@ -94,7 +94,6 @@ export const routes: Routes = [
         path: 'editarcarrito/:id',
         component: InsertareditarcarritocompraComponent
       },
-     
     ],
   },
   {
@@ -146,7 +145,7 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'chat',
+    path: 'chats',
     component: ChatComponent,
     children: [
       {
@@ -157,7 +156,9 @@ export const routes: Routes = [
         path: 'ediciones/:id', component: InsertareditarchatComponent
       },
     ],
+
   }
+
 ]
 
 
