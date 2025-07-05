@@ -1,3 +1,5 @@
+// Mejorada InsertareditarcarritocompraComponent con validaciones adicionales y snackbar al registrar
+
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -14,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { CarritocompraService } from '../../../services/carritocompra.service';
 import { ProductoService } from '../../../services/producto.service';
@@ -37,6 +40,7 @@ import { Usuario } from '../../../models/usuario';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSnackBarModule,
     RouterLink
   ],
 })
@@ -56,7 +60,8 @@ export class InsertareditarcarritocompraComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private usuarioService: UsuarioService,
-    private productoService: ProductoService
+    private productoService: ProductoService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -84,28 +89,47 @@ export class InsertareditarcarritocompraComponent implements OnInit {
   }
 
   aceptar() {
-    if (this.form.valid) {
-      this.carritocompra.idCarritoCompra = this.form.value.codigo;
-      this.carritocompra.fechaCreaCarritoCompra = this.form.value.fecha;
-      this.carritocompra.cantidad = this.form.value.cantidad;
+    if (this.form.invalid) {
+      this.snackBar.open('Por favor, completa todos los campos correctamente.', 'Cerrar', {
+        duration: 3000,
+      });
+      return;
+    }
 
-      this.carritocompra.user = new Usuario();
-      this.carritocompra.user.idUser = this.form.value.idUsuario;
+    this.carritocompra.idCarritoCompra = this.form.value.codigo;
+    this.carritocompra.fechaCreaCarritoCompra = this.form.value.fecha;
+    this.carritocompra.cantidad = this.form.value.cantidad;
 
-      this.carritocompra.producto = new Producto();
-      this.carritocompra.producto.idProducto = this.form.value.idProducto;
+    this.carritocompra.user = new Usuario();
+    this.carritocompra.user.idUser = this.form.value.idUsuario;
 
-      if (this.edicion) {
-        this.ccS.update(this.carritocompra).subscribe(() => {
-          this.ccS.list().subscribe((data) => this.ccS.setList(data));
+    this.carritocompra.producto = new Producto();
+    this.carritocompra.producto.idProducto = this.form.value.idProducto;
+
+    if (this.edicion) {
+      this.ccS.update(this.carritocompra).subscribe(() => {
+        this.ccS.list().subscribe((data) => {
+          if (data.length === 0) {
+            this.snackBar.open('No existen carritos de compra registrados.', 'Cerrar', { duration: 3000 });
+          } else {
+            this.snackBar.open('Carrito de compra actualizado correctamente.', 'Cerrar', { duration: 3000 });
+          }
+          this.ccS.setList(data);
         });
-      } else {
-        this.ccS.insert(this.carritocompra).subscribe(() => {
-          this.ccS.list().subscribe((data) => this.ccS.setList(data));
+        this.router.navigate(['carritocompra']);
+      });
+    } else {
+      this.ccS.insert(this.carritocompra).subscribe(() => {
+        this.ccS.list().subscribe((data) => {
+          if (data.length === 0) {
+            this.snackBar.open('No existen carritos de compra registrados.', 'Cerrar', { duration: 3000 });
+          } else {
+            this.snackBar.open('Carrito de compra registrado correctamente.', 'Cerrar', { duration: 3000 });
+          }
+          this.ccS.setList(data);
         });
-      }
-
-      this.router.navigate(['carritocompra']);
+        this.router.navigate(['carritocompra']);
+      });
     }
   }
 
@@ -118,10 +142,10 @@ export class InsertareditarcarritocompraComponent implements OnInit {
       this.ccS.listID(this.id).subscribe((data) => {
         this.form = this.formBuilder.group({
           codigo: new FormControl(data.idCarritoCompra),
-          idUsuario: new FormControl(data.user.idUser),
-          idProducto: new FormControl(data.producto.idProducto),
-          fecha: new FormControl(data.fechaCreaCarritoCompra),
-          cantidad: new FormControl(data.cantidad),
+          idUsuario: new FormControl(data.user.idUser, Validators.required),
+          idProducto: new FormControl(data.producto.idProducto, Validators.required),
+          fecha: new FormControl(data.fechaCreaCarritoCompra, Validators.required),
+          cantidad: new FormControl(data.cantidad, [Validators.required, Validators.min(1)]),
         });
       });
     }

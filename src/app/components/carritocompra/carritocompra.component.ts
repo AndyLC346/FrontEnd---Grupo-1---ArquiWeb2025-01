@@ -5,7 +5,7 @@ import { OrdencarritocompraComponent } from './ordencarritocompra/ordencarritoco
 
 @Component({
   selector: 'app-carritocompra',
-  imports: [ListarcarritocompraComponent, RouterOutlet,OrdencarritocompraComponent],
+  imports: [ListarcarritocompraComponent, RouterOutlet],
   templateUrl: './carritocompra.component.html',
   styleUrl: './carritocompra.component.css'
 })
