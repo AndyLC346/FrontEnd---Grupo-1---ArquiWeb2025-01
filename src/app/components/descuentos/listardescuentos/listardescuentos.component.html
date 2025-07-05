@@ -1,7 +1,6 @@
 <div style="text-align: center; margin-top: 20px; margin-bottom: 20px" class="encabezado">
   <div class="contenedor-encabezado">
     <div class="iconos"></div>
-
     <div class="contenedor-logo" routerLink="/menu">
       <img src="assets/img/logo.png" alt="Logo" class="logopng" />
       <img src="assets/logosmenu/logotit.png" alt="Titulo" class="titulopng" />
@@ -16,64 +15,66 @@
       <h1>Lista de Descuentos</h1>
     </div>
 
-    <div class="tabla-contenedor">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 tabla-estilizada">
+    <div *ngIf="noData" style="text-align: center; margin-top: 20px;">
+      <h2>No existen descuentos registrados</h2>
+    </div>
 
+    <div class="tabla-contenedor" *ngIf="!noData">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 tabla-estilizada">
         <ng-container matColumnDef="c1">
-          <th mat-header-cell *matHeaderCellDef> ID </th>
-          <td mat-cell *matCellDef="let element"> {{element.idDescuento}} </td>
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let element">{{ element.idDescuento }}</td>
         </ng-container>
 
         <ng-container matColumnDef="c2">
-          <th mat-header-cell *matHeaderCellDef> Porcentaje Declarado </th>
-          <td mat-cell *matCellDef="let element"> {{element.porcentajeDescuento}} </td>
+          <th mat-header-cell *matHeaderCellDef>Porcentaje</th>
+          <td mat-cell *matCellDef="let element">{{ element.porcentajeDescuento }}</td>
         </ng-container>
 
         <ng-container matColumnDef="c3">
-          <th mat-header-cell *matHeaderCellDef> Codigo Descuento </th>
-          <td mat-cell *matCellDef="let element"> {{element.codigoDescuento}} </td>
+          <th mat-header-cell *matHeaderCellDef>Código</th>
+          <td mat-cell *matCellDef="let element">{{ element.codigoDescuento }}</td>
         </ng-container>
 
         <ng-container matColumnDef="c4">
-          <th mat-header-cell *matHeaderCellDef> Fecha de Inicio </th>
-          <td mat-cell *matCellDef="let element"> {{element.fechaInicioDescuento}} </td>
+          <th mat-header-cell *matHeaderCellDef>Fecha de Inicio</th>
+          <td mat-cell *matCellDef="let element">{{ element.fechaInicioDescuento | date: 'dd/MM/yyyy' }}</td>
         </ng-container>
 
         <ng-container matColumnDef="c5">
-          <th mat-header-cell *matHeaderCellDef> Fecha de Fin </th>
-          <td mat-cell *matCellDef="let element"> {{element.fechaFinDescuento}} </td>
+          <th mat-header-cell *matHeaderCellDef>Fecha de Fin</th>
+          <td mat-cell *matCellDef="let element">{{ element.fechaFinDescuento | date: 'dd/MM/yyyy' }}</td>
         </ng-container>
 
         <ng-container matColumnDef="c6">
-          <th mat-header-cell *matHeaderCellDef> idProducto </th>
-          <td mat-cell *matCellDef="let element"> {{element.producto.idProducto}} </td>
+          <th mat-header-cell *matHeaderCellDef>ID Producto</th>
+          <td mat-cell *matCellDef="let element">{{ element.producto.idProducto }}</td>
         </ng-container>
-        <!-- Symbol Column -->
+
         <ng-container matColumnDef="c7">
           <th mat-header-cell *matHeaderCellDef>Actualizar</th>
           <td mat-cell *matCellDef="let element">
-            <button matButton [routerLink]="['editardescuento',element.idDescuento]">
+            <button mat-icon-button color="primary" [routerLink]="['editardescuento', element.idDescuento]">
               <mat-icon>edit</mat-icon>
             </button>
           </td>
         </ng-container>
 
-        <!-- Symbol Column -->
         <ng-container matColumnDef="c8">
           <th mat-header-cell *matHeaderCellDef>Eliminar</th>
           <td mat-cell *matCellDef="let element">
-            <button matButton (click)="eliminar(element.idDescuento)">
+            <button mat-icon-button color="warn" (click)="eliminar(element.idDescuento)">
               <mat-icon>delete</mat-icon>
             </button>
           </td>
         </ng-container>
 
-
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
     </div>
-    <div class="contenedor-paginator">
+
+    <div class="contenedor-paginator" *ngIf="!noData">
       <mat-paginator class="paginator-estilizado" [length]="dataSource.data.length" [pageSize]="5"
         [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Selecciona página">
       </mat-paginator>
