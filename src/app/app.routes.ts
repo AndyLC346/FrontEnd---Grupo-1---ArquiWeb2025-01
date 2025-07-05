@@ -27,6 +27,7 @@ import { InsertareditarchatComponent } from './components/chat/insertareditarcha
 import { OrdencarritocompraComponent } from './components/carritocompra/ordencarritocompra/ordencarritocompra.component';
 import { ListarDescuentoVigentesComponent } from './components/descuentos/listar-descuento-vigentes/listar-descuento-vigentes.component';
 import { LoginComponent } from './components/login/login.component';
+import { seguridadGuard } from './guards/seguridad.guard';
 
 export const routes: Routes = [
   {
@@ -42,6 +43,7 @@ export const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     pathMatch: 'full',
+    canActivate: [seguridadGuard],
   },
 
   {
