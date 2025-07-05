@@ -29,6 +29,7 @@ import { BuscartiendaComponent } from './components/tienda/buscartienda/buscarti
 import { BuscaresenaComponent } from './components/resena/buscaresena/buscaresena.component';
 import { BuscarmetodopagoComponent } from './components/metodo-pago/buscarmetodopago/buscarmetodopago.component';
 import { BuscarnotificacionesComponent } from './components/notificaciones/buscarnotificaciones/buscarnotificaciones.component';
+import { OrdenarResenasComponent } from './components/resena/ordenar-resenas/ordenar-resenas.component';
 
 
 export const routes: Routes = [
@@ -92,6 +93,9 @@ export const routes: Routes = [
     },
     {
       path:'buscarcalificacion',component: BuscaresenaComponent
+    },
+    {
+      path:'ordenaresena', component:OrdenarResenasComponent
     }
     ]
   },

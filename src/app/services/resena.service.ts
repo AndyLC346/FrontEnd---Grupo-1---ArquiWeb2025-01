@@ -45,7 +45,11 @@ export class ResenaService {
   }
 
   searchByCalificacion(valor: number) {
-  const params = { valor };
-  return this.h.get<Resena[]>(`${this.url}/buscarporcalificacion`, { params });
-}
+    const params = { valor };
+    return this.h.get<Resena[]>(`${this.url}/buscarporcalificacion`, { params });
+  }
+
+  listarOrdenadasPorCalificacion() {
+    return this.h.get<Resena[]>(`${this.url}/ordenarcalificacion`);
+  }
 }
