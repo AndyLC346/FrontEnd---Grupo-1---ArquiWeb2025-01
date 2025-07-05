@@ -42,4 +42,10 @@ export class MetodoPagoService {
   setList(listaNueva: MetodoPago[]) {
     this.listaCambio.next(listaNueva);
   }
+
+  searchByTipo(valor: string) {
+  return this.h.get<MetodoPago[]>(`${this.url}/buscarportipo`, {
+    params: { valor }
+  });
+}
 }

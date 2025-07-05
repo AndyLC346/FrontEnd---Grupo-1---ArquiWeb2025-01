@@ -49,7 +49,9 @@ export class InsertarEditarMetodoPagoComponent implements OnInit {
     { value: 'Tarjeta de Crédito', viewValue: 'Tarjeta de Crédito' },
     { value: 'Tarjeta de Débito', viewValue: 'Tarjeta de Débito' },
     { value: 'PayPal', viewValue: 'PayPal' },
-    { value: 'Transferencia Bancaria', viewValue: 'Transferencia Bancaria' }
+    { value: 'Transferencia Bancaria', viewValue: 'Transferencia Bancaria' },
+    { value: 'Yape', viewValue: 'Yape' },
+    { value: 'Plin', viewValue: 'Plin' }
   ];
 
   constructor(
@@ -58,11 +60,11 @@ export class InsertarEditarMetodoPagoComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private uS: UsuarioService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
-      this.id = data['id'];  
+      this.id = data['id'];
       this.edicion = this.id != null;
       this.init();
     });

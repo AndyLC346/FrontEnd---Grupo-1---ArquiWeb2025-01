@@ -10,7 +10,7 @@ const base_url = environment.base;
 export class DescuentoService {
   private url = `${base_url}/descuentos`;
   private listaDescuento = new Subject<Descuentos[]>();
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   list() {
     return this.http.get<Descuentos[]>(`${this.url}`);
   }
@@ -18,7 +18,7 @@ export class DescuentoService {
   insert(D: Descuentos) {
     return this.http.post(`${this.url}`, D);
   }
-   getList() {
+  getList() {
     return this.listaDescuento.asObservable();
   }
   setList(listaNueva: Descuentos[]) {
@@ -30,7 +30,7 @@ export class DescuentoService {
   deleteA(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
-   update(d: Descuentos) {
+  update(d: Descuentos) {
     return this.http.put(this.url, d);
   }
 }

@@ -42,4 +42,10 @@ export class NotificacionesService {
   setList(listaNueva: Notificaciones[]) {
     this.listaCambio.next(listaNueva);
   }
+
+  searchByLeido(estado: boolean) {
+  return this.h.get<Notificaciones[]>(`${this.url}/buscarporleido`, {
+    params: { estado }
+  });
+}
 }

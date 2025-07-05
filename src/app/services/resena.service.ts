@@ -43,4 +43,9 @@ export class ResenaService {
   deleteA(id: number) {
     return this.h.delete(`${this.url}/${id}`);
   }
+
+  searchByCalificacion(valor: number) {
+  const params = { valor };
+  return this.h.get<Resena[]>(`${this.url}/buscarporcalificacion`, { params });
+}
 }
