@@ -91,7 +91,6 @@
       </table>
     </div>
 
-    <!-- VISTA EN TARJETAS -->
     <div class="grid-productos" *ngIf="modoVisualizacion === 'tarjeta'">
       <div class="tarjeta-producto" *ngFor="let producto of dataSource.filteredData">
         <img [src]="obtenerImagenProducto(producto)" class="imagen-principal" alt="Imagen del producto">
