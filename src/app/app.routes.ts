@@ -74,7 +74,6 @@ export const routes: Routes = [
         component: InsertareditartiendaComponent,
       },
     ],
-    canActivate: [seguridadGuard],
   },
 
   {

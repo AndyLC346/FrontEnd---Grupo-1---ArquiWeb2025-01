@@ -25,4 +25,9 @@ constructor(private http: HttpClient) {}
     const decodedToken = helper.decodeToken(token);
     return decodedToken?.role;
   }
+
+  registrar(request: JwtRequest) {
+  return this.http.post('http://localhost:8082/register', request);
 }
+}
+

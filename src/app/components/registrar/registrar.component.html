@@ -1,1 +1,41 @@
-<p>registrar works!</p>
+<div class="container" style="text-align: center">
+
+  <div class="card-decorativa">
+
+    <div class="contenedor-logo" style="cursor: pointer" routerLink="/inicio">
+      <img src="assets/img/logo.png" alt="Logo de la empresa">
+    </div>
+
+    <h2>Crear cuenta</h2>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Usuario</mat-label>
+      <input matInput placeholder="Username" [(ngModel)]="username" />
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Contraseña</mat-label>
+      <input type="password" matInput placeholder="Password" [(ngModel)]="password" />
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Confirmar Contraseña</mat-label>
+      <input type="password" matInput placeholder="Confirm Password" [(ngModel)]="confirmPassword" />
+    </mat-form-field>
+
+    <br />
+
+    <button mat-raised-button class="custom-button" (click)="registrar()">Registrarse</button>
+
+    <div class="registrar">
+      <span class="registrar-texto">¿Ya tienes cuenta? </span>
+      <button mat-raised-button class="custom-button" (click)="volverLogin()">Inicia sesión aquí</button>
+    </div>
+
+  </div>
+
+</div>
