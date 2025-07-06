@@ -54,9 +54,9 @@ export class ListarproductoComponent implements OnInit {
 
 
   obtenerImagenProducto(producto: Producto): string {
-  const id = producto?.idProducto;
-  return id ? `assets/img/${id}.jpg` : 'assets/img/default.jpg';
-}
+    const id = producto?.idProducto;
+    return id ? `assets/img/${id}.jpg` : 'assets/img/default.jpg';
+  }
 
   eliminar(id: number) {
     this.pS.deleteA(id).subscribe((data) => {

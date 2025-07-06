@@ -3,13 +3,15 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Producto } from '../models/producto';
 import { Subject } from 'rxjs';
+import { CantidadProductoDTO } from '../models/cantidadproductoDTO';
+
 const base_url = environment.base
 @Injectable({
   providedIn: 'root'
 })
 export class ProductoService {
   private url = `${base_url}/productos`
-  private listaCambio=new Subject<Producto[]>()
+  private listaCambio = new Subject<Producto[]>()
 
 
   constructor(private h: HttpClient) { }
@@ -41,5 +43,14 @@ export class ProductoService {
   deleteA(id: number) {
     return this.h.delete(`${this.url}/${id}`);
   }
+
+  search(nombre: string) {
+    const params = { nom: nombre };
+    return this.h.get<Producto[]>(`${this.url}/busquedasnombre`, { params });
+  }
+
+  obtenerCantidadProductosPorTienda() {
+  return this.h.get<CantidadProductoDTO[]>(`${this.url}/cantidadesproductos`);
+}
 
 }

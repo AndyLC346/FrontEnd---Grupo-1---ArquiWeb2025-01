@@ -12,7 +12,7 @@ const base_url = environment.base;
 export class DescuentoService {
   private url = `${base_url}/descuentos`;
   private listaDescuento = new Subject<Descuentos[]>();
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   list() {
     return this.http.get<Descuentos[]>(`${this.url}`);
   }

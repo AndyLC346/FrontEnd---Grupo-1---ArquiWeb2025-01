@@ -95,7 +95,7 @@ export class InsertareditarchatComponent implements OnInit {
           });
         });
       }
-      this.router.navigate(['chat']);
+      this.router.navigate(['chats']);
     }
   }
   init() {
@@ -113,6 +113,6 @@ export class InsertareditarchatComponent implements OnInit {
   }
 
     cancelar() {
-    this.router.navigate(['chat'])
+    this.router.navigate(['chats'])
   }
 }
