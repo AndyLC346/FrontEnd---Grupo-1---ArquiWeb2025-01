@@ -39,6 +39,7 @@ import { BuscarnotificacionesComponent } from './components/notificaciones/busca
 import { GraficocantidadproductosComponent } from './components/producto/graficocantidadproductos/graficocantidadproductos.component';
 import { GraficocantidadmetodoComponent } from './components/metodo-pago/graficocantidadmetodo/graficocantidadmetodo.component';
 import { GraficoestadousuarioComponent } from './components/usuario/graficoestadousuario/graficoestadousuario.component';
+import { CarritocompraproductoComponent } from './components/carritocompraproducto/carritocompraproducto.component';
 
 export const routes: Routes = [
   {
@@ -232,4 +233,19 @@ export const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'carritocompraproducto',
+    component: CarritocompraproductoComponent,
+    children: [
+      {
+        path: 'insertareditarcarritos',
+        component: CarritocompraproductoComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CarritocompraproductoComponent,
+      },
+    ],
+  },
+  
 ];

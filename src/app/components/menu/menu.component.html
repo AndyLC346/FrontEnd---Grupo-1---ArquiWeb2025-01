@@ -94,6 +94,16 @@
 
     </mat-menu>
 
+        <!-- ‑‑‑‑ CARRITO COMPRA PRODUCTO ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuCarritoS">
+      <img src="assets/logosmenu/carrito.jpg" class="logodes">
+      <span style="font-size: 20px;">Carrito Compra</span>
+    </div>
+    <mat-menu #menuCarritoS="matMenu">
+      <button mat-menu-item routerLink="/carritocompraproducto">Listar</button>
+      <button mat-menu-item routerLink="/carritocompraproducto/insertareditarcarritos">Registrar</button>
+    </mat-menu>
+
 
     <!-- ‑‑‑‑ metodopago ‑‑‑‑ -->
     <div class="card" [matMenuTriggerFor]="menuMetodoPago">

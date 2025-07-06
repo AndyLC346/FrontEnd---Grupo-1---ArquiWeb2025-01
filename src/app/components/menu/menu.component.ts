@@ -53,6 +53,7 @@ export class MenuComponent {
     { label: 'NOTIFICACIONES', icon: 'notifications', link: '/notificaciones' },
     { label: 'RESEÑAS', icon: 'rate_review', link: '/resenas' },
     { label: 'CARRITO COMPRA', icon: 'shopping_cart', link: '/carritocompra' },
+    { label: 'CARRITO COMPRA PRODUCTO', icon: 'shopping_cart', link: '/carritocompraproducto' },
     { label: 'CHATS', icon: 'shopping_cart', link: '/chat' }
 
   ];
