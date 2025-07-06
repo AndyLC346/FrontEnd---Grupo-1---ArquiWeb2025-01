@@ -29,12 +29,20 @@
         <br />
 
         <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Porcentaje de Descuento (%)</mat-label>
-          <input matInput type="number" formControlName="porcentajeDescuento" placeholder="Ej: 10" />
-          <mat-error *ngIf="form.get('porcentajeDescuento')?.hasError('required')">
-            El porcentaje es obligatorio
-          </mat-error>
-        </mat-form-field>
+  <mat-label>Porcentaje de Descuento (%)</mat-label>
+  <input matInput type="number" formControlName="porcentajeDescuento" placeholder="Ej: 10" />
+  
+  <mat-error *ngIf="form.get('porcentajeDescuento')?.hasError('required')">
+    El porcentaje es obligatorio
+  </mat-error>
+  <mat-error *ngIf="form.get('porcentajeDescuento')?.hasError('min')">
+    El porcentaje debe ser mayor o igual a 1%
+  </mat-error>
+  <mat-error *ngIf="form.get('porcentajeDescuento')?.hasError('max')">
+    El porcentaje no puede exceder el 100%
+  </mat-error>
+</mat-form-field>
+
 
         <br />
 

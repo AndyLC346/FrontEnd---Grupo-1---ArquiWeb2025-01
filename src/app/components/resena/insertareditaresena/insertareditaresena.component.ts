@@ -1,53 +1,62 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
 import { Resena } from '../../../models/resena';
 import { Usuario } from '../../../models/usuario';
 import { Producto } from '../../../models/producto';
 import { ResenaService } from '../../../services/resena.service';
-import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { UsuarioService } from '../../../services/usuario.service';
 import { ProductoService } from '../../../services/producto.service';
 
 @Component({
   selector: 'app-insertareditaresena',
   providers: [provideNativeDateAdapter()],
+  standalone: true,
+  templateUrl: './insertareditaresena.component.html',
+  styleUrl: './insertareditaresena.component.css',
   imports: [
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     CommonModule,
-    MatButtonModule,RouterLink,
+    MatButtonModule,
+    RouterLink,
     MatSelectModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatSnackBarModule,
   ],
-  templateUrl: './insertareditaresena.component.html',
-  styleUrl: './insertareditaresena.component.css'
 })
-export class InsertareditaresenaComponent implements OnInit{
-
+export class InsertareditaresenaComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   resena: Resena = new Resena();
-  id: number = 0
-  actualizacion: boolean = false
+  id: number = 0;
+  actualizacion: boolean = false;
 
-  listaUsuario: Usuario[]=[]
-  listaProducto: Producto[]=[]
+  listaUsuario: Usuario[] = [];
+  listaProducto: Producto[] = [];
 
-  tipos:{value:string,viewValue:string}[]=[
-    {value:'1',viewValue:'1'},
-    {value:'2',viewValue:'2'},
-    {value:'3',viewValue:'3'},
-    {value:'4',viewValue:'4'},
-    {value:'5',viewValue:'5'},
-
-  ]
+  tipos: { value: string; viewValue: string }[] = [
+    { value: '1', viewValue: '1' },
+    { value: '2', viewValue: '2' },
+    { value: '3', viewValue: '3' },
+    { value: '4', viewValue: '4' },
+    { value: '5', viewValue: '5' },
+  ];
 
   constructor(
     private rS: ResenaService,
@@ -55,83 +64,89 @@ export class InsertareditaresenaComponent implements OnInit{
     private router: Router,
     private route: ActivatedRoute,
     private uS: UsuarioService,
-    private pS: ProductoService
-
-  ) { }
+    private pS: ProductoService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
-      this.actualizacion = data['id'] != null;
+      this.actualizacion = this.id != null;
       this.init();
-      // Actualizar
-    })
+    });
 
     this.form = this.formBuilder.group({
       codigorese: [''],
-      califresena: ['', Validators.required],
-      comentarioresena: ['', Validators.required],
+      califresena: ['', [Validators.required, Validators.min(1), Validators.max(5)]],
+      comentarioresena: ['', [Validators.required, Validators.maxLength(300)]],
       fecharesena: ['', Validators.required],
       usersito: ['', Validators.required],
-      productito: ['', Validators.required]
-    })
+      productito: ['', Validators.required],
+    });
 
-    this.uS.list().subscribe(data=>{
-      this.listaUsuario=data
-    })
+    this.uS.list().subscribe((data) => {
+      this.listaUsuario = data;
+    });
 
-    this.pS.list().subscribe(data=>{
-      this.listaProducto=data
-    })
+    this.pS.list().subscribe((data) => {
+      this.listaProducto = data;
+    });
   }
 
   aceptar() {
-    if (this.form.valid) {
-      this.resena.idResena = this.form.value.codigorese
-      this.resena.calificacion = this.form.value.califresena
-      this.resena.comentario = this.form.value.comentarioresena
-      this.resena.fecha = this.form.value.fecharesena
-      this.resena.user.idUser = this.form.value.usersito
-      this.resena.producto.idProducto = this.form.value.productito
+    if (this.form.invalid) {
+      this.snackBar.open('Por favor, completa todos los campos correctamente.', 'Cerrar', {
+        duration: 3000,
+      });
+      return;
+    }
 
+    this.resena.idResena = this.form.value.codigorese;
+    this.resena.calificacion = this.form.value.califresena;
+    this.resena.comentario = this.form.value.comentarioresena;
+    this.resena.fecha = this.form.value.fecharesena;
+    this.resena.user = { idUser: this.form.value.usersito } as Usuario;
+    this.resena.producto = { idProducto: this.form.value.productito } as Producto;
 
-      if (this.actualizacion) {
-        //actualizar
-        this.rS.update(this.resena).subscribe(() => {
-          this.rS.list().subscribe((data) => {
-            this.rS.setList(data)
-          })
-        })
-      } else {
-        //Insertar
-        this.rS.insert(this.resena).subscribe(() => {
-          this.rS.list().subscribe((data) => {
-            this.rS.setList(data);
+    if (this.actualizacion) {
+      this.rS.update(this.resena).subscribe(() => {
+        this.rS.list().subscribe((data) => {
+          this.rS.setList(data);
+          this.snackBar.open('Reseña actualizada correctamente.', 'Cerrar', {
+            duration: 3000,
           });
         });
-      }
-      this.router.navigate(['resenas']);
+        this.router.navigate(['resenas']);
+      });
+    } else {
+      this.rS.insert(this.resena).subscribe(() => {
+        this.rS.list().subscribe((data) => {
+          this.rS.setList(data);
+          this.snackBar.open('Reseña registrada correctamente.', 'Cerrar', {
+            duration: 3000,
+          });
+        });
+        this.router.navigate(['resenas']);
+      });
     }
   }
-
 
   init() {
     if (this.actualizacion) {
       this.rS.listID(this.id).subscribe((data) => {
-
-        this.form = new FormGroup({
+        this.form = this.formBuilder.group({
           codigorese: new FormControl(data.idResena),
-          califresena: new FormControl(data.calificacion),
-          comentarioresena: new FormControl(data.comentario),
-          fecharesena: new FormControl(data.fecha),
-          usersito: new FormControl(data.user.idUser),
-          productito: new FormControl(data.producto.idProducto),
-        })
-      })
+          califresena: new FormControl(data.calificacion, [Validators.required, Validators.min(1), Validators.max(5)]),
+          comentarioresena: new FormControl(data.comentario, [Validators.required, Validators.maxLength(300)]),
+          fecharesena: new FormControl(data.fecha, Validators.required),
+          usersito: new FormControl(data.user.idUser, Validators.required),
+          productito: new FormControl(data.producto.idProducto, Validators.required),
+        });
+      });
     }
   }
 
   cancelar() {
-    this.router.navigate(['resenas'])
+    this.router.navigate(['resenas']);
   }
 }

@@ -25,6 +25,8 @@ import { UsuarioService } from '../../../services/usuario.service';
 import { CarritoCompra } from '../../../models/carritocompra';
 import { Producto } from '../../../models/producto';
 import { Usuario } from '../../../models/usuario';
+import { MetodoPago } from '../../../models/metodo-pago';
+import { MetodoPagoService } from '../../../services/metodo-pago.service';
 
 @Component({
   selector: 'app-insertareditarcarritocompra',
@@ -50,6 +52,7 @@ export class InsertareditarcarritocompraComponent implements OnInit {
 
   listaUsuarios: Usuario[] = [];
   listaProductos: Producto[] = [];
+  listaMetodoPago: MetodoPago[]=[];
 
   id: number = 0;
   edicion: boolean = false;
@@ -61,6 +64,7 @@ export class InsertareditarcarritocompraComponent implements OnInit {
     private route: ActivatedRoute,
     private usuarioService: UsuarioService,
     private productoService: ProductoService,
+    private metodopagoService: MetodoPagoService,
     private snackBar: MatSnackBar
   ) {}
 
@@ -77,6 +81,7 @@ export class InsertareditarcarritocompraComponent implements OnInit {
       idProducto: ['', Validators.required],
       fecha: ['', Validators.required],
       cantidad: ['', [Validators.required, Validators.min(1)]],
+      metpago:['', Validators.required],
     });
 
     this.usuarioService.list().subscribe((data) => {
@@ -85,6 +90,9 @@ export class InsertareditarcarritocompraComponent implements OnInit {
 
     this.productoService.list().subscribe((data) => {
       this.listaProductos = data;
+    });
+     this.metodopagoService.list().subscribe((data) => {
+      this.listaMetodoPago = data;
     });
   }
 
@@ -105,6 +113,10 @@ export class InsertareditarcarritocompraComponent implements OnInit {
 
     this.carritocompra.producto = new Producto();
     this.carritocompra.producto.idProducto = this.form.value.idProducto;
+this.carritocompra.metodoPago = new MetodoPago();
+this.carritocompra.metodoPago.idMetodoPago = this.form.value.metpago;
+
+
 
     if (this.edicion) {
       this.ccS.update(this.carritocompra).subscribe(() => {
@@ -145,6 +157,7 @@ export class InsertareditarcarritocompraComponent implements OnInit {
           idUsuario: new FormControl(data.user.idUser, Validators.required),
           idProducto: new FormControl(data.producto.idProducto, Validators.required),
           fecha: new FormControl(data.fechaCreaCarritoCompra, Validators.required),
+          metpago:new FormControl (data.metodoPago.idMetodoPago, Validators.required),
           cantidad: new FormControl(data.cantidad, [Validators.required, Validators.min(1)]),
         });
       });
