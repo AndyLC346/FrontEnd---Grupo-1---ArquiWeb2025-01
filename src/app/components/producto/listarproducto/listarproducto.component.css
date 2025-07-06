@@ -106,3 +106,51 @@
   width: 100px;
   height: auto;
 }
+
+.grid-productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* ✅ Centra horizontalmente */
+  gap: 20px;
+  padding: 20px;
+}
+
+.tarjeta-producto {
+  width: 220px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.tarjeta-producto:hover {
+  transform: scale(1.03);
+}
+
+.imagen-principal {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.tarjeta-producto h3 {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.tarjeta-producto p {
+  font-size: 14px;
+  color: #333;
+  margin: 3px 0;
+}
+
+.acciones {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
