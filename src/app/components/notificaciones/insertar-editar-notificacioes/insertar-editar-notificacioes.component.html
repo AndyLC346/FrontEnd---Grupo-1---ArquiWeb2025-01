@@ -1,7 +1,7 @@
+<!-- ENCABEZADO -->
 <div style="text-align: center; margin-top: 20px; margin-bottom: 20px" class="encabezado">
   <div class="contenedor-encabezado">
     <div class="iconos"></div>
-
     <div class="contenedor-logo" routerLink="/menu">
       <img src="assets/img/logo.png" alt="Logo" class="logopng" />
       <img src="assets/logosmenu/logotit.png" alt="Titulo" class="titulopng" />
@@ -10,44 +10,67 @@
   </div>
 </div>
 
-
+<!-- FORMULARIO -->
 <div class="dashboard">
   <div class="container">
-    <div style="text-align: center; ">
+    <div style="text-align: center;">
       <h1>{{ edicion ? 'Editar' : 'Registrar' }} Notificación</h1>
     </div>
-    <div style="text-align: center; ">
-      <form [formGroup]="form" (ngSubmit)="aceptar()">
-        <mat-form-field class="example-full-width">
+
+    <div style="display: flex; justify-content: center;">
+      <form [formGroup]="form" (ngSubmit)="aceptar()" style="width: 100%; max-width: 500px;">
+        
+        <!-- MENSAJE -->
+        <mat-form-field appearance="fill" style="width: 100%;">
           <mat-label>Mensaje</mat-label>
           <input matInput formControlName="mensaje" />
+          <mat-error *ngIf="form.get('mensaje')?.hasError('required')">
+            El mensaje es obligatorio.
+          </mat-error>
+          <mat-error *ngIf="form.get('mensaje')?.hasError('maxlength')">
+            El mensaje no puede superar los 250 caracteres.
+          </mat-error>
         </mat-form-field>
-        <br />
 
-        <mat-form-field class="example-full-width">
+        <!-- FECHA DE ENVÍO -->
+        <mat-form-field appearance="fill" style="width: 100%;">
           <mat-label>Fecha de Envío</mat-label>
           <input matInput [matDatepicker]="pickerFechaEnvio" formControlName="fechaEnvio" />
-          <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matIconSuffix [for]="pickerFechaEnvio"></mat-datepicker-toggle>
           <mat-datepicker #pickerFechaEnvio></mat-datepicker>
+          <mat-error *ngIf="form.get('fechaEnvio')?.hasError('required')">
+            La fecha es obligatoria.
+          </mat-error>
         </mat-form-field>
-        <br />
 
-        <mat-checkbox formControlName="leido">Leído</mat-checkbox>
-        <br />
+        <!-- LEÍDO -->
+        <mat-checkbox formControlName="leido" style="margin-bottom: 20px;">Leído</mat-checkbox>
 
-        <mat-form-field class="example-full-width">
+        <!-- USUARIO -->
+        <mat-form-field appearance="fill" style="width: 100%;">
           <mat-label>Usuario</mat-label>
           <mat-select formControlName="usuario1">
-            @for (food of listaUsuarios; track food) {
-            <mat-option [value]="food.idUser">{{ food.username }}</mat-option>
-            }
+            <mat-option *ngFor="let user of listaUsuarios" [value]="user.idUser">
+              {{ user.username }}
+            </mat-option>
           </mat-select>
+          <mat-error *ngIf="form.get('usuario1')?.hasError('required')">
+            Selecciona un usuario.
+          </mat-error>
         </mat-form-field>
-        <br />
 
-        <button matButton="filled">Registrar</button>
-        <button matButton="filled" type="button" (click)="cancelar()">Cancelar</button>
+        <!-- BOTONES -->
+     <div style="display: flex; justify-content: center; gap: 16px; margin-top: 20px;">
+          <button mat-raised-button type="submit"
+            style="background-color: black; color: white; border-radius: 10px; padding: 8px 20px;">
+            Registrar
+          </button>
+
+          <button mat-raised-button type="button" (click)="cancelar()"
+            style="background-color: black; color: white; border-radius: 10px; padding: 8px 20px;">
+            Cancelar
+          </button>
+        </div>
       </form>
     </div>
   </div>

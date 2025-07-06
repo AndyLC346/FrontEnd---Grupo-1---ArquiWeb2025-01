@@ -42,15 +42,19 @@ export class ListardescuentosComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
+loadData(): void {
+  this.dS.list().subscribe(data => {
+    this.dataSource = new MatTableDataSource(data);
+    this.dataSource.paginator = this.paginator;
+    this.noData = data.length === 0;
 
-  loadData(): void {
-    this.dS.list().subscribe(data => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
-      this.noData = data.length === 0;
-    });
-  }
-
+    if (this.noData) {
+      this.snackBar.open('No existen descuentos registrados', 'Cerrar', {
+        duration: 4000
+      });
+    }
+  });
+}
   eliminar(id: number): void {
     this.dS.deleteA(id).subscribe(() => {
       this.snackBar.open('Descuento eliminado correctamente', 'Cerrar', {

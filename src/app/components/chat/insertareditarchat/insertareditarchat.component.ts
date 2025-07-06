@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -22,6 +22,7 @@ import { UsuarioService } from '../../../services/usuario.service';
 import { MatNativeDateModule } from '@angular/material/core';
 import { SpeechRecognitionService } from '../../../services/speech-recognition.service';
 import { Subscription } from 'rxjs';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-insertareditarchat',
@@ -34,12 +35,13 @@ import { Subscription } from 'rxjs';
     MatSelectModule,
     MatButtonModule,
     MatNativeDateModule,
+    MatSnackBarModule,
     RouterLink,
   ],
   templateUrl: './insertareditarchat.component.html',
   styleUrl: './insertareditarchat.component.css',
 })
-export class InsertareditarchatComponent implements OnInit {
+export class InsertareditarchatComponent implements OnInit, OnDestroy {
   form: FormGroup = new FormGroup({});
   chat: Chats = new Chats();
 
@@ -58,19 +60,20 @@ export class InsertareditarchatComponent implements OnInit {
     private route: ActivatedRoute,
     private tS: TiendaService,
     private uS: UsuarioService,
-    private speechService: SpeechRecognitionService
+    private speechService: SpeechRecognitionService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
-      this.edicion = data['id'] != null;
+      this.edicion = this.id != null;
       this.init();
     });
 
     this.form = this.formBuilder.group({
       codigo: [''],
-      content: ['', Validators.required],
+      content: ['', [Validators.required, Validators.maxLength(300)]],
       fechita: ['', Validators.required],
       usuarii: ['', Validators.required],
       tiendita: ['', Validators.required],
@@ -84,12 +87,11 @@ export class InsertareditarchatComponent implements OnInit {
       this.listaUsuarios = data;
     });
 
-    this.subscripcion = this.speechService
-  .getTranscriptObservable()
-  .subscribe((texto) => {
-    this.form.get('content')?.setValue(texto);
-  });
+    this.subscripcion = this.speechService.getTranscriptObservable().subscribe((texto) => {
+      this.form.get('content')?.setValue(texto);
+    });
   }
+
   aceptar() {
     if (this.form.valid) {
       this.chat.idChat = this.form.value.codigo;
@@ -99,35 +101,43 @@ export class InsertareditarchatComponent implements OnInit {
       this.chat.tienda.idTienda = this.form.value.tiendita;
 
       if (this.edicion) {
-        //actualizar
         this.cS.update(this.chat).subscribe(() => {
           this.cS.list().subscribe((data) => {
             this.cS.setList(data);
+            this.snackBar.open('Chat actualizado correctamente', 'Cerrar', {
+              duration: 3000,
+            });
           });
         });
       } else {
-        //insertar
         this.cS.insert(this.chat).subscribe(() => {
           this.cS.list().subscribe((data) => {
             this.cS.setList(data);
+            this.snackBar.open('Chat registrado correctamente', 'Cerrar', {
+              duration: 3000,
+            });
           });
         });
       }
+
       this.router.navigate(['chats']);
-      this.speechService.limpiarTextoReconocido(); // Limpia el texto del speech
-
+      this.speechService.limpiarTextoReconocido();
+    } else {
+      this.snackBar.open('Por favor completa todos los campos correctamente', 'Cerrar', {
+        duration: 3000,
+      });
     }
-
   }
+
   init() {
     if (this.edicion) {
       this.cS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          codigo: new FormControl(data.idChat),
-          content: new FormControl(data.contenido),
-          fechita: new FormControl(data.fechaInicioChat),
-          usuarii: new FormControl(data.user.idUser),
-          tiendita: new FormControl(data.tienda.idTienda),
+        this.form = this.formBuilder.group({
+          codigo: [data.idChat],
+          content: [data.contenido, [Validators.required, Validators.maxLength(300)]],
+          fechita: [data.fechaInicioChat, Validators.required],
+          usuarii: [data.user.idUser, Validators.required],
+          tiendita: [data.tienda.idTienda, Validators.required],
         });
       });
     }
@@ -144,14 +154,12 @@ export class InsertareditarchatComponent implements OnInit {
   detenerReconocimiento() {
     this.speechService.stopListening();
   }
-    ngOnDestroy(): void {
+
+  ngOnDestroy(): void {
     if (this.subscripcion) {
       this.subscripcion.unsubscribe();
     }
     this.speechService.stopListening();
-    this.speechService.limpiarTextoReconocido(); // Limpia el texto al salir del componente
-
+    this.speechService.limpiarTextoReconocido();
   }
-  
-
 }

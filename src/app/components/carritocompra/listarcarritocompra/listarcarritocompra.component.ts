@@ -1,4 +1,3 @@
-// TS mejorado para ListarCarritoCompra mostrando mensaje cuando no existen carritos registrados
 
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -34,7 +33,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 export class ListarcarritocompraComponent implements OnInit {
 
   dataSource: MatTableDataSource<CarritoCompra> = new MatTableDataSource();
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7'];
+  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7','c8'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   filtro: string = '';
