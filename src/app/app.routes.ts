@@ -40,6 +40,7 @@ import { GraficocantidadproductosComponent } from './components/producto/grafico
 import { GraficocantidadmetodoComponent } from './components/metodo-pago/graficocantidadmetodo/graficocantidadmetodo.component';
 import { GraficoestadousuarioComponent } from './components/usuario/graficoestadousuario/graficoestadousuario.component';
 import { CarritocompraproductoComponent } from './components/carritocompraproducto/carritocompraproducto.component';
+import { InsertareditarcarritosComponent } from './components/carritocompraproducto/insertareditarcarritos/insertareditarcarritos.component';
 
 export const routes: Routes = [
   {
@@ -239,11 +240,11 @@ export const routes: Routes = [
     children: [
       {
         path: 'insertareditarcarritos',
-        component: CarritocompraproductoComponent,
+        component: InsertareditarcarritosComponent,
       },
       {
         path: 'ediciones/:id',
-        component: CarritocompraproductoComponent,
+        component: InsertareditarcarritosComponent,
       },
     ],
   },

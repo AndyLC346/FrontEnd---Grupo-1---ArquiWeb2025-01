@@ -9,7 +9,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { CarritoCompra } from '../../../models/carritocompra';
-import { ChatService } from '../../../services/chat.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CarritocompraproductoService } from '../../../services/carritocompraproducto.service';
 import { CarritocompraService } from '../../../services/carritocompra.service';

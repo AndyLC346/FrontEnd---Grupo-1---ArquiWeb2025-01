@@ -33,7 +33,7 @@
         <br />
         <div>
           <label>Estado</label>
-          <mat-radio-group formControlName="estado">
+          <mat-radio-group formControlName="estadi">
             <mat-radio-button [value]="true">Activo</mat-radio-button>
             <mat-radio-button [value]="false">Inactivo</mat-radio-button>
           </mat-radio-group>
@@ -42,8 +42,8 @@
         <br />
         <br />
         <mat-form-field>
-          <mat-label>Usuario</mat-label>
-          <mat-select formControlName="usuarii">
+          <mat-label>Carrito </mat-label>
+          <mat-select formControlName="carri">
             @for (food of listaCarritos; track food) {
             <mat-option [value]="food.idCarritoCompra">{{
               food.idCarritoCompra
