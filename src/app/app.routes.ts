@@ -36,6 +36,8 @@ import { BuscaresenaComponent } from './components/resena/buscaresena/buscaresen
 import { OrdenarResenasComponent } from './components/resena/ordenar-resenas/ordenar-resenas.component';
 import { BuscarmetodopagoComponent } from './components/metodo-pago/buscarmetodopago/buscarmetodopago.component';
 import { BuscarnotificacionesComponent } from './components/notificaciones/buscarnotificaciones/buscarnotificaciones.component';
+import { GraficocantidadproductosComponent } from './components/producto/graficocantidadproductos/graficocantidadproductos.component';
+import { GraficocantidadmetodoComponent } from './components/metodo-pago/graficocantidadmetodo/graficocantidadmetodo.component';
 
 export const routes: Routes = [
   {
@@ -96,6 +98,9 @@ export const routes: Routes = [
       },
       {
         path:'busquedanombre',component:BuscarproductoComponent
+      },
+      {
+        path:'graficoCantidadProductos', component:GraficocantidadproductosComponent
       }
     ],
   },
@@ -202,12 +207,15 @@ export const routes: Routes = [
       },
       {
         path:'buscarmetodotipo',component:BuscarmetodopagoComponent
+      },
+      {
+        path:'cantidadtipometodo', component:GraficocantidadmetodoComponent
       }
 
     ],
   },
   {
-    path: 'chat',
+    path: 'chats',
     component: ChatComponent,
     children: [
       {
