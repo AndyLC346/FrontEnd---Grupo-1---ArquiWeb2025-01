@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../models/usuario';
 import { Subject } from 'rxjs';
+import { UsuarioEstadoDTO } from '../models/usuarioestadoDTO';
 const base_url = environment.base
 @Injectable({
   providedIn: 'root'
@@ -39,4 +40,12 @@ export class UsuarioService {
   deleteA(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
+
+  //obtenerUsuariosPorEstado() {
+ //   return this.http.get<UsuarioEstadoDTO[]>(`${this.url}/usuarioestados`);
+  //}
+
+  obtenerUsuariosPorEstado() {
+  return this.http.get<{ estado: string, cantidad: number }[]>(`${this.url}/usuarioestados`);
+}
 }

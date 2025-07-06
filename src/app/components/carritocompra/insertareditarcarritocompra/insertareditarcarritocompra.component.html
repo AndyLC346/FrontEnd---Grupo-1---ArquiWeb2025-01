@@ -1,115 +1,100 @@
-<div
-  style="text-align: center; margin-top: 20px; margin-bottom: 20px"
-  class="encabezado"
->
+<div style="text-align: center; margin-top: 20px; margin-bottom: 20px" class="encabezado">
   <div class="contenedor-encabezado">
     <div class="iconos"></div>
 
     <div class="contenedor-logo" routerLink="/menu">
       <img src="assets/img/logo.png" alt="Logo" class="logopng" />
-      <img src="assets/img/nombrepagina.png" alt="Titulo" class="titulopng" />
+      <img src="assets/logosmenu/logotit.png" alt="Titulo" class="titulopng" />
+      <img src="assets/logosmenu/carrito.jpg" class="logo-centro" />
     </div>
   </div>
 </div>
 
-<div class="container">
-  <div style="text-align: center">
-    <h1>{{ edicion ? 'Editar' : 'Registrar' }} Carrito de Compras</h1>
-  </div>
+<div class="dashboard">
+  <div class="container">
+    <div style="text-align: center">
+      <h1>{{ edicion ? 'Editar' : 'Registrar' }} Carrito de Compras</h1>
+    </div>
 
-  <div style="margin: 0 auto; max-width: 600px;">
-    <form [formGroup]="form" (ngSubmit)="aceptar()">
+    <div style="text-align: center; ">
+      <form [formGroup]="form" (ngSubmit)="aceptar()">
 
-      <mat-form-field class="example-full-width" *ngIf="edicion">
-        <mat-label> ID </mat-label>
-        <br>
-        <input matInput  formControlName="codigo">
-        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
-          El codigo es obligatorio!!
-        </mat-error>
-      </mat-form-field>
-      <br/>
-      <!-- Usuario -->
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label> ID </mat-label>
+          <br>
+          <input matInput formControlName="codigo">
+          <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+            El codigo es obligatorio!!
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <!-- Usuario -->
 
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Usuario</mat-label>
-        <mat-select formControlName="idUsuario" required>
-          <mat-option *ngFor="let u of listaUsuarios" [value]="u.idUser">
-            {{ u.username }}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="form.get('idUsuario')?.hasError('required')">
-          El usuario es obligatorio
-        </mat-error>
-      </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Usuario</mat-label>
+          <mat-select formControlName="idUsuario" required>
+            <mat-option *ngFor="let u of listaUsuarios" [value]="u.idUser">
+              {{ u.username }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('idUsuario')?.hasError('required')">
+            El usuario es obligatorio
+          </mat-error>
+        </mat-form-field>
 
-      <br />
+        <br />
 
-      <!-- Producto -->
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Producto</mat-label>
-        <mat-select formControlName="idProducto" required>
-          <mat-option *ngFor="let p of listaProductos" [value]="p.idProducto">
-            {{ p.nombreProducto }}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="form.get('idProducto')?.hasError('required')">
-          El producto es obligatorio
-        </mat-error>
-      </mat-form-field>
+        <!-- Producto -->
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Producto</mat-label>
+          <mat-select formControlName="idProducto" required>
+            <mat-option *ngFor="let p of listaProductos" [value]="p.idProducto">
+              {{ p.nombreProducto }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('idProducto')?.hasError('required')">
+            El producto es obligatorio
+          </mat-error>
+        </mat-form-field>
 
-      <br />
+        <br />
 
-      <!-- Fecha -->
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Fecha de creación</mat-label>
-        <input
-          matInput
-          [matDatepicker]="picker"
-          formControlName="fecha"
-          required
-        />
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-        <mat-error *ngIf="form.get('fecha')?.hasError('required')">
-          La fecha es obligatoria
-        </mat-error>
-      </mat-form-field>
+        <!-- Fecha -->
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Fecha de creación</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="fecha" required />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="form.get('fecha')?.hasError('required')">
+            La fecha es obligatoria
+          </mat-error>
+        </mat-form-field>
 
-      <br />
+        <br />
 
-      <!-- Cantidad -->
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Cantidad</mat-label>
-        <input
-          matInput
-          type="number"
-          min="1"
-          formControlName="cantidad"
-          required
-        />
-        <mat-error *ngIf="form.get('cantidad')?.hasError('required')">
-          La cantidad es obligatoria
-        </mat-error>
-      </mat-form-field>
+        <!-- Cantidad -->
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Cantidad</mat-label>
+          <input matInput type="number" min="1" formControlName="cantidad" required />
+          <mat-error *ngIf="form.get('cantidad')?.hasError('required')">
+            La cantidad es obligatoria
+          </mat-error>
+        </mat-form-field>
 
-      <br /><br />
+        <br /><br />
 
-      <div style="text-align: center;">
-        <button
-          mat-raised-button
-          color="primary"
-          type="submit"
-          [disabled]="form.invalid || form.get('cantidad')?.value <= 0"
-        >
-          Aceptar
-        </button>
+        <div style="text-align: center;">
+          <button mat-raised-button class="boton-redondeado" type="submit"
+            [disabled]="form.invalid || form.get('cantidad')?.value <= 0">
+            Aceptar
+          </button>
 
-        <button mat-stroked-button color="warn" type="button" (click)="cancelar()">
-          Cancelar
-        </button>
-      </div>
-    </form>
+          <button mat-stroked-button class="boton-redondeado" type="button" (click)="cancelar()">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

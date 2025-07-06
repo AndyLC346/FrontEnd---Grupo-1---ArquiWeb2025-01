@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { ListardescuentosComponent } from "./listardescuentos/listardescuentos.component";
 
+
 @Component({
   selector: 'app-descuentos',
   imports: [RouterOutlet, ListardescuentosComponent],

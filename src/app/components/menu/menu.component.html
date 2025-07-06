@@ -18,87 +18,117 @@
 <div class="dashboard">
   <div class="grid">
 
-    <!-- ‑‑‑‑ PRODUCTOS ‑‑‑‑ -->
-    <div class="card" [matMenuTriggerFor]="menuProductos">
-      <mat-icon>local_mall</mat-icon>
-      <span>Productos</span>
-    </div>
-    <mat-menu #menuProductos="matMenu">
-      <button mat-menu-item routerLink="/productos">Listar</button>
-      <button mat-menu-item routerLink="/productos/insertareditarprod">Registrar</button>
-    </mat-menu>
-
-    <!-- ‑‑‑‑ DESCUENTOS ‑‑‑‑ -->
-    <div class="card" [matMenuTriggerFor]="menuDescuento">
-      <mat-icon>local_offer</mat-icon>
-      <span>Descuentos</span>
-    </div>
-    <mat-menu #menuDescuento="matMenu">
-      <button mat-menu-item routerLink="/descuento">Listar</button>
-      <button mat-menu-item routerLink="/descuento/insertareditardescuento">Registrar</button>
-    </mat-menu>
-
     <!-- ‑‑‑‑ USUARIOS ‑‑‑‑ -->
 
     <div class="card" [matMenuTriggerFor]="menuUsuarios">
-      <mat-icon>people</mat-icon>
-      <span>Usuarios</span>
+      <img src="assets/logosmenu/usuario.jpg" class="logousua">
+      <span style="font-size: 20px;">Usuarios</span>
     </div>
     <mat-menu #menuUsuarios="matMenu">
       <button mat-menu-item routerLink="/usuarios">Listar</button>
       <button mat-menu-item routerLink="/usuarios/insertareditarusuario">Registrar</button>
+      <button mat-menu-item routerLink="/usuarios/cantidadusuaractivo">Reporte Inactivos vs Activos</button>
     </mat-menu>
+
+
+    <!-- ‑‑‑‑ PRODUCTOS ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuProductos">
+      <img src="assets/logosmenu/producto.jpg" class="logoprod">
+      <span style="font-size: 20px;">Productos</span>
+    </div>
+    <mat-menu #menuProductos="matMenu">
+      <button mat-menu-item routerLink="/productos">Listar</button>
+      <button mat-menu-item routerLink="/productos/insertareditarprod">Registrar</button>
+      <button mat-menu-item routerLink="/productos/busquedanombre">Buscar producto</button>
+      <button mat-menu-item routerLink="/productos/graficoCantidadProductos">Cantidad productos</button>
+    </mat-menu>
+
+    <!-- ‑‑‑‑ DESCUENTOS ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuDescuento">
+      <img src="assets/logosmenu/descuento.jpg" class="logodes">
+      <span style="font-size: 20px;">Descuentos</span>
+    </div>
+    <mat-menu #menuDescuento="matMenu">
+      <button mat-menu-item routerLink="/descuento">Listar</button>
+      <button mat-menu-item routerLink="/descuento/insertareditardescuento">Registrar</button>
+      <button mat-menu-item routerLink="/descuento/listar-descuento-vigentes">Lista de Descuento Vigentes</button>
+      <button mat-menu-item routerLink="/descuento/listardescuentosordenadosporporcentaje">Lista de Descuento Ordenado Porcentaje</button>
+    </mat-menu>
+
+
 
     <!-- ‑‑‑‑ TIENDAS ‑‑‑‑ -->
     <div class="card" [matMenuTriggerFor]="menuTiendas">
-      <mat-icon>store</mat-icon>
-      <span>Tiendas</span>
+      <img src="assets/logosmenu/tienda.jpg" class="logodes">
+      <span style="font-size: 20px;">Tiendas</span>
     </div>
     <mat-menu #menuTiendas="matMenu">
       <button mat-menu-item routerLink="/tiendas">Listar</button>
       <button mat-menu-item routerLink="/tiendas/insertareditartienda">Registrar</button>
+      <button mat-menu-item routerLink="/tiendas/buscarnombretienda">Buscar Tienda</button>
     </mat-menu>
 
 
     <!-- ‑‑‑‑ RESEÑAS ‑‑‑‑ -->
     <div class="card" [matMenuTriggerFor]="menuResenas">
-      <mat-icon>rate_review</mat-icon>
-      <span>Reseñas</span>
+      <img src="assets/logosmenu/resena.jpg" class="logodes">
+      <span style="font-size: 20px;">Reseñas</span>
     </div>
     <mat-menu #menuResenas="matMenu">
       <button mat-menu-item routerLink="/resenas">Listar</button>
       <button mat-menu-item routerLink="/resenas/insertareditarese">Registrar</button>
+      <button mat-menu-item routerLink="/resenas/buscarcalificacion">Buscar reseña</button>
+      <button mat-menu-item routerLink="/resenas/ordenaresena">Lista mejor y peor</button>
     </mat-menu>
 
     <!-- ‑‑‑‑ CARRITO COMPRA ‑‑‑‑ -->
     <div class="card" [matMenuTriggerFor]="menuCarrito">
-      <mat-icon>shopping_cart</mat-icon>
-      <span>Carrito Compra</span>
+      <img src="assets/logosmenu/carrito.jpg" class="logodes">
+      <span style="font-size: 20px;">Carrito Compra</span>
     </div>
     <mat-menu #menuCarrito="matMenu">
       <button mat-menu-item routerLink="/carritocompra">Listar</button>
       <button mat-menu-item routerLink="/carritocompra/insertareditarcarritocompra">Registrar</button>
-    </mat-menu>
- <!-- ‑‑‑‑ metodopago ‑‑‑‑ -->
-    <div class="card" [matMenuTriggerFor]="menuMetodoPago">
-      <mat-icon>yape</mat-icon>
-      <span>MetodoPago</span>
-    </div>
-    <mat-menu #menuMetodoPago="matMenu">
-      <button mat-menu-item routerLink="/metodos-de-pago">Listar</button>
-      <button mat-menu-item routerLink="/metodos-de-pago/insertareditarmetodopago">Registrar</button>
+      <button mat-menu-item routerLink="/carritocompra/carrito-ordenado-porPrecio">Reporte CarritoOrdenado Precio </button>
+
+
     </mat-menu>
 
-   <!-- ‑‑‑‑ Notificaciones ‑‑‑‑ -->
+
+    <!-- ‑‑‑‑ metodopago ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuMetodoPago">
+      <img src="assets/logosmenu/metodopago.jpg" class="logodes">
+      <span style="font-size: 20px;">Metodo Pago</span>
+    </div>
+    <mat-menu #menuMetodoPago="matMenu">
+      <button mat-menu-item routerLink="/metodosdepago">Listar</button>
+      <button mat-menu-item routerLink="/metodosdepago/insertareditarmetodopago">Registrar</button>
+      <button mat-menu-item routerLink="/metodosdepago/buscarmetodotipo">Buscar por tipo</button>
+      <button mat-menu-item routerLink="/metodosdepago/cantidadtipometodo">Cantidad por Tipo de pago</button>
+    </mat-menu>
+
+
+    <!-- ‑‑‑‑ Notificaciones ‑‑‑‑ -->
     <div class="card" [matMenuTriggerFor]="menuNotificaciones">
-      <mat-icon>MESSAGE1</mat-icon>
-      <span>Notificaciones</span>
+      <img src="assets/logosmenu/notifica.jpg" class="logodes">
+      <span style="font-size: 17px;">Notificaciones</span>
     </div>
     <mat-menu #menuNotificaciones="matMenu">
       <button mat-menu-item routerLink="/notificaciones">Listar</button>
       <button mat-menu-item routerLink="/notificaciones/nuevo">Registrar</button>
+      <button mat-menu-item routerLink="/notificaciones/buscarleidonotifica">Buscar por Leidos</button>
     </mat-menu>
-    
+
+
+    <!-- ‑‑‑‑ CHATS ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuChat">
+      <img src="assets/logosmenu/chat.jpg" class="logodes">
+      <span style="font-size: 20px;">Chats</span>
+    </div>
+    <mat-menu #menuChat="matMenu">
+      <button mat-menu-item routerLink="/chats">Listar</button>
+      <button mat-menu-item routerLink="/chats/insertareditarchat">Registrar</button>
+    </mat-menu>
 
   </div>
 </div>
