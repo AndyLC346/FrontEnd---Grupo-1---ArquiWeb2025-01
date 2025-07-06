@@ -26,61 +26,112 @@ import { ListarMetodoPagoComponent } from './components/metodo-pago/listar-metod
 import { InsertarEditarMetodoPagoComponent } from './components/metodo-pago/insertar-editar-metodo-pago/insertar-editar-metodo-pago.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { InsertareditarchatComponent } from './components/chat/insertareditarchat/insertareditarchat.component';
-
+import { OrdencarritocompraComponent } from './components/carritocompra/ordencarritocompra/ordencarritocompra.component';
+import { ListarDescuentoVigentesComponent } from './components/descuentos/listar-descuento-vigentes/listar-descuento-vigentes.component';
+import { ListarDescuentosOrdenadosPorPorcentajeDTO } from './models/ListarDescuentosOrdenadosXPorcentaje';
+import { ListardescuentosordenadosporporcentajeComponent } from './components/descuentos/listardescuentosordenadosporporcentaje/listardescuentosordenadosporporcentaje.component';
+import { BuscarproductoComponent } from './components/producto/buscarproducto/buscarproducto.component';
+import { BuscartiendaComponent } from './components/tienda/buscartienda/buscartienda.component';
+import { BuscaresenaComponent } from './components/resena/buscaresena/buscaresena.component';
+import { OrdenarResenasComponent } from './components/resena/ordenar-resenas/ordenar-resenas.component';
+import { BuscarmetodopagoComponent } from './components/metodo-pago/buscarmetodopago/buscarmetodopago.component';
+import { BuscarnotificacionesComponent } from './components/notificaciones/buscarnotificaciones/buscarnotificaciones.component';
+import { GraficocantidadproductosComponent } from './components/producto/graficocantidadproductos/graficocantidadproductos.component';
+import { GraficocantidadmetodoComponent } from './components/metodo-pago/graficocantidadmetodo/graficocantidadmetodo.component';
+import { GraficoestadousuarioComponent } from './components/usuario/graficoestadousuario/graficoestadousuario.component';
 
 export const routes: Routes = [
   {
-    path: '', component: HomeComponent, pathMatch: 'full'
-
+    path: '',
+    component: HomeComponent,
+    pathMatch: 'full',
   },
 
   {
-    path: 'menu', component: MenuComponent
+    path: 'menu',
+    component: MenuComponent,
   },
 
   {
-    path: 'tiendas', component: TiendaComponent,
-    children: [{
-      path: 'insertareditartienda', component: InsertareditartiendaComponent
-    },
-    {
-      path: 'actualizaciones/:id', component: InsertareditartiendaComponent
-    }]
+    path: 'tiendas',
+    component: TiendaComponent,
+    children: [
+      {
+        path: 'insertareditartienda',
+        component: InsertareditartiendaComponent,
+      },
+      {
+        path: 'actualizaciones/:id',
+        component: InsertareditartiendaComponent,
+      },
+      {
+        path:'buscarnombretienda',component:BuscartiendaComponent
+      }
+    ],
   },
 
   {
-    path: 'usuarios', component: UsuarioComponent,
-    children:[{
-      path:'detalleusua/:id', component: DetalleUsuarioComponent
-    }]
+    path: 'usuarios',
+    component: UsuarioComponent,
+    children: [
+      {
+        path: 'detalleusua/:id',
+        component: DetalleUsuarioComponent,
+      },
+      {
+        path:'cantidadusuaractivo',component:GraficoestadousuarioComponent
+      }
+    ],
   },
 
   {
-    path: 'productos', component: ProductoComponent,
-    children: [{
-      path: 'insertareditarprod', component: InsertareditarproductoComponent
-    },
-    {
-      path: 'actualizaproducto/:id', component: InsertareditarproductoComponent
-    },
-    {
-      path: 'detalle/:id', component: DetalleProductoComponent
-    }
-    ]
+    path: 'productos',
+    component: ProductoComponent,
+    children: [
+      {
+        path: 'insertareditarprod',
+        component: InsertareditarproductoComponent,
+      },
+      {
+        path: 'actualizaproducto/:id',
+        component: InsertareditarproductoComponent,
+      },
+      {
+        path: 'detalle/:id',
+        component: DetalleProductoComponent,
+      },
+      {
+        path:'busquedanombre',component:BuscarproductoComponent
+      },
+      {
+        path:'graficoCantidadProductos', component:GraficocantidadproductosComponent
+      }
+    ],
   },
 
   {
-    path: 'resenas', component: ResenaComponent,
-    children: [{
-      path: 'insertareditarese', component: InsertareditaresenaComponent
-    },
-    {
-      path: 'actualizaresena/:id', component: InsertareditaresenaComponent
-    },
-    {
-      path: 'detallerese/:id', component: DetalleResenaComponent
-    }
-    ]
+    path: 'resenas',
+    component: ResenaComponent,
+    children: [
+      {
+        path: 'insertareditarese',
+        component: InsertareditaresenaComponent,
+      },
+      {
+        path: 'actualizaresena/:id',
+        component: InsertareditaresenaComponent,
+      },
+      {
+        path: 'detallerese/:id',
+        component: DetalleResenaComponent,
+      },
+      {
+        path:'buscarcalificacion', component: BuscaresenaComponent
+      },
+      {
+        path:'ordenaresena', component:OrdenarResenasComponent
+      }
+    ],
   },
   {
     path: 'carritocompra',
@@ -92,8 +143,12 @@ export const routes: Routes = [
       },
       {
         path: 'editarcarrito/:id',
-        component: InsertareditarcarritocompraComponent
-      }
+        component: InsertareditarcarritocompraComponent,
+      },
+      {
+      path: 'carrito-ordenado-porPrecio',
+        component: OrdencarritocompraComponent,
+      },
     ],
   },
   {
@@ -112,17 +167,20 @@ export const routes: Routes = [
         path: 'editardescuento/:id',
         component: InsertareditardescuentosComponent,
       },
-  
+      {
+        path: 'listar-descuento-vigentes',
+        component: ListarDescuentoVigentesComponent,
+      },
+      {
+        path: 'listardescuentosordenadosporporcentaje',
+        component: ListardescuentosordenadosporporcentajeComponent,
+      }
     ],
   },
   {
-      path: 'notificaciones',
+    path: 'notificaciones',
     component: NotificacionesComponent,
     children: [
-      {
-        path: '',
-        component: ListarNotificacionesComponent,
-      },
       {
         path: 'nuevo',
         component: InsertarEditarNotificacionesComponent,
@@ -131,16 +189,18 @@ export const routes: Routes = [
         path: 'ediciones/:id',
         component: InsertarEditarNotificacionesComponent,
       },
+      {
+        path:'buscarleidonotifica',component:BuscarnotificacionesComponent
+      }
+
     ],
   },
+
+
   {
-    path: 'metodos-de-pago',
+    path: 'metodosdepago',
     component: MetodoPagoComponent,
     children: [
-      {
-        path: '',
-        component: ListarMetodoPagoComponent,
-      },
       {
         path: 'insertareditarmetodopago',
         component: InsertarEditarMetodoPagoComponent,
@@ -149,10 +209,17 @@ export const routes: Routes = [
         path: 'ediciones/:id',
         component: InsertarEditarMetodoPagoComponent,
       },
-     ],
+      {
+        path:'buscarmetodotipo',component:BuscarmetodopagoComponent
+      },
+      {
+        path:'cantidadtipometodo', component:GraficocantidadmetodoComponent
+      }
+
+    ],
   },
- {
-    path: 'chat',
+  {
+    path: 'chats',
     component: ChatComponent,
     children: [
       {
@@ -160,10 +227,9 @@ export const routes: Routes = [
         component: InsertareditarchatComponent,
       },
       {
-      path: 'ediciones/:id', component: InsertareditarproductoComponent
-    },
+        path: 'ediciones/:id',
+        component: InsertareditarchatComponent,
+      },
     ],
   },
- ];
-
-
+];

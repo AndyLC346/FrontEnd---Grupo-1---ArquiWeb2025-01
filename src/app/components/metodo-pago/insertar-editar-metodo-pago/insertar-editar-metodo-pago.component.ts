@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -32,7 +32,8 @@ import { UsuarioService } from '../../../services/usuario.service';
     MatInputModule,
     MatDatepickerModule,
     MatButtonModule,
-    CommonModule
+    CommonModule,
+    RouterLink
   ],
   templateUrl: './insertar-editar-metodo-pago.component.html',
   styleUrl: './insertar-editar-metodo-pago.component.css',
@@ -48,7 +49,9 @@ export class InsertarEditarMetodoPagoComponent implements OnInit {
     { value: 'Tarjeta de Crédito', viewValue: 'Tarjeta de Crédito' },
     { value: 'Tarjeta de Débito', viewValue: 'Tarjeta de Débito' },
     { value: 'PayPal', viewValue: 'PayPal' },
-    { value: 'Transferencia Bancaria', viewValue: 'Transferencia Bancaria' }
+    { value: 'Transferencia Bancaria', viewValue: 'Transferencia Bancaria' },
+    { value: 'Yape', viewValue: 'Yape' },
+    { value: 'Plin', viewValue: 'Plin' }
   ];
 
   constructor(
@@ -57,11 +60,11 @@ export class InsertarEditarMetodoPagoComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private uS: UsuarioService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
-      this.id = data['id'];  
+      this.id = data['id'];
       this.edicion = this.id != null;
       this.init();
     });
@@ -98,7 +101,7 @@ export class InsertarEditarMetodoPagoComponent implements OnInit {
           });
         });
       }
-      this.router.navigate(['metodos-de-pago']);
+      this.router.navigate(['metodosdepago']);
     }
   }
 
@@ -113,5 +116,10 @@ export class InsertarEditarMetodoPagoComponent implements OnInit {
         });
       });
     }
+  }
+
+
+  cancelar() {
+    this.router.navigate(['metodosdepago'])
   }
 }

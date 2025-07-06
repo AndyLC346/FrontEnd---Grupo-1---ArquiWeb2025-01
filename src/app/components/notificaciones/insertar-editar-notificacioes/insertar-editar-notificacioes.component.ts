@@ -116,4 +116,8 @@ export class InsertarEditarNotificacionesComponent implements OnInit {
       });
     }
   }
+
+    cancelar() {
+    this.router.navigate(['notificaciones'])
+  }
 }

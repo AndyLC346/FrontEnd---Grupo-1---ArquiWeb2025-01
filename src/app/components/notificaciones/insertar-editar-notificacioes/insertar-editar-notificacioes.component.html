@@ -1,44 +1,54 @@
-<div>
-  <div><h1>{{ edicion ? 'Editar' : 'Registrar' }} Notificación</h1></div>
-  <div>
-    <form [formGroup]="form" (ngSubmit)="aceptar()">
-      <mat-form-field class="example-full-width">
-        <mat-label>Mensaje</mat-label>
-        <input matInput formControlName="mensaje" />
-      </mat-form-field>
-      <br />
+<div style="text-align: center; margin-top: 20px; margin-bottom: 20px" class="encabezado">
+  <div class="contenedor-encabezado">
+    <div class="iconos"></div>
 
-      <mat-form-field>
-        <mat-label>Fecha de Envío</mat-label>
-        <input
-          matInput
-          [matDatepicker]="pickerFechaEnvio"
-          formControlName="fechaEnvio"
-        />
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="pickerFechaEnvio"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #pickerFechaEnvio></mat-datepicker>
-      </mat-form-field>
-      <br />
+    <div class="contenedor-logo" routerLink="/menu">
+      <img src="assets/img/logo.png" alt="Logo" class="logopng" />
+      <img src="assets/logosmenu/logotit.png" alt="Titulo" class="titulopng" />
+      <img src="assets/logosmenu/notifica.jpg" class="logo-centro" />
+    </div>
+  </div>
+</div>
 
-      <mat-checkbox formControlName="leido">Leído</mat-checkbox>
-      <br />
 
-      <mat-form-field>
-        <mat-label>Usuario</mat-label>
-        <mat-select formControlName="usuario1">
-          @for (food of listaUsuarios; track food) {
+<div class="dashboard">
+  <div class="container">
+    <div style="text-align: center; ">
+      <h1>{{ edicion ? 'Editar' : 'Registrar' }} Notificación</h1>
+    </div>
+    <div style="text-align: center; ">
+      <form [formGroup]="form" (ngSubmit)="aceptar()">
+        <mat-form-field class="example-full-width">
+          <mat-label>Mensaje</mat-label>
+          <input matInput formControlName="mensaje" />
+        </mat-form-field>
+        <br />
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Fecha de Envío</mat-label>
+          <input matInput [matDatepicker]="pickerFechaEnvio" formControlName="fechaEnvio" />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="pickerFechaEnvio"></mat-datepicker-toggle>
+          <mat-datepicker #pickerFechaEnvio></mat-datepicker>
+        </mat-form-field>
+        <br />
+
+        <mat-checkbox formControlName="leido">Leído</mat-checkbox>
+        <br />
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Usuario</mat-label>
+          <mat-select formControlName="usuario1">
+            @for (food of listaUsuarios; track food) {
             <mat-option [value]="food.idUser">{{ food.username }}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
-      <br />
+            }
+          </mat-select>
+        </mat-form-field>
+        <br />
 
-      <button mat-raised-button color="primary" type="submit">Aceptar</button>
-      <button mat-raised-button color="warn" routerLink="notificaciones">Cancelar</button>
-    </form>
+        <button matButton="filled">Registrar</button>
+        <button matButton="filled" type="button" (click)="cancelar()">Cancelar</button>
+      </form>
+    </div>
   </div>
 </div>
