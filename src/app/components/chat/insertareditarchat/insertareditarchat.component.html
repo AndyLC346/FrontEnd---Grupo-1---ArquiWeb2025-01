@@ -1,4 +1,7 @@
-<div style="text-align: center; margin-top: 20px; margin-bottom: 20px" class="encabezado">
+<div
+  style="text-align: center; margin-top: 20px; margin-bottom: 20px"
+  class="encabezado"
+>
   <div class="contenedor-encabezado">
     <div class="iconos"></div>
 
@@ -15,8 +18,8 @@
     <div style="text-align: center">
       <h1>Registro de Chats</h1>
     </div>
-    <div style="text-align: center ">
-      <form [formGroup]="form" (submit)="aceptar()">
+    <div style="text-align: center">
+      <form [formGroup]="form" (ngSubmit)="aceptar()">
         <mat-form-field class="example-full-width" *ngIf="edicion">
           <mat-label> ID </mat-label>
           <br />
@@ -29,15 +32,40 @@
 
         <mat-form-field class="example-full-width">
           <mat-label>Mensaje</mat-label>
-          <textarea matInput formControlName="content" placeholder="mensaje..."></textarea>
+          <textarea
+            matInput
+            formControlName="content"
+            placeholder="mensaje..."
+          ></textarea>
         </mat-form-field>
 
+        <div style="margin-top: 10px">
+          <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="iniciarReconocimiento()"
+          >
+            🎤 Iniciar Dictado
+          </button>
+          <button
+            mat-raised-button
+            color="warn"
+            type="button"
+            (click)="detenerReconocimiento()"
+          >
+            🛑 Detener
+          </button>
+        </div>
         <br />
         <mat-form-field>
           <mat-label>Fecha de creacion</mat-label>
           <input matInput [matDatepicker]="picker" formControlName="fechita" />
           <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <br />
@@ -57,7 +85,7 @@
             @for (food of listaTiendas; track food) {
             <mat-option [value]="food.idTienda">{{
               food.nombreTienda
-              }}</mat-option>
+            }}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -65,7 +93,7 @@
         <br />
 
         <button matButton="filled">Registrar</button>
-        <br />
+         <br />
         <br />
         <button matButton="filled" type="button" (click)="cancelar()">
           Cancelar
