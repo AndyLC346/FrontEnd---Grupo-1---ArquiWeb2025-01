@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterOutlet } from '@angular/router';
-import { ChatComponent } from "./components/chat/chat.component";
 import { ChatbotComponent } from "./components/chat/chatbot/chatbot.component";
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -23,7 +22,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent  {
   title = 'FrontendGrupo1';
 
   isMuted = true; // comienza silenciado
@@ -52,3 +51,7 @@ export class AppComponent {
   }
 
 }
+
+
+
+
