@@ -38,6 +38,7 @@ import { BuscarmetodopagoComponent } from './components/metodo-pago/buscarmetodo
 import { BuscarnotificacionesComponent } from './components/notificaciones/buscarnotificaciones/buscarnotificaciones.component';
 import { GraficocantidadproductosComponent } from './components/producto/graficocantidadproductos/graficocantidadproductos.component';
 import { GraficocantidadmetodoComponent } from './components/metodo-pago/graficocantidadmetodo/graficocantidadmetodo.component';
+import { GraficoestadousuarioComponent } from './components/usuario/graficoestadousuario/graficoestadousuario.component';
 
 export const routes: Routes = [
   {
@@ -77,6 +78,9 @@ export const routes: Routes = [
         path: 'detalleusua/:id',
         component: DetalleUsuarioComponent,
       },
+      {
+        path:'cantidadusuaractivo',component:GraficoestadousuarioComponent
+      }
     ],
   },
 
