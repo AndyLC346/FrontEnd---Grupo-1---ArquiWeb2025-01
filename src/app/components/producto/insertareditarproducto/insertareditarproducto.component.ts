@@ -74,9 +74,19 @@ export class InsertareditarproductoComponent implements OnInit {
       codigopro: [''],
       nombrepro: ['', [Validators.required, Validators.maxLength(100)]],
       descripcionPro: ['', [Validators.required, Validators.maxLength(300)]],
-      precioPro: ['', [Validators.required, Validators.pattern('^[0-9]+(\\.[0-9]{1,2})?$')]],
+      precioPro: ['', [
+        Validators.required,
+        Validators.pattern('^[0-9]+(\\.[0-9]{1,2})?$'),
+        Validators.min(0.1),
+        Validators.max(10000)
+      ]],
       categoriaPro: ['', Validators.required],
-      stockPro: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      stockPro: ['', [
+        Validators.required,
+        Validators.pattern('^[0-9]+$'),
+        Validators.min(1),
+        Validators.max(10000)
+      ]],
       fechaPro: ['', Validators.required],
       tiendita: ['', Validators.required]
     });
@@ -95,8 +105,8 @@ export class InsertareditarproductoComponent implements OnInit {
     }
 
     this.producto.idProducto = this.form.value.codigopro;
-    this.producto.nombreProducto = this.form.value.nombrepro;
-    this.producto.descripcionProducto = this.form.value.descripcionPro;
+    this.producto.nombreProducto = this.form.value.nombrepro.trim();
+    this.producto.descripcionProducto = this.form.value.descripcionPro.trim();
     this.producto.precioProducto = this.form.value.precioPro;
     this.producto.categoriaProducto = this.form.value.categoriaPro;
     this.producto.stock = this.form.value.stockPro;
@@ -133,9 +143,19 @@ export class InsertareditarproductoComponent implements OnInit {
           codigopro: new FormControl(data.idProducto),
           nombrepro: new FormControl(data.nombreProducto, [Validators.required, Validators.maxLength(100)]),
           descripcionPro: new FormControl(data.descripcionProducto, [Validators.required, Validators.maxLength(300)]),
-          precioPro: new FormControl(data.precioProducto, [Validators.required, Validators.pattern('^[0-9]+(\\.[0-9]{1,2})?$')]),
+          precioPro: new FormControl(data.precioProducto, [
+            Validators.required,
+            Validators.pattern('^[0-9]+(\\.[0-9]{1,2})?$'),
+            Validators.min(0.1),
+            Validators.max(10000)
+          ]),
           categoriaPro: new FormControl(data.categoriaProducto, [Validators.required]),
-          stockPro: new FormControl(data.stock, [Validators.required, Validators.pattern('^[0-9]+$')]),
+          stockPro: new FormControl(data.stock, [
+            Validators.required,
+            Validators.pattern('^[0-9]+$'),
+            Validators.min(1),
+            Validators.max(10000)
+          ]),
           fechaPro: new FormControl(data.fechaCreacionProducto, [Validators.required]),
           tiendita: new FormControl(data.tienda.idTienda, [Validators.required]),
         });

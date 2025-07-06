@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -21,6 +20,17 @@ import { Producto } from '../../../models/producto';
 import { ProductoService } from '../../../services/producto.service';
 import { DescuentoService } from '../../../services/descuento.service';
 import { Descuentos } from '../../../models/descuento';
+
+// ✅ Validador personalizado de rango de fechas
+function rangoFechasValidator(group: FormGroup): { [key: string]: any } | null {
+  const inicio = group.get('fechaInicioDescuento')?.value;
+  const fin = group.get('fechaFinDescuento')?.value;
+
+  if (inicio && fin && new Date(inicio) > new Date(fin)) {
+    return { rangoFechasInvalido: true };
+  }
+  return null;
+}
 
 @Component({
   selector: 'app-insertareditardescuentos',
@@ -76,14 +86,20 @@ export class InsertareditardescuentosComponent implements OnInit {
       fechaInicioDescuento: ['', Validators.required],
       fechaFinDescuento: ['', Validators.required],
       producto: ['', Validators.required],
-    });
+    }, { validators: rangoFechasValidator }); // ✅ Se aplica la validación personalizada
   }
 
   aceptar() {
     if (this.form.invalid) {
-      this.snackBar.open('Por favor, completa todos los campos correctamente.', 'Cerrar', {
-        duration: 3000,
-      });
+      if (this.form.hasError('rangoFechasInvalido')) {
+        this.snackBar.open('La fecha de fin no puede ser anterior a la fecha de inicio.', 'Cerrar', {
+          duration: 3000,
+        });
+      } else {
+        this.snackBar.open('Por favor, completa todos los campos correctamente.', 'Cerrar', {
+          duration: 3000,
+        });
+      }
       return;
     }
 
@@ -129,7 +145,7 @@ export class InsertareditardescuentosComponent implements OnInit {
           fechaInicioDescuento: new FormControl(data.fechaInicioDescuento, Validators.required),
           fechaFinDescuento: new FormControl(data.fechaFinDescuento, Validators.required),
           producto: new FormControl(data.producto.idProducto, Validators.required),
-        });
+        }, { validators: rangoFechasValidator });
       });
     }
   }

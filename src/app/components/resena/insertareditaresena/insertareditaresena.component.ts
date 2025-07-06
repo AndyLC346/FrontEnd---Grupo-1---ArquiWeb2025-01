@@ -6,6 +6,9 @@ import {
   FormGroup,
   ReactiveFormsModule,
   Validators,
+  ValidatorFn,
+  AbstractControl,
+  ValidationErrors
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { provideNativeDateAdapter } from '@angular/material/core';
@@ -79,7 +82,7 @@ export class InsertareditaresenaComponent implements OnInit {
       codigorese: [''],
       califresena: ['', [Validators.required, Validators.min(1), Validators.max(5)]],
       comentarioresena: ['', [Validators.required, Validators.maxLength(300)]],
-      fecharesena: ['', Validators.required],
+      fecharesena: ['', [Validators.required, this.fechaNoFuturaValidator]],
       usersito: ['', Validators.required],
       productito: ['', Validators.required],
     });
@@ -131,22 +134,32 @@ export class InsertareditaresenaComponent implements OnInit {
     }
   }
 
+  cancelar() {
+    this.router.navigate(['resenas']);
+  }
+
   init() {
     if (this.actualizacion) {
       this.rS.listID(this.id).subscribe((data) => {
         this.form = this.formBuilder.group({
-          codigorese: new FormControl(data.idResena),
-          califresena: new FormControl(data.calificacion, [Validators.required, Validators.min(1), Validators.max(5)]),
-          comentarioresena: new FormControl(data.comentario, [Validators.required, Validators.maxLength(300)]),
-          fecharesena: new FormControl(data.fecha, Validators.required),
-          usersito: new FormControl(data.user.idUser, Validators.required),
-          productito: new FormControl(data.producto.idProducto, Validators.required),
+          codigorese: this.formBuilder.control(data.idResena),
+          califresena: this.formBuilder.control(data.calificacion, [Validators.required, Validators.min(1), Validators.max(5)]),
+          comentarioresena: this.formBuilder.control(data.comentario, [Validators.required, Validators.maxLength(300)]),
+          fecharesena: this.formBuilder.control(data.fecha, [Validators.required, this.fechaNoFuturaValidator]),
+          usersito: this.formBuilder.control(data.user.idUser, Validators.required),
+          productito: this.formBuilder.control(data.producto.idProducto, Validators.required),
         });
       });
     }
   }
 
-  cancelar() {
-    this.router.navigate(['resenas']);
-  }
+  // ✅ Validador personalizado que impide fechas futuras
+  fechaNoFuturaValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+    const fechaIngresada = new Date(control.value);
+    const hoy = new Date();
+    fechaIngresada.setHours(0, 0, 0, 0);
+    hoy.setHours(0, 0, 0, 0);
+
+    return fechaIngresada > hoy ? { fechaFutura: true } : null;
+  };
 }
