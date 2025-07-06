@@ -32,6 +32,7 @@
   margin-top: -20px; /* 👈 crea separación visible para que aparezca el borde */
 }
 
+
 /* Estilos para el título "Lista de Chats" */
 .titulo-chats {
   text-align: center;
@@ -57,7 +58,7 @@
 }
 
 .tabla-estilizada th {
-  background-color: #1c8a9d;
+  background-color: #3f51b5;
   color: white;
   font-weight: bold;
   text-align: center;

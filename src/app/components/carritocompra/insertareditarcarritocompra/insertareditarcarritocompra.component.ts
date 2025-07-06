@@ -1,5 +1,3 @@
-// Mejorada InsertareditarcarritocompraComponent con validaciones adicionales y snackbar al registrar
-
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -43,7 +41,7 @@ import { MetodoPagoService } from '../../../services/metodo-pago.service';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSnackBarModule,
-    RouterLink
+    RouterLink,
   ],
 })
 export class InsertareditarcarritocompraComponent implements OnInit {
@@ -52,10 +50,12 @@ export class InsertareditarcarritocompraComponent implements OnInit {
 
   listaUsuarios: Usuario[] = [];
   listaProductos: Producto[] = [];
-  listaMetodoPago: MetodoPago[]=[];
+  listaMetodoPago: MetodoPago[] = [];
 
   id: number = 0;
   edicion: boolean = false;
+
+  maxFecha: Date = new Date(); // Limitar fecha al día actual
 
   constructor(
     private ccS: CarritocompraService,
@@ -79,9 +79,9 @@ export class InsertareditarcarritocompraComponent implements OnInit {
       codigo: [''],
       idUsuario: ['', Validators.required],
       idProducto: ['', Validators.required],
-      fecha: ['', Validators.required],
-      cantidad: ['', [Validators.required, Validators.min(1)]],
-      metpago:['', Validators.required],
+      fecha: ['', [Validators.required, Validators.max(this.maxFecha.getTime())]],
+      cantidad: ['', [Validators.required, Validators.min(1), Validators.max(100)]],
+      metpago: ['', Validators.required],
     });
 
     this.usuarioService.list().subscribe((data) => {
@@ -91,7 +91,8 @@ export class InsertareditarcarritocompraComponent implements OnInit {
     this.productoService.list().subscribe((data) => {
       this.listaProductos = data;
     });
-     this.metodopagoService.list().subscribe((data) => {
+
+    this.metodopagoService.list().subscribe((data) => {
       this.listaMetodoPago = data;
     });
   }
@@ -113,10 +114,9 @@ export class InsertareditarcarritocompraComponent implements OnInit {
 
     this.carritocompra.producto = new Producto();
     this.carritocompra.producto.idProducto = this.form.value.idProducto;
-this.carritocompra.metodoPago = new MetodoPago();
-this.carritocompra.metodoPago.idMetodoPago = this.form.value.metpago;
 
-
+    this.carritocompra.metodoPago = new MetodoPago();
+    this.carritocompra.metodoPago.idMetodoPago = this.form.value.metpago;
 
     if (this.edicion) {
       this.ccS.update(this.carritocompra).subscribe(() => {
@@ -156,9 +156,16 @@ this.carritocompra.metodoPago.idMetodoPago = this.form.value.metpago;
           codigo: new FormControl(data.idCarritoCompra),
           idUsuario: new FormControl(data.user.idUser, Validators.required),
           idProducto: new FormControl(data.producto.idProducto, Validators.required),
-          fecha: new FormControl(data.fechaCreaCarritoCompra, Validators.required),
-          metpago:new FormControl (data.metodoPago.idMetodoPago, Validators.required),
-          cantidad: new FormControl(data.cantidad, [Validators.required, Validators.min(1)]),
+          fecha: new FormControl(data.fechaCreaCarritoCompra, [
+            Validators.required,
+            Validators.max(this.maxFecha.getTime()),
+          ]),
+          metpago: new FormControl(data.metodoPago.idMetodoPago, Validators.required),
+          cantidad: new FormControl(data.cantidad, [
+            Validators.required,
+            Validators.min(1),
+            Validators.max(100),
+          ]),
         });
       });
     }
