@@ -24,19 +24,6 @@
   margin-bottom: 0px;
 }
 
-.logopng {
-  width: 90px;
-  height: auto;
-  margin-left: -130px;
-  margin-top: -70px;
-}
-
-.titulopng {
-  width: 140px;
-  height: auto;
-  margin-left: 10px;
-  margin-top: -50px;
-}
 
 .dashboard {
   background-color: #99d9f2;
@@ -45,13 +32,6 @@
   margin-top: -20px; /* 👈 crea separación visible para que aparezca el borde */
 }
 
-.logo-centro {
-  display: block;
-  margin: 20px auto 10px auto; /* top, right, bottom, left */
-  margin-left: 430px;
-  width: 100px;
-  height: auto;
-}
 
 /* Estilos para el título "Lista de Chats" */
 .titulo-chats {
@@ -104,4 +84,25 @@
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Opcional: sombra ligera */
   width: auto; /* Evita que se expanda */
+}
+
+.logopng {
+  width: 90px;
+  height: auto;
+  margin-left: -140px;
+  margin-top: -70px;
+}
+
+.titulopng {
+  width: 140px;
+  height: auto;
+  margin-left: 10px;
+  margin-top: -70px;
+}
+.logo-centro {
+  display: block;
+  margin: 20px auto 10px auto; /* top, right, bottom, left */
+  margin-left: 455px;
+  width: 100px;
+  height: auto;
 }

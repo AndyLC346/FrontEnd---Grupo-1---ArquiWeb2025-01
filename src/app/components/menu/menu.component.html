@@ -27,6 +27,7 @@
     <mat-menu #menuUsuarios="matMenu">
       <button mat-menu-item routerLink="/usuarios">Listar</button>
       <button mat-menu-item routerLink="/usuarios/insertareditarusuario">Registrar</button>
+      <button mat-menu-item routerLink="/usuarios/cantidadusuaractivo">Reporte Inactivos vs Activos</button>
     </mat-menu>
 
 
@@ -38,6 +39,8 @@
     <mat-menu #menuProductos="matMenu">
       <button mat-menu-item routerLink="/productos">Listar</button>
       <button mat-menu-item routerLink="/productos/insertareditarprod">Registrar</button>
+      <button mat-menu-item routerLink="/productos/busquedanombre">Buscar producto</button>
+      <button mat-menu-item routerLink="/productos/graficoCantidadProductos">Cantidad productos</button>
     </mat-menu>
 
     <!-- ‑‑‑‑ DESCUENTOS ‑‑‑‑ -->
@@ -49,8 +52,10 @@
       <button mat-menu-item routerLink="/descuento">Listar</button>
       <button mat-menu-item routerLink="/descuento/insertareditardescuento">Registrar</button>
       <button mat-menu-item routerLink="/descuento/listar-descuento-vigentes">Lista de Descuento Vigentes</button>
-
+      <button mat-menu-item routerLink="/descuento/listardescuentosordenadosporporcentaje">Lista de Descuento Ordenado Porcentaje</button>
     </mat-menu>
+
+
 
     <!-- ‑‑‑‑ TIENDAS ‑‑‑‑ -->
     <div class="card" [matMenuTriggerFor]="menuTiendas">
@@ -60,6 +65,7 @@
     <mat-menu #menuTiendas="matMenu">
       <button mat-menu-item routerLink="/tiendas">Listar</button>
       <button mat-menu-item routerLink="/tiendas/insertareditartienda">Registrar</button>
+      <button mat-menu-item routerLink="/tiendas/buscarnombretienda">Buscar Tienda</button>
     </mat-menu>
 
 
@@ -71,6 +77,8 @@
     <mat-menu #menuResenas="matMenu">
       <button mat-menu-item routerLink="/resenas">Listar</button>
       <button mat-menu-item routerLink="/resenas/insertareditarese">Registrar</button>
+      <button mat-menu-item routerLink="/resenas/buscarcalificacion">Buscar reseña</button>
+      <button mat-menu-item routerLink="/resenas/ordenaresena">Lista mejor y peor</button>
     </mat-menu>
 
     <!-- ‑‑‑‑ CARRITO COMPRA ‑‑‑‑ -->
@@ -82,10 +90,7 @@
       <button mat-menu-item routerLink="/carritocompra">Listar</button>
       <button mat-menu-item routerLink="/carritocompra/insertareditarcarritocompra">Registrar</button>
       <button mat-menu-item routerLink="/carritocompra/carrito-ordenado-porPrecio">Reporte CarritoOrdenado Precio </button>
-
-
     </mat-menu>
-
 
     <!-- ‑‑‑‑ metodopago ‑‑‑‑ -->
     <div class="card" [matMenuTriggerFor]="menuMetodoPago">
@@ -93,9 +98,12 @@
       <span style="font-size: 20px;">Metodo Pago</span>
     </div>
     <mat-menu #menuMetodoPago="matMenu">
-      <button mat-menu-item routerLink="/metodos-de-pago">Listar</button>
-      <button mat-menu-item routerLink="/metodos-de-pago/insertareditarmetodopago">Registrar</button>
+      <button mat-menu-item routerLink="/metodosdepago">Listar</button>
+      <button mat-menu-item routerLink="/metodosdepago/insertareditarmetodopago">Registrar</button>
+      <button mat-menu-item routerLink="/metodosdepago/buscarmetodotipo">Buscar por tipo</button>
+      <button mat-menu-item routerLink="/metodosdepago/cantidadtipometodo">Cantidad por Tipo de pago</button>
     </mat-menu>
+
 
     <!-- ‑‑‑‑ Notificaciones ‑‑‑‑ -->
     <div class="card" [matMenuTriggerFor]="menuNotificaciones">
@@ -105,7 +113,9 @@
     <mat-menu #menuNotificaciones="matMenu">
       <button mat-menu-item routerLink="/notificaciones">Listar</button>
       <button mat-menu-item routerLink="/notificaciones/nuevo">Registrar</button>
+      <button mat-menu-item routerLink="/notificaciones/buscarleidonotifica">Buscar por Leidos</button>
     </mat-menu>
+
 
     <!-- ‑‑‑‑ CHATS ‑‑‑‑ -->
     <div class="card" [matMenuTriggerFor]="menuChat">
@@ -113,8 +123,8 @@
       <span style="font-size: 20px;">Chats</span>
     </div>
     <mat-menu #menuChat="matMenu">
-      <button mat-menu-item routerLink="/chat">Listar</button>
-      <button mat-menu-item routerLink="/chat/insertareditarchat">Registrar</button>
+      <button mat-menu-item routerLink="/chats">Listar</button>
+      <button mat-menu-item routerLink="/chats/insertareditarchat">Registrar</button>
     </mat-menu>
 
   </div>

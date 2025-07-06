@@ -24,33 +24,11 @@
   margin-bottom: 0px;
 }
 
-.logopng {
-  width: 90px;
-  height: auto;
-  margin-left: -130px;
-  margin-top: -70px;
-}
-
-.titulopng {
-  width: 140px;
-  height: auto;
-  margin-left: 10px;
-  margin-top: -50px;
-}
-
 .dashboard {
   background-color: #99d9f2;
   padding: 30px 15px;
   min-height: 100vh;
   margin-top: -20px; /* 👈 crea separación visible para que aparezca el borde */
-}
-
-.logo-centro {
-  display: block;
-  margin: 20px auto 10px auto; /* top, right, bottom, left */
-  margin-left: 430px;
-  width: 100px;
-  height: auto;
 }
 
 .titulo-chats {
@@ -71,7 +49,7 @@ mat-form-field {
 
 button[matButton="filled"] {
 
-  background-color: #1b6312;
+  background-color: #000000;
   color: white;
   border: none;
   padding: 0.5rem 1.25rem;
@@ -85,4 +63,25 @@ button[matButton="filled"] {
 
 button[matButton="filled"]:hover {
   background-color: #d7590b;
+}
+
+.logopng {
+  width: 90px;
+  height: auto;
+  margin-left: -140px;
+  margin-top: -70px;
+}
+
+.titulopng {
+  width: 140px;
+  height: auto;
+  margin-left: 10px;
+  margin-top: -70px;
+}
+.logo-centro {
+  display: block;
+  margin: 20px auto 10px auto; /* top, right, bottom, left */
+  margin-left: 455px;
+  width: 100px;
+  height: auto;
 }

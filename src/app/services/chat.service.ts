@@ -11,7 +11,7 @@ const base_url = environment.base;
 export class ChatService {
   private url = `${base_url}/chats`;
   private listaChats = new Subject<Chats[]>();
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
 
   list() {
@@ -21,7 +21,7 @@ export class ChatService {
   insert(C: Chats) {
     return this.http.post(`${this.url}`, C);
   }
-   getList() {
+  getList() {
     return this.listaChats.asObservable();
   }
   setList(listaNueva: Chats[]) {
@@ -33,7 +33,8 @@ export class ChatService {
   deleteA(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
-   update(c: Chats) {
+  update(c: Chats) {
     return this.http.put(this.url, c);
   }
+  
 }

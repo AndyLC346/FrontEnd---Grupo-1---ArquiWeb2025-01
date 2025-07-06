@@ -24,7 +24,9 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 export class ListarproductoComponent implements OnInit {
   dataSource: MatTableDataSource<Producto> = new MatTableDataSource();
 
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5','c6','c7', 'c8']
+  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8']
+
+  producto?: Producto;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -44,9 +46,21 @@ export class ListarproductoComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  eliminar(id:number){
-    this.pS.deleteA(id).subscribe((data)=>{
-      this.pS.list().subscribe((data)=>{
+  modoVisualizacion: 'lista' | 'tarjeta' = 'lista';
+
+  cambiarVista() {
+    this.modoVisualizacion = this.modoVisualizacion === 'lista' ? 'tarjeta' : 'lista';
+  }
+
+
+  obtenerImagenProducto(producto: Producto): string {
+    const id = producto?.idProducto;
+    return id ? `assets/img/${id}.jpg` : 'assets/img/default.jpg';
+  }
+
+  eliminar(id: number) {
+    this.pS.deleteA(id).subscribe((data) => {
+      this.pS.list().subscribe((data) => {
         this.pS.setList(data);
       })
     })

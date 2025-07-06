@@ -1,7 +1,6 @@
 <div style="text-align: center; margin-top: 20px; margin-bottom: 20px" class="encabezado">
   <div class="contenedor-encabezado">
     <div class="iconos"></div>
-
     <div class="contenedor-logo" routerLink="/menu">
       <img src="assets/img/logo.png" alt="Logo" class="logopng" />
       <img src="assets/logosmenu/logotit.png" alt="Titulo" class="titulopng" />
@@ -12,93 +11,121 @@
 
 <div class="dashboard">
   <div class="container">
-    <div style="text-align: center; ">
+    <div style="text-align: center">
       <h1>Registro de Productos</h1>
     </div>
-    <div style="text-align: center; ">
+    <div style="text-align: center">
       <form [formGroup]="form" (submit)="aceptar()">
         <mat-form-field class="example-full-width" *ngIf="actualizacion">
-          <mat-label> ID </mat-label>
-          <br>
-          <input matInput formControlName="codigopro">
-          <mat-error *ngIf="form.get('codigopro')?.hasError('required')">
-            El codigo es obligatorio!!
-          </mat-error>
+          <mat-label>ID</mat-label>
+          <input matInput formControlName="codigopro" readonly />
         </mat-form-field>
         <br />
 
         <mat-form-field class="example-full-width">
-          <mat-label> Producto </mat-label>
-          <br>
-          <input matInput placeholder="Ingresa nombre" formControlName="nombrepro">
+          <mat-label>Producto</mat-label>
+          <input matInput placeholder="Ingresa nombre" formControlName="nombrepro" />
           <mat-error *ngIf="form.get('nombrepro')?.hasError('required')">
-            El nombre es obligatorio!!
+            El nombre es obligatorio.
+          </mat-error>
+          <mat-error *ngIf="form.get('nombrepro')?.hasError('maxlength')">
+            Máximo 100 caracteres.
           </mat-error>
         </mat-form-field>
         <br />
 
-
         <mat-form-field class="example-full-width">
-          <mat-label> Descripcion del producto </mat-label>
-          <br>
-          <input matInput placeholder="Ingresa descripcion" formControlName="descripcionPro">
+          <mat-label>Descripción</mat-label>
+          <input matInput placeholder="Ingresa descripción" formControlName="descripcionPro" />
           <mat-error *ngIf="form.get('descripcionPro')?.hasError('required')">
-            La descripcion del producto es obligatoria!!
+            La descripción es obligatoria.
+          </mat-error>
+          <mat-error *ngIf="form.get('descripcionPro')?.hasError('maxlength')">
+            Máximo 300 caracteres.
           </mat-error>
         </mat-form-field>
-        <br>
+        <br />
 
         <mat-form-field class="example-full-width">
-          <mat-label> Precio </mat-label>
-          <br>
-          <input matInput placeholder="Ingresa precio" formControlName="precioPro">
+          <mat-label>Precio</mat-label>
+          <input matInput type="number" placeholder="Ej. 49.90" formControlName="precioPro" />
           <mat-error *ngIf="form.get('precioPro')?.hasError('required')">
-            El Precio del producto es obligatorio!!
+            El precio es obligatorio.
+          </mat-error>
+          <mat-error *ngIf="form.get('precioPro')?.hasError('min')">
+            El precio debe ser mayor a 0.
           </mat-error>
         </mat-form-field>
-        <br>
+        <br />
 
         <mat-form-field>
-          <mat-label>Categorias</mat-label>
+          <mat-label>Categorías</mat-label>
           <mat-select formControlName="categoriaPro">
-            @for (food of tipos; track food) {
-            <mat-option [value]="food.value">{{ food.viewValue }}</mat-option>
+            @for (cat of tipos; track cat) {
+              <mat-option [value]="cat.value">{{ cat.viewValue }}</mat-option>
             }
           </mat-select>
+          <mat-error *ngIf="form.get('categoriaPro')?.hasError('required')">
+            La categoría es obligatoria.
+          </mat-error>
         </mat-form-field>
         <br />
 
         <mat-form-field class="example-full-width">
-          <mat-label> Stock </mat-label>
-          <br>
-          <input matInput placeholder="Ingresa stock" formControlName="stockPro">
+          <mat-label>Stock</mat-label>
+          <input matInput type="number" placeholder="Ej. 10" formControlName="stockPro" />
           <mat-error *ngIf="form.get('stockPro')?.hasError('required')">
-            El stock de la tienda es obligatorio!!
+            El stock es obligatorio.
+          </mat-error>
+          <mat-error *ngIf="form.get('stockPro')?.hasError('pattern')">
+            Debe ser un número entero positivo.
+          </mat-error>
+          <mat-error *ngIf="form.get('stockPro')?.hasError('min')">
+            El stock debe ser mínimo 1.
           </mat-error>
         </mat-form-field>
-        <br>
+        <br />
 
         <mat-form-field>
-          <mat-label>Fecha de creacion</mat-label>
+          <mat-label>Fecha de creación</mat-label>
           <input matInput [matDatepicker]="picker" formControlName="fechaPro" />
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="form.get('fechaPro')?.hasError('required')">
+            La fecha es obligatoria.
+          </mat-error>
         </mat-form-field>
         <br />
 
         <mat-form-field>
           <mat-label>Tiendas</mat-label>
           <mat-select formControlName="tiendita">
-            @for (food of listaTienda; track food) {
-            <mat-option [value]="food.idTienda">{{ food.nombreTienda }}</mat-option>
+            @for (tienda of listaTienda; track tienda) {
+              <mat-option [value]="tienda.idTienda">{{ tienda.nombreTienda }}</mat-option>
             }
           </mat-select>
+          <mat-error *ngIf="form.get('tiendita')?.hasError('required')">
+            La tienda es obligatoria.
+          </mat-error>
         </mat-form-field>
         <br />
 
-        <button matButton="filled">Registrar</button>
-        <button matButton="filled" type="button" (click)="cancelar()">Cancelar</button>
+        <button
+          mat-button
+          style="background-color: black; color: white; border-radius: 5px; margin-right: 10px"
+          type="submit"
+        >
+          Registrar
+        </button>
+        <button
+          mat-button
+          style="background-color: black; color: white; border-radius: 5px"
+          type="button"
+          (click)="cancelar()"
+        >
+          Cancelar
+        </button>
 
       </form>
     </div>

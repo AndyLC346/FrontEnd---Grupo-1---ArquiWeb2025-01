@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
-  ReactiveFormsModule,
   Validators,
+  ReactiveFormsModule,
 } from '@angular/forms';
-
 import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
-
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
@@ -15,7 +13,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
+
 import { Notificaciones } from '../../../models/notificaciones';
 import { NotificacionesService } from '../../../services/notificaciones.service';
 import { UsuarioService } from '../../../services/usuario.service';
@@ -34,7 +34,8 @@ import { Usuario } from '../../../models/usuario';
     MatDatepickerModule,
     MatCheckboxModule,
     MatButtonModule,
-    CommonModule
+    MatSnackBarModule,
+    CommonModule,
   ],
   templateUrl: './insertar-editar-notificacioes.component.html',
   styleUrl: './insertar-editar-notificacioes.component.css',
@@ -45,6 +46,7 @@ export class InsertarEditarNotificacionesComponent implements OnInit {
   edicion: boolean = false;
   id: number = 0;
   listaUsuarios: Usuario[] = [];
+  snackBar = inject(MatSnackBar);
 
   constructor(
     private nS: NotificacionesService,
@@ -56,50 +58,59 @@ export class InsertarEditarNotificacionesComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
-      this.id = data['id'];   
-      
+      this.id = data['id'];
       this.edicion = this.id != null;
       this.init();
     });
 
-
     this.form = this.formBuilder.group({
       id: [''],
-      mensaje: ['', Validators.required],
+      mensaje: ['', [Validators.required, Validators.maxLength(250)]],
       fechaEnvio: ['', Validators.required],
-      leido: [''],
+      leido: [false],
       usuario1: ['', Validators.required],
     });
 
-    this.uS.list().subscribe(data => {
+    this.uS.list().subscribe((data) => {
       this.listaUsuarios = data;
     });
   }
 
   aceptar() {
-    if (this.form.valid) {
-      console.log(this.form.value);
-      
-      this.notificacion.idNotificacion = this.form.value.id;
-      this.notificacion.mensaje = this.form.value.mensaje;
-      this.notificacion.fechaEnvioNotificacion = this.form.value.fechaEnvio;
-      this.notificacion.leido = this.form.value.leido;
-      this.notificacion.user.idUser = this.form.value.usuario1;
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      this.snackBar.open('❌ Por favor completa todos los campos obligatorios.', 'Cerrar', {
+        duration: 3000,
+      });
+      return;
+    }
 
-      if (this.edicion) {
-        this.nS.update(this.notificacion).subscribe(() => {
-          this.nS.list().subscribe((data) => {
-            this.nS.setList(data);
-          });
+    this.notificacion.idNotificacion = this.form.value.id;
+    this.notificacion.mensaje = this.form.value.mensaje;
+    this.notificacion.fechaEnvioNotificacion = this.form.value.fechaEnvio;
+    this.notificacion.leido = this.form.value.leido;
+    this.notificacion.user = { idUser: this.form.value.usuario1 } as Usuario;
+
+    if (this.edicion) {
+      this.nS.update(this.notificacion).subscribe(() => {
+        this.nS.list().subscribe((data) => {
+          this.nS.setList(data);
         });
-      } else {
-        this.nS.insert(this.notificacion).subscribe(() => {
-          this.nS.list().subscribe((data) => {
-            this.nS.setList(data);
-          });
+        this.snackBar.open('✅ Notificación actualizada correctamente.', 'Cerrar', {
+          duration: 3000,
         });
-      }
-      this.router.navigate(['/notificaciones']);
+        this.router.navigate(['/notificaciones']);
+      });
+    } else {
+      this.nS.insert(this.notificacion).subscribe(() => {
+        this.nS.list().subscribe((data) => {
+          this.nS.setList(data);
+        });
+        this.snackBar.open('✅ Notificación registrada correctamente.', 'Cerrar', {
+          duration: 3000,
+        });
+        this.router.navigate(['/notificaciones']);
+      });
     }
   }
 
@@ -115,5 +126,9 @@ export class InsertarEditarNotificacionesComponent implements OnInit {
         });
       });
     }
+  }
+
+  cancelar() {
+    this.router.navigate(['/notificaciones']);
   }
 }

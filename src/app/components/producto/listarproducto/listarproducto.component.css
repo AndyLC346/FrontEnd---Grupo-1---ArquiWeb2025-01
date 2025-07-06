@@ -24,19 +24,6 @@
   margin-bottom: 0px;
 }
 
-.logopng {
-  width: 90px;
-  height: auto;
-  margin-left: -130px;
-  margin-top: -70px;
-}
-
-.titulopng {
-  width: 140px;
-  height: auto;
-  margin-left: 10px;
-  margin-top: -50px;
-}
 
 .dashboard {
   background-color: #99d9f2;
@@ -45,13 +32,6 @@
   margin-top: -20px; /* 👈 crea separación visible para que aparezca el borde */
 }
 
-.logo-centro {
-  display: block;
-  margin: 20px auto 10px auto; /* top, right, bottom, left */
-  margin-left: 430px;
-  width: 100px;
-  height: auto;
-}
 
 /* Estilos para el título "Lista de Chats" */
 .titulo-chats {
@@ -62,8 +42,6 @@
   color: #333; /* Color de fuente */
 }
 
-
-/* Estilos para la tabla */
 .tabla-contenedor {
   display: flex;
   justify-content: center;
@@ -72,7 +50,7 @@
 
 .tabla-estilizada {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1000px; /* Limita el ancho de la tabla */
   background-color: #ffffff;
   border-radius: 10px;
   overflow: hidden;
@@ -80,7 +58,7 @@
 }
 
 .tabla-estilizada th {
-  background-color: #1b6312;
+  background-color: #3f51b5;
   color: white;
   font-weight: bold;
   text-align: center;
@@ -90,11 +68,6 @@
   text-align: center;
   font-size: 14px;
   padding: 10px;
-}
-
-/* Estilos para los íconos de los botones (edit y delete) */
-.mat-icon {
-  vertical-align: middle; /* Para alinear los íconos con el texto si hubiera */
 }
 
 .contenedor-paginator {
@@ -111,4 +84,73 @@
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Opcional: sombra ligera */
   width: auto; /* Evita que se expanda */
+}
+
+.logopng {
+  width: 90px;
+  height: auto;
+  margin-left: -140px;
+  margin-top: -70px;
+}
+
+.titulopng {
+  width: 140px;
+  height: auto;
+  margin-left: 10px;
+  margin-top: -70px;
+}
+.logo-centro {
+  display: block;
+  margin: 20px auto 10px auto; /* top, right, bottom, left */
+  margin-left: 455px;
+  width: 100px;
+  height: auto;
+}
+
+.grid-productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* ✅ Centra horizontalmente */
+  gap: 20px;
+  padding: 20px;
+}
+
+.tarjeta-producto {
+  width: 220px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.tarjeta-producto:hover {
+  transform: scale(1.03);
+}
+
+.imagen-principal {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.tarjeta-producto h3 {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.tarjeta-producto p {
+  font-size: 14px;
+  color: #333;
+  margin: 3px 0;
+}
+
+.acciones {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
 }
