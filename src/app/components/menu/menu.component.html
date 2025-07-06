@@ -92,6 +92,16 @@
       <button mat-menu-item routerLink="/carritocompra/carrito-ordenado-porPrecio">Reporte CarritoOrdenado Precio </button>
     </mat-menu>
 
+    <!-- ‑‑‑‑ CARRITO COMPRA ‑‑‑‑ -->
+    <div class="card" [matMenuTriggerFor]="menuCarritos">
+      <img src="assets/logosmenu/carrito.jpg" class="logodes">
+      <span style="font-size: 20px;">Carritos de Compra</span>
+    </div>
+    <mat-menu #menuCarritos="matMenu">
+      <button mat-menu-item routerLink="/carritocompraproducto">Listar</button>
+      <button mat-menu-item routerLink="/carritocompraproducto/insertareditarcarritos">Registrar</button>
+    </mat-menu>
+
     <!-- ‑‑‑‑ metodopago ‑‑‑‑ -->
     <div class="card" [matMenuTriggerFor]="menuMetodoPago">
       <img src="assets/logosmenu/metodopago.jpg" class="logodes">
@@ -125,6 +135,8 @@
     <mat-menu #menuChat="matMenu">
       <button mat-menu-item routerLink="/chats">Listar</button>
       <button mat-menu-item routerLink="/chats/insertareditarchat">Registrar</button>
+      <button mat-menu-item routerLink="/chats/graficoCantidadChats">Cantidad Chats</button>
+
     </mat-menu>
 
   </div>

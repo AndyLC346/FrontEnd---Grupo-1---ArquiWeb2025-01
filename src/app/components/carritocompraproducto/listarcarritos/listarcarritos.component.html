@@ -25,21 +25,24 @@
       </ng-container>
 
       <ng-container matColumnDef="c2">
-        <th mat-header-cell *matHeaderCellDef> Estado</th>
-        <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+        <th mat-header-cell *matHeaderCellDef> Estado                  
+          
+        </th>
+
+        <td mat-cell *matCellDef="let element"> {{element.estado? 'Pagado':'Pendiente'}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="c3">
-        <th mat-header-cell *matHeaderCellDef> Carrito Compra </th>
-        <td mat-cell *matCellDef="let element"> {{element.carrito.idCarritoCompra}} </td>
-      </ng-container>
+        <ng-container matColumnDef="c3">
+          <th mat-header-cell *matHeaderCellDef>Carrito Compra</th>
+          <td mat-cell *matCellDef="let element">{{ element.carritoCompra.idCarritoCompra}}</td>
+        </ng-container>
 
       
         <!-- Symbol Column -->
         <ng-container matColumnDef="c4">
           <th mat-header-cell *matHeaderCellDef>Actualizar</th>
           <td mat-cell *matCellDef="let element">
-            <button matButton [routerLink]="['ediciones',element.idChat]" >
+            <button matButton [routerLink]="['ediciones',element.idCarritoCompraProducto]" >
               <mat-icon>edit</mat-icon>
             </button>
           </td>
@@ -50,7 +53,7 @@
               <th mat-header-cell *matHeaderCellDef>Eliminar</th>
               <td mat-cell *matCellDef="let element">
                 <button matButton
-                  (click)="eliminar(element.idChat)"
+                  (click)="eliminar(element.idCarritoCompraProducto)"
                   >
                   <mat-icon>delete</mat-icon>
                 </button>

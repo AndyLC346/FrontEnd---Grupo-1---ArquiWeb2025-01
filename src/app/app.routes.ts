@@ -41,6 +41,7 @@ import { GraficocantidadmetodoComponent } from './components/metodo-pago/grafico
 import { GraficoestadousuarioComponent } from './components/usuario/graficoestadousuario/graficoestadousuario.component';
 import { CarritocompraproductoComponent } from './components/carritocompraproducto/carritocompraproducto.component';
 import { InsertareditarcarritosComponent } from './components/carritocompraproducto/insertareditarcarritos/insertareditarcarritos.component';
+import { CantidadchatsComponent } from './components/chat/cantidadchats/cantidadchats.component';
 
 export const routes: Routes = [
   {
@@ -232,6 +233,9 @@ export const routes: Routes = [
         path: 'ediciones/:id',
         component: InsertareditarchatComponent,
       },
+          {
+        path:'graficoCantidadChats', component:CantidadchatsComponent
+      }
     ],
   },
   {

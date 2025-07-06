@@ -75,7 +75,7 @@ export class InsertareditarcarritosComponent implements OnInit {
     if (this.form.valid) {
       this.carritos.idCarritoCompraProducto = this.form.value.codigo;
       this.carritos.estado= this.form.value.estadi;
-      this.carritos.carrito.idCarritoCompra= this.form.value.carri;
+      this.carritos.carritoCompra.idCarritoCompra= this.form.value.carri;
 
       if (this.edicion) {
         //actualizar
@@ -101,7 +101,7 @@ export class InsertareditarcarritosComponent implements OnInit {
         this.form = new FormGroup({
           codigo: new FormControl(data.idCarritoCompraProducto),
           estadi: new FormControl(data.estado),
-          carri: new FormControl(data.carrito.idCarritoCompra),
+          carri: new FormControl(data.carritoCompra.idCarritoCompra),
         });
       });
     }

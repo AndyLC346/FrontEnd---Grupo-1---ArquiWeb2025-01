@@ -1,7 +1,7 @@
-import { CarritoCompra } from "./carritocompra"
+import { CarritoCompra } from "../models/carritocompra"
 
 export class CarritoCompraProducto {
 idCarritoCompraProducto:number=0
 estado: boolean = false;
-carrito:CarritoCompra= new CarritoCompra()
+carritoCompra:CarritoCompra= new CarritoCompra()
 }
