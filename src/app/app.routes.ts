@@ -40,6 +40,7 @@ import { GraficocantidadproductosComponent } from './components/producto/grafico
 import { GraficocantidadmetodoComponent } from './components/metodo-pago/graficocantidadmetodo/graficocantidadmetodo.component';
 import { GraficoestadousuarioComponent } from './components/usuario/graficoestadousuario/graficoestadousuario.component';
 import { CarritocompraproductoComponent } from './components/carritocompraproducto/carritocompraproducto.component';
+import { CompararProductoComponent } from './components/producto/comparar-producto/comparar-producto.component';
 
 export const routes: Routes = [
   {
@@ -106,6 +107,9 @@ export const routes: Routes = [
       },
       {
         path:'graficoCantidadProductos', component:GraficocantidadproductosComponent
+      },
+      {
+        path:'compararproductos',component:CompararProductoComponent
       }
     ],
   },
@@ -247,5 +251,5 @@ export const routes: Routes = [
       },
     ],
   },
-  
+
 ];

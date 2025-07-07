@@ -40,6 +40,7 @@
 .volver-contenedor {
   text-align: center;
   margin-top: 30px;
+
 }
 
 .btn-volver {
@@ -47,6 +48,9 @@
   padding: 8px 24px;
   border-radius: 8px;
   transition: transform 0.25s;
+  background-color: #000000;
+  color: white;
+  font-weight: bold;
 }
 .btn-volver:hover { transform: scale(1.05); }
 

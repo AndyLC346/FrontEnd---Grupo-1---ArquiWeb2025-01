@@ -32,8 +32,6 @@ export class BuscaresenaComponent implements OnInit {
 
   displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4'];
 
-
-
   form: FormGroup;
   tipoBusqueda: number = 0;
 
