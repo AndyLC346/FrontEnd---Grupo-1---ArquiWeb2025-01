@@ -8,13 +8,13 @@ import { Router } from '@angular/router';
   styleUrl: './inicio.component.css'
 })
 export class InicioComponent {
-constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   Registrar() {
-    this.router.navigate(['/registrar']); 
+    this.router.navigate(['/registrar']);
   }
 
   IniciarSesion() {
-    this.router.navigate(['/login']); 
+    this.router.navigate(['/login']);
   }
 }

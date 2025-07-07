@@ -10,27 +10,27 @@ import { JwtRequest } from '../../models/jwtRequest';
 
 @Component({
   selector: 'app-login',
-  imports: [MatFormFieldModule,FormsModule,MatInputModule,MatButtonModule, RouterLink, RouterModule],
+  imports: [MatFormFieldModule, FormsModule, MatInputModule, MatButtonModule, RouterLink, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-constructor(
+  constructor(
     private loginService: LoginService,
     private router: Router,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
   username: string = '';
   password: string = '';
   mensaje: string = '';
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   Registrar() {
-    this.router.navigate(['/registrar']); 
+    this.router.navigate(['/registrar']);
   }
 
   login() {
-    
+
     let request = new JwtRequest();
     request.username = this.username;
     request.password = this.password;
@@ -44,5 +44,5 @@ constructor(
         this.snackBar.open(this.mensaje, 'Aviso', { duration: 2000 });
       }
     );
-}
+  }
 }

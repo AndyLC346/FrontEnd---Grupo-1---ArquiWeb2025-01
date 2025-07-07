@@ -42,11 +42,11 @@
       <input type="password" matInput [(ngModel)]="confirmPassword" required>
     </mat-form-field>
 
-   <mat-slide-toggle class="custom-slide" [(ngModel)]="enabled">Usuario activo</mat-slide-toggle>
-
+    <!-- Slide -->
+    <mat-slide-toggle class="custom-slide" [(ngModel)]="enabled">Usuario activo</mat-slide-toggle>
 
     <!-- Botón de registro -->
-    <button mat-raised-button  (click)="registrar()">Registrarse</button>
+    <button mat-raised-button (click)="registrar()">Registrarse</button>
 
     <div class="registrar">
       <span class="registrar-texto">¿Ya tienes cuenta? </span>

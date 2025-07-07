@@ -18,7 +18,7 @@
 }
 
 .titulopng {
-  width: 500px;        
+  width: 500px;
 }
 
 /* Contenedor principal */
@@ -29,7 +29,7 @@
   padding-left: 10%;
   padding: 20px 0 20px 17%;
   width: 100%;
-  height: 100vh; 
+  height: 100vh;
   box-sizing: border-box;
   text-align: center;
   position: relative;
@@ -45,8 +45,8 @@
   left: 45px;
   top: 25%;
   margin-top: 100px;
-  margin-left: 0; 
-  padding-left: 0; 
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .card-button {
@@ -54,7 +54,7 @@
   position: relative;
   height: 150px;
   width: 200px;
-  min-width: 300px; 
+  min-width: 300px;
   border-radius: 15px;
   display: flex;
   align-items: center;
@@ -75,7 +75,7 @@
 
 .card-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .hidden-button {
