@@ -10,6 +10,7 @@ import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-menu',
+  standalone:true,
   imports: [
     MatToolbarModule,
     MatButtonModule,
@@ -22,11 +23,16 @@ import { LoginService } from '../../services/login.service';
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
+  
+nombreUsuario: string = 'Admin';
 role: string = '';
+
   constructor(private loginService: LoginService) {}
   cerrar() {
     
     sessionStorage.clear();
+    localStorage.clear();
+    window.location.href = '/login'; 
   }
 
   verificar() {
@@ -34,33 +40,19 @@ role: string = '';
     return this.loginService.verificar();
   }
   isCliente() {
-    return this.role === 'C liente';        
+    return this.role === 'Cliente';        
   }
 
-  isAdmin() {
-    return this.role === 'Admin';
+  isGerente() {
+    return this.role === 'Gerente';
   }
 
-
+ngOnInit() {
+  this.role = this.loginService.showRole();
+}
 
  isMuted = true; // comienza silenciado
  volumenPersonalizado = 0.1; // para poner la cantidad de volumen
-
-  toggleMute(audio: HTMLAudioElement) {
-    if (this.isMuted) {
-      // Desmutea y fija volumen personalizado
-      this.isMuted = false;
-      audio.muted = false;
-      audio.volume = this.volumenPersonalizado;
-      if (audio.paused) {
-        audio.play();
-      }
-    } else {
-      // Mutea
-      this.isMuted = true;
-      audio.muted = true;
-    }
-  }
 
   tiles = [
     { label: 'PRODUCTO', icon: 'inventory_2', link: '/productos' },

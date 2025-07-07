@@ -15,6 +15,7 @@
   margin-left: -10px;
   line-height: 1.2;
 }
+/* Iconos - Mantiene la posición original */
 .iconos {
   position: absolute;
   margin-top: 18px;
@@ -22,7 +23,32 @@
   left: 0;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 8px; /* Reducido de 20px a 8px para mantener el espaciado original */
+}
+
+/* Estilo para el botón del icono */
+.iconos button[mat-icon-button] {
+  margin: 0;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+}
+
+/* Estilo para el icono dentro del botón */
+.iconos button[mat-icon-button] mat-icon {
+  font-size: 40px;
+  left:-8px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+}
+
+/* Mantén el estilo del texto de bienvenida */
+.iconos span {
+  font-size: 19px;
+  font-weight: 590;
+  line-height: 1.2;
 }
 .iconos mat-icon {
   cursor: pointer;
@@ -30,6 +56,16 @@
   width: 40px;
   height: 40px;
   line-height: 40px;
+}
+
+.mat-menu-panel {
+  min-width: 180px !important;
+}
+
+.mat-menu-item[disabled] {
+  opacity: 1;
+  font-weight: bold;
+  color: #000;
 }
 
 /*Png's*/
@@ -40,7 +76,9 @@
   width: auto;
   object-fit: contain;
 }
-
+menuSalir{
+  height: 40px;
+}
 .titulopng {
   height: 40px;
   margin-left: -5px;

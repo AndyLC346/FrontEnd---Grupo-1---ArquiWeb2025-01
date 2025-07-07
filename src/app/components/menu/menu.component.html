@@ -2,16 +2,22 @@
 <div class="encabezado">
   <div class="contenedor-encabezado">
     <div class="iconos">
-      <mat-icon>account_circle</mat-icon>
-      <span>Bienvenido Admin</span> <!--Cambiar la palabra "admin" por el nombre del usuario-->
-    </div>
+  <button mat-icon-button [matMenuTriggerFor]="menuUsuario">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <span>Bienvenido {{nombreUsuario}}</span>
+</div>
  
     <div class="contenedor-logo" routerLink="/home">
       <img src="assets/img/logo.png" alt="Logo" class="logopng">
       <img src="assets/img/nombrepagina.png" alt="Titulo" class="titulopng">
     </div>
-  </div>
 </div>
+
+<mat-menu #menuUsuario="matMenu">
+  <button mat-menu-item disabled>{{role}}</button>
+  <button mat-menu-item (click)="cerrar()">Cerrar sesión</button>
+</mat-menu>
 
 
 <!-- PANEL DE ICONOS -->
