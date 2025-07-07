@@ -29,7 +29,7 @@ export const appConfig: ApplicationConfig = {
         config: {
           tokenGetter: tokenGetter,
           allowedDomains: ['localhost:8082'],
-          disallowedRoutes: ['http://localhost:8082/login/forget'],
+          disallowedRoutes: ['http://localhost:8082/login/forget','http://localhost:8082/usuarios'],
         },
       })
     )

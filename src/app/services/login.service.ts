@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtRequest } from '../models/jwtRequest';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -7,6 +7,12 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class LoginService {
+  private apiUrl = 'http://localhost:8082';
+  private headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  });
+
 constructor(private http: HttpClient) {}
   login(request: JwtRequest) {
     return this.http.post('http://localhost:8082/login', request);
@@ -26,8 +32,24 @@ constructor(private http: HttpClient) {}
     return decodedToken?.role;
   }
 
-  registrar(request: JwtRequest) {
-  return this.http.post('http://localhost:8082/register', request);
+
+ registrar(usuario: any) {
+  const body = {
+    username: usuario.username,
+    password: usuario.password,
+    nombres: usuario.nombres, 
+    apellidos: usuario.apellidos,
+    emailUsuario: usuario.emailUsuario, 
+    telefono: usuario.telefono
+  };
+
+  return this.http.post('http://localhost:8082/usuarios', body, {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+      // NO pongas Authorization aquí
+    }),
+    withCredentials: false // tampoco es necesario
+  });
 }
 }
 

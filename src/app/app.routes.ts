@@ -26,12 +26,10 @@ import { ChatComponent } from './components/chat/chat.component';
 import { InsertareditarchatComponent } from './components/chat/insertareditarchat/insertareditarchat.component';
 import { OrdencarritocompraComponent } from './components/carritocompra/ordencarritocompra/ordencarritocompra.component';
 import { ListarDescuentoVigentesComponent } from './components/descuentos/listar-descuento-vigentes/listar-descuento-vigentes.component';
-<<<<<<< HEAD
 import { LoginComponent } from './components/login/login.component';
 import { seguridadGuard } from './guards/seguridad.guard';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { RegistrarComponent } from './components/registrar/registrar.component';
-=======
 import { ListarDescuentosOrdenadosPorPorcentajeDTO } from './models/ListarDescuentosOrdenadosXPorcentaje';
 import { ListardescuentosordenadosporporcentajeComponent } from './components/descuentos/listardescuentosordenadosporporcentaje/listardescuentosordenadosporporcentaje.component';
 import { BuscarproductoComponent } from './components/producto/buscarproducto/buscarproducto.component';
@@ -44,7 +42,7 @@ import { GraficocantidadproductosComponent } from './components/producto/grafico
 import { GraficocantidadmetodoComponent } from './components/metodo-pago/graficocantidadmetodo/graficocantidadmetodo.component';
 import { GraficoestadousuarioComponent } from './components/usuario/graficoestadousuario/graficoestadousuario.component';
 import { CarritocompraproductoComponent } from './components/carritocompraproducto/carritocompraproducto.component';
->>>>>>> main
+
 
 export const routes: Routes = [
   {

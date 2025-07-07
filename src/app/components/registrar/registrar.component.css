@@ -1,4 +1,4 @@
-.container {
+:host {
   display: block;
   min-height: 100vh;
   background-image: url('/assets/img/fondopresentacion.png');
@@ -8,17 +8,20 @@
   margin: 0;
   padding: 0;
 }
+
 .contenedor-logo {
   position: relative;
   display: flex;
   align-items: center;
   cursor: pointer;
+  margin-top: 7px;
+  margin-block: -17px;
+  left:-7px;
   gap: 10px;
 }
 
-
 mat-form-field {
-    width: 50%;
+    width: 85%;
 }
 
 /*Boton*/
@@ -36,19 +39,19 @@ button[mat-raised-button] {
 
 /*Card*/
 .card-decorativa {
-  background: linear-gradient(135deg, #0077B5, #004D7A);
-  width: 500px; /* Más ancha */
-  min-height: 400px; /* Más alta */
+  background: linear-gradient(135deg, #4A90E2, #0073B1);
+  width: 550px; 
+  height:850px;
   border-radius: 15px;
   display: flex;
-  transform: translateY(110px);
+  transform: translateY(25px);
   margin-top: 100px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   box-shadow: 0 10px 25px rgba(0, 115, 177, 0.3);
   margin: 0 auto; 
-  padding: 30px;
+  padding: 10px;
   position: relative;
   overflow: hidden;
 }
@@ -64,11 +67,16 @@ button[mat-raised-button] {
   transform: rotate(30deg);
   z-index: 0;
 }
+/*Slide*/
 
+mat-slide-toggle {
+  margin-top: -10px;   
+  margin-bottom: 10px; 
+}
 
 /*Registra*/
 .registrar {
-  margin-top: 24px;
+  margin-top: 10px;
   text-align: center;
   width: 100%;
 }
@@ -82,10 +90,10 @@ button[mat-raised-button] {
 }
 
 .registrar .custom-button {
-  width: auto; /* Ancho según contenido */
-  padding: 0.3rem 1rem; /* Más pequeño que el botón principal */
-  font-size: 0.9rem; /* Tamaño de fuente reducido */
-  min-width: 120px; /* Ancho mínimo */
-  background-color: rgba(0, 0, 0, 0.8) !important; /* Negro semitransparente */
+  width: auto; 
+  padding: 0.3rem 1rem; 
+  font-size: 0.9rem; 
+  min-width: 120px; 
+  background-color: rgba(0, 0, 0, 0.8) !important; 
   transition: all 0.3s ease;
 }
