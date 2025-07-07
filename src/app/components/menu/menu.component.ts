@@ -5,6 +5,7 @@ import { MatMenuModule } from '@angular/material/menu'
 import { MatIconModule } from '@angular/material/icon'
 import { RouterLink } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { LoginService } from '../../services/login.service';
 
 
 @Component({
@@ -21,6 +22,26 @@ import { MatGridListModule } from '@angular/material/grid-list';
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
+role: string = '';
+  constructor(private loginService: LoginService) {}
+  cerrar() {
+    
+    sessionStorage.clear();
+  }
+
+  verificar() {
+    this.role = this.loginService.showRole();
+    return this.loginService.verificar();
+  }
+  isCliente() {
+    return this.role === 'C liente';        
+  }
+
+  isAdmin() {
+    return this.role === 'Admin';
+  }
+
+
 
  isMuted = true; // comienza silenciado
  volumenPersonalizado = 0.1; // para poner la cantidad de volumen
