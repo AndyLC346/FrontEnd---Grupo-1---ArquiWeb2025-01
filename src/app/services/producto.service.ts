@@ -50,7 +50,14 @@ export class ProductoService {
   }
 
   obtenerCantidadProductosPorTienda() {
-  return this.h.get<CantidadProductoDTO[]>(`${this.url}/cantidadesproductos`);
+    return this.h.get<CantidadProductoDTO[]>(`${this.url}/cantidadesproductos`);
+  }
+
+  comparar(id1: number, id2: number) {
+  return this.h.get<Producto[]>(
+    `${this.url}/productoscomparar`,
+    { params: { id1, id2 } }
+  );
 }
 
 }

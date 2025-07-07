@@ -34,4 +34,5 @@ export class DetalleProductoComponent implements OnInit {
     return id ? `assets/img/${id}.jpg` : 'assets/img/default.jpg';
   }
 
+  
 }

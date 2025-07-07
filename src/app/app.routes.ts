@@ -40,8 +40,7 @@ import { GraficocantidadproductosComponent } from './components/producto/grafico
 import { GraficocantidadmetodoComponent } from './components/metodo-pago/graficocantidadmetodo/graficocantidadmetodo.component';
 import { GraficoestadousuarioComponent } from './components/usuario/graficoestadousuario/graficoestadousuario.component';
 import { CarritocompraproductoComponent } from './components/carritocompraproducto/carritocompraproducto.component';
-import { InsertareditarcarritosComponent } from './components/carritocompraproducto/insertareditarcarritos/insertareditarcarritos.component';
-import { CantidadchatsComponent } from './components/chat/cantidadchats/cantidadchats.component';
+import { CompararProductoComponent } from './components/producto/comparar-producto/comparar-producto.component';
 
 export const routes: Routes = [
   {
@@ -108,6 +107,9 @@ export const routes: Routes = [
       },
       {
         path:'graficoCantidadProductos', component:GraficocantidadproductosComponent
+      },
+      {
+        path:'compararproductos',component:CompararProductoComponent
       }
     ],
   },
@@ -233,9 +235,6 @@ export const routes: Routes = [
         path: 'ediciones/:id',
         component: InsertareditarchatComponent,
       },
-          {
-        path:'graficoCantidadChats', component:CantidadchatsComponent
-      }
     ],
   },
   {
@@ -244,13 +243,13 @@ export const routes: Routes = [
     children: [
       {
         path: 'insertareditarcarritos',
-        component: InsertareditarcarritosComponent,
+        component: CarritocompraproductoComponent,
       },
       {
         path: 'ediciones/:id',
-        component: InsertareditarcarritosComponent,
+        component: CarritocompraproductoComponent,
       },
     ],
   },
-  
+
 ];
