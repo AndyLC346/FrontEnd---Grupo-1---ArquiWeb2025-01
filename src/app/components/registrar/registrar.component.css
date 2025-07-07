@@ -68,12 +68,6 @@ button[mat-raised-button] {
   z-index: 0;
 }
 
-/*Slide*/
-
-mat-slide-toggle {
-  margin-top: -10px;
-  margin-bottom: 10px;
-}
 
 /*Registra*/
 .registrar {

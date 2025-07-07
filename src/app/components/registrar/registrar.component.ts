@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -8,10 +8,11 @@ import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatRadioModule } from '@angular/material/radio';
 
 @Component({
   selector: 'app-registrar',
-  imports: [MatFormFieldModule, FormsModule, MatInputModule, MatButtonModule, RouterLink, RouterModule, MatSlideToggleModule],
+  imports: [MatFormFieldModule, FormsModule, MatInputModule, MatButtonModule, RouterLink, RouterModule, MatSlideToggleModule,ReactiveFormsModule, MatRadioModule  ],
   templateUrl: './registrar.component.html',
   styleUrl: './registrar.component.css'
 })
@@ -25,7 +26,7 @@ export class RegistrarComponent {
   apellidos: string = '';
   emailUsuario: string = '';
   telefono: string = '';
-  enabled: boolean = false;
+
   constructor(
     private loginService: LoginService,
     private router: Router,
@@ -66,7 +67,6 @@ export class RegistrarComponent {
       apellidos: this.apellidos,
       emailUsuario: this.emailUsuario,
       telefono: this.telefono,
-      enabled: this.enabled
     };
 
     this.loginService.registrar(request).subscribe(

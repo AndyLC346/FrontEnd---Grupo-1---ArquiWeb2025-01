@@ -1,26 +1,26 @@
 /*Boton silenciado*/
-.boton-flotante {
+.boton-sonido {
   position: fixed;
   bottom: 20px;
   right: 20px;
   z-index: 999;
-  background-color: #1976d2; /* Color azul Material */
+  background-color: #0073B1; /* Color azul Material */
   color: white;
   border-radius: 50%;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 
-.boton-flotante:hover {
-  background-color: #1565c0;
+.boton-sonido:hover {
+  background-color: #4A90E2;
 }
 
 
 .boton-chat {
   position: fixed;
   bottom: 20px;
-  right: 90px; /* ← ajusta según lo que tengas a la derecha */
-  background-color: #1976d2;
+  right: 90px; 
+  background-color: #0073B1;
   color: white;
   border-radius: 50%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
