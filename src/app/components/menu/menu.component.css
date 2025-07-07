@@ -28,8 +28,8 @@
 
 /* Estilo para el botón del icono */
 .iconos button[mat-icon-button] {
-  margin: 0;
-  padding: 0;
+  margin: 5;
+  padding: ;
   width: 40px;
   height: 40px;
   line-height: 40px;
@@ -39,7 +39,7 @@
 .iconos button[mat-icon-button] mat-icon {
   font-size: 40px;
   left:-8px;
-  width: 40px;
+  width: 20px;
   height: 40px;
   line-height: 40px;
 }
